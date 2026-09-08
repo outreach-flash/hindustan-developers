@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'DM Sans', sans-serif;
+  --font-heading: 'DM Sans', sans-serif;
+
+  --color-navy: #10183B;
+  --color-navy-mid: #3C4474;
+  --color-yellow: #F4FFB1;
+  --color-cream: #F5F2ED;
+  --color-white: #FFFFFF;
+  --color-dark: #1A1A1A;
+  --color-gray: #6B7280;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-cream);
+  color: var(--color-dark);
+}

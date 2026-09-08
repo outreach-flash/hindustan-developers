@@ -1,11 +1,1203 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+export const prerender = true;
+import { createReader } from "@keystatic/core/reader";
+import keystaticConfig from "../../keystatic.config";
+import Layout from "../layouts/Layout.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const reader = createReader(process.cwd(), keystaticConfig);
+let featuredProject = null;
+let allProjects = [];
+try {
+  const featured = await reader.singletons.featuredProject.read();
+  if (featured?.projectSlug) {
+    featuredProject = await reader.collections.projects.read(
+      featured.projectSlug,
+    );
+  }
+  const projects = await reader.collections.projects.all();
+  allProjects = projects || [];
+} catch (error) {}
+
+const defaultFeatured = {
+  title: "Serene Meadows",
+  subtitle:
+    "Serene Meadows is a gated community of 71 premium residences featuring spacious 2 and 3 BHK apartments, landscaped surroundings and amenities designed for a comfortable, connected life. With the heritage of Old Goa nearby and Panaji within easy reach, it brings together calm surroundings and everyday convenience.",
+  location: "Kadamba Plateau, Goa",
+  details: [
+    { key: "Residences", value: "71 Premium" },
+    { key: "Spacious", value: "63 2 BHK" },
+    { key: "Elegant", value: "8 3 BHK" },
+    { key: "Starting from", value: "₹ 1.05 Crores" },
+  ],
+};
+
+const displayFeatured = featuredProject || defaultFeatured;
 ---
 
 <Layout>
-	<Welcome />
+  <!-- NAVBAR — fixed translucent glass bar, visible throughout the page -->
+  <nav
+    class="fixed top-0 left-0 right-0 z-50 text-white bg-black/40 backdrop-blur-md border-b border-white/10"
+  >
+    <div
+      class="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20 h-[64px] flex items-center justify-between"
+    >
+      <!-- Logo: bold "Hindustan" + italic "developers", no icon box -->
+      <a href="/" class="flex items-center">
+        <span class="text-[15px] tracking-tight font-sans"
+          ><strong class="font-bold">Hindustan</strong>
+          <em class="font-normal not-italic" style="font-style: italic;"
+            >developers</em
+          ></span
+        >
+      </a>
+      <!-- Nav links: About Us / Serene Meadows / Our Legacy / Contact -->
+      <div class="hidden md:flex items-center gap-8">
+        <a
+          href="#about"
+          class="text-[11px] no-underline tracking-[0.12em] uppercase text-white/90 hover:text-[var(--color-yellow)] transition-colors font-medium"
+          >About Us</a
+        >
+        <a
+          href="#featured"
+          class="text-[11px] no-underline tracking-[0.12em] uppercase text-white/90 hover:text-[var(--color-yellow)] transition-colors font-medium"
+          >Serene Meadows</a
+        >
+        <a
+          href="#legacy"
+          class="text-[11px] sno-underline tracking-[0.12em] uppercase text-white/90 hover:text-[var(--color-yellow)] transition-colors font-medium"
+          >Our Legacy</a
+        >
+        <a
+          href="#contact"
+          class="text-[11px] no-underline tracking-[0.12em] uppercase text-white/90 hover:text-[var(--color-yellow)] transition-colors font-medium"
+          >Contact</a
+        >
+      </div>
+      <!-- Enquire Now button with diagonal arrow icon -->
+      <div class="hidden md:block">
+        <a
+          href="#contact"
+          class="inline-flex no-underline items-center gap-2 bg-[var(--color-yellow)] text-[var(--color-navy)] rounded-full pl-5 pr-3 py-2 font-bold text-[11px] tracking-[0.1em] uppercase hover:bg-white transition-colors"
+        >
+          Enquire Now
+          <span
+            class="w-6 h-6 rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="10"
+              height="10"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><line x1="7" y1="17" x2="17" y2="7"></line><polyline
+                points="7 7 17 7 17 17"></polyline></svg
+            >
+          </span>
+        </a>
+      </div>
+      <button
+        class="md:hidden w-8 h-8 flex flex-col justify-center items-center gap-1.5 cursor-pointer"
+      >
+        <span class="w-6 h-[2px] bg-white"></span>
+        <span class="w-6 h-[2px] bg-white"></span>
+        <span class="w-6 h-[2px] bg-white"></span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO — full viewport height, navbar sits absolutely on top -->
+    <section
+      class="relative h-screen min-h-[600px] flex flex-col justify-between"
+      style="background-image: url('/images/hero-section-image.png'); background-size: cover; background-position: center;"
+    >
+      <!-- Gradient: subtle dark at very top (for nav legibility), then clear in the middle, then strong dark at the bottom 40% -->
+      <!-- <div
+        class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-black/30 pointer-events-none"
+      >
+      </div> -->
+
+      <!-- Main content: vertically centered in the hero -->
+      <div
+        class="relative z-10 flex-1 flex flex-col justify-center max-w-[1280px] mx-auto w-full px-5 md:px-10 lg:px-20 pt-16"
+      >
+        <!-- Heading -->
+        <h1
+          class="font-heading text-white font-bold leading-[1.0] tracking-tight mb-8"
+          style="font-size: clamp(40px, 6vw, 72px);"
+        >
+          A Legacy of Building.<br />A New Chapter in Living.
+        </h1>
+        <!-- Two CTA buttons -->
+        <div class="flex items-center gap-6">
+          <!-- Primary CTA: white pill with dark circle arrow -->
+          <a
+            href="#featured"
+            class="inline-flex no-underline items-center gap-3 bg-white text-[var(--color-navy)] rounded-full pl-6 pr-2 py-2 font-semibold text-[13px] hover:bg-[var(--color-yellow)] transition-colors group shadow-lg"
+          >
+            Explore Serene Meadows
+            <span
+              class="w-8 h-8 rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0 group-hover:bg-[var(--color-navy)] transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+                  points="12 5 19 12 12 19"></polyline></svg
+              >
+            </span>
+          </a>
+          <!-- Secondary CTA: plain text link -->
+          <a
+            href="#legacy"
+            class="text-white/90 text-[13px] font-medium underline underline-offset-4 decoration-white/40 hover:text-[var(--color-yellow)] hover:decoration-[var(--color-yellow)] transition-colors"
+          >
+            View Projects
+          </a>
+        </div>
+      </div>
+
+      <!-- Bottom strip: paragraph text (left) + stats card flush to bottom-right -->
+      <div
+        class="relative z-10 w-full flex flex-col lg:flex-row items-end justify-between"
+      >
+        <!-- Left: descriptive paragraph with its own padding -->
+        <div class="px-5 md:px-10 lg:px-20 pb-8 lg:pb-10 flex-1">
+          <p
+            class="text-white/80 text-[14px] leading-[1.8] max-w-[500px] font-normal"
+          >
+            For over 50 years, our work has helped shape residential
+            developments across Goa. Today, Hindustan Constructions brings that
+            experience to projects of its own homes created with quality, care
+            and a clear understanding of how families live.
+          </p>
+        </div>
+        <!-- Right: stats card — flush to bottom edge, sharp bottom corners, transparent glass -->
+        <div
+          class="flex items-center gap-8 lg:gap-10 backdrop-blur-xs rounded-tl-[20px] rounded-tr-[20px] rounded-bl-none rounded-br-none px-8 lg:px-10 border-t border-l border-r border-white/15 flex-shrink-0 lg:mr-20"
+        >
+          <div class="text-center my-[30px]">
+            <div
+              class="text-white font-bold text-[32px] lg:text-[38px] leading-none tracking-tight mb-1"
+            >
+              100+
+            </div>
+            <div
+              class="text-white/60 text-[10px] uppercase tracking-widest font-medium"
+            >
+              Projects Completed
+            </div>
+          </div>
+          <div class="w-px self-stretch bg-white/25"></div>
+          <div class="text-center my-[30px]">
+            <div
+              class="text-white font-bold text-[32px] lg:text-[38px] leading-none tracking-tight mb-1"
+            >
+              50+
+            </div>
+            <div
+              class="text-white/60 text-[10px] uppercase tracking-widest font-medium"
+            >
+              Years Experience
+            </div>
+          </div>
+          <div class="w-px self-stretch bg-white/25"></div>
+          <div class="text-center my-[30px]">
+            <div
+              class="text-white font-bold text-[32px] lg:text-[38px] leading-none tracking-tight mb-1"
+            >
+              98%
+            </div>
+            <div
+              class="text-white/60 text-[10px] uppercase tracking-widest font-medium"
+            >
+              Client Satisfaction
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-20 lg:py-28 bg-[var(--color-cream)]">
+      <div class="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+        >
+          <div>
+            <div
+              class="inline-flex items-center border border-[var(--color-navy)]/20 rounded-full px-4 py-1.5 text-[10px] font-bold text-[var(--color-navy)] mb-7 uppercase tracking-[0.18em]"
+            >
+              Our Legacy
+            </div>
+            <h2
+              class="font-heading text-[38px] md:text-5xl font-bold text-[var(--color-navy)] mb-6 leading-[1.1] tracking-tight"
+            >
+              Experience You<br />Can Build a Life On
+            </h2>
+            <div
+              class="text-[var(--color-gray)] text-[14px] leading-[1.85] space-y-5 max-w-[480px] mb-9"
+            >
+              <p>
+                Before becoming a developer, Hindustan Constructions spent
+                decades building for some of Goa's established real estate
+                names. That experience lives in every decision we make today,
+                from the strength of the structure and the quality of materials
+                to practical planning, thoughtful finishes and dependable
+                execution.
+              </p>
+              <p>
+                Our transition from contractor to developer is a natural next
+                step: bringing everything we have learned over generations into
+                homes that carry our own name and responsibility.
+              </p>
+            </div>
+            <a
+              href="#"
+              class="inline-flex no-underline items-center gap-3 text-[var(--color-navy)] font-bold text-sm tracking-wide group"
+            >
+              Discover our Story
+              <span
+                class="w-9 h-9 no-underline rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center text-sm group-hover:bg-[var(--color-yellow)] group-hover:text-[var(--color-navy)] transition-colors"
+                >→</span
+              >
+            </a>
+          </div>
+          <div class="h-[460px] lg:h-[560px] w-full">
+            <img
+              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80"
+              alt="Interior Living Room"
+              class="w-full h-full object-cover rounded-[28px] shadow-xl"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="pb-20 lg:pb-28 bg-[var(--color-cream)]">
+      <div class="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+          <div
+            class="bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8 transition-transform hover:-translate-y-1 duration-300"
+          >
+            <div class="mb-8 text-[var(--color-navy)]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><circle cx="12" cy="12" r="10"></circle><polyline
+                  points="12 6 12 12 16 14"></polyline></svg
+              >
+            </div>
+            <h3
+              class="font-heading font-bold text-[var(--color-navy)] text-lg mb-2 tracking-tight"
+            >
+              50+ Years
+            </h3>
+            <p
+              class="text-[var(--color-navy)]/65 text-[13px] leading-relaxed font-medium"
+            >
+              A multi-generational legacy in construction.
+            </p>
+          </div>
+
+          <div
+            class="bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8 transition-transform hover:-translate-y-1 duration-300"
+          >
+            <div class="mb-8 text-[var(--color-navy)]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                ></path><circle cx="12" cy="10" r="3"></circle></svg
+              >
+            </div>
+            <h3
+              class="font-heading font-bold text-[var(--color-navy)] text-lg mb-2 tracking-tight"
+            >
+              Goa-based
+            </h3>
+            <p
+              class="text-[var(--color-navy)]/65 text-[13px] leading-relaxed font-medium"
+            >
+              Experience shaped by building across Goa.
+            </p>
+          </div>
+
+          <div
+            class="bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8 transition-transform hover:-translate-y-1 duration-300"
+          >
+            <div class="mb-8 text-[var(--color-navy)]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><circle cx="12" cy="8" r="7"></circle><polyline
+                  points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"
+                ></polyline></svg
+              >
+            </div>
+            <h3
+              class="font-heading font-bold text-[var(--color-navy)] text-lg mb-2 tracking-tight"
+            >
+              Proven Expertise
+            </h3>
+            <p
+              class="text-[var(--color-navy)]/65 text-[13px] leading-relaxed font-medium"
+            >
+              Work delivered for established property developers.
+            </p>
+          </div>
+
+          <div
+            class="bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8 transition-transform hover:-translate-y-1 duration-300"
+          >
+            <div class="mb-8 text-[var(--color-navy)]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                ></path><polyline points="9 22 9 12 15 12 15 22"
+                ></polyline></svg
+              >
+            </div>
+            <h3
+              class="font-heading font-bold text-[var(--color-navy)] text-lg mb-2 tracking-tight"
+            >
+              New Chapter
+            </h3>
+            <p
+              class="text-[var(--color-navy)]/65 text-[13px] leading-relaxed font-medium"
+            >
+              Independent residential developments by Hindustan Constructions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT HIGHLIGHT (FEATURED PROJECT) -->
+    <section
+      class="py-20 lg:py-28 bg-[var(--color-cream)] border-t border-[var(--color-navy)]/8"
+    >
+      <div class="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+        >
+          <!-- Image LEFT -->
+          <div class="order-2 lg:order-1">
+            <div class="h-[460px] lg:h-[620px] w-full relative">
+              <img
+                src={featuredProject?.coverImage ||
+                  "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80"}
+                alt={displayFeatured.title}
+                class="w-full h-full object-cover rounded-[28px] shadow-2xl"
+                loading="lazy"
+              />
+            </div>
+            <div
+              class="mt-5 flex items-center gap-2 text-[var(--color-gray)] text-[13px] font-semibold tracking-wide"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"
+                ></path><circle cx="12" cy="10" r="3"></circle></svg
+              >
+              {displayFeatured.location}
+            </div>
+          </div>
+
+          <!-- Content RIGHT -->
+          <div class="order-1 lg:order-2">
+            <div
+              class="inline-flex items-center bg-[var(--color-navy)]/6 rounded-full px-4 py-1.5 text-[10px] font-bold text-[var(--color-navy)] mb-7 uppercase tracking-[0.18em]"
+            >
+              Featured Project
+            </div>
+            <h2
+              class="font-heading text-[42px] md:text-5xl lg:text-[58px] font-bold text-[var(--color-navy)] mb-6 tracking-tight leading-[1.05]"
+            >
+              {displayFeatured.title}
+            </h2>
+            <p
+              class="text-[var(--color-gray)] text-[14px] leading-[1.85] max-w-[460px] mb-10"
+            >
+              {displayFeatured.subtitle}
+            </p>
+
+            <div class="grid grid-cols-2 gap-y-8 gap-x-6 mb-10">
+              {
+                displayFeatured.details.map((detail) => (
+                  <div class="border-l-2 border-[var(--color-navy)]/12 pl-4">
+                    <div class="font-heading font-bold text-[var(--color-navy)] text-xl lg:text-[22px] mb-0.5 tracking-tight">
+                      {detail.value}
+                    </div>
+                    <div class="text-[var(--color-gray)] text-[11px] font-semibold tracking-wide uppercase">
+                      {detail.key}
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+
+            <a
+              href="#"
+              class="inline-flex no-underline items-center gap-3 bg-[var(--color-navy)] text-white rounded-full px-7 py-3.5 font-bold text-sm hover:bg-[var(--color-yellow)] hover:text-[var(--color-navy)] transition-colors group"
+            >
+              View Project
+              <span
+                class="w-7 h-7 no-underline rounded-full bg-white/15 text-white flex items-center justify-center text-sm group-hover:bg-[var(--color-navy)] group-hover:text-white transition-colors"
+                >→</span
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GOA MAP -->
+    <section class="py-20 lg:py-28 bg-[var(--color-cream)]">
+      <div class="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+        >
+          <div>
+            <div
+              class="inline-flex items-center border border-[var(--color-navy)]/20 rounded-full px-4 py-1.5 text-[10px] font-bold text-[var(--color-navy)] mb-7 uppercase tracking-[0.18em]"
+            >
+              Why Us
+            </div>
+            <h2
+              class="font-heading text-[38px] md:text-5xl lg:text-[56px] font-bold text-[var(--color-navy)] mb-6 leading-[1.1] tracking-tight"
+            >
+              The Best of Goa,<br />Close to Home
+            </h2>
+            <p
+              class="text-[var(--color-gray)] text-[14px] leading-[1.85] max-w-[400px]"
+            >
+              From Assagao to Kadamba Plateau, our featured projects are shaped
+              by thoughtful design, enduring quality, and a strong connection to
+              their surroundings.
+            </p>
+          </div>
+          <div class="relative w-full flex justify-center lg:justify-end">
+            <img
+              src="/images/map-image.png"
+              alt="Map of North Goa"
+              class="w-full max-w-[480px] object-contain drop-shadow-xl"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE (BENTO GRID) -->
+    <section class="py-20 lg:py-28 bg-[var(--color-navy)] text-white">
+      <div class="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20">
+        <!-- Section header -->
+        <div class="mb-14 lg:mb-16">
+          <div
+            class="inline-flex items-center border border-white/20 rounded-full px-4 py-1.5 text-[10px] font-bold text-white/70 mb-6 uppercase tracking-[0.18em]"
+          >
+            Why us
+          </div>
+          <h2
+            class="font-heading text-[38px] md:text-5xl lg:text-[56px] font-bold leading-[1.1] max-w-2xl tracking-tight"
+          >
+            Built with Experience.<br />Guided by Responsibility.
+          </h2>
+        </div>
+
+        <!-- Bento grid -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-5"
+          style="grid-template-rows: 340px 300px;"
+        >
+          <!-- Large image spanning 2 cols, 2 rows -->
+          <div
+            class="md:col-span-2 md:row-span-2 relative rounded-[24px] overflow-hidden group"
+            style="min-height: 340px;"
+          >
+            <img
+              src="/images/construction-workers.png"
+              alt="Team"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent"
+            >
+            </div>
+            <div class="absolute bottom-8 left-8 right-8">
+              <div
+                class="text-[10px] text-white/65 uppercase tracking-[0.18em] font-bold mb-3"
+              >
+                Projects Completed
+              </div>
+              <div
+                class="flex flex-col sm:flex-row sm:items-end gap-3 sm:gap-7"
+              >
+                <div
+                  class="text-[var(--color-yellow)] font-heading font-bold text-7xl lg:text-[88px] leading-none tracking-tight"
+                >
+                  100+
+                </div>
+                <p
+                  class="text-white/85 text-[13px] max-w-[220px] leading-relaxed font-medium pb-2"
+                >
+                  Disciplined planning and experienced execution guide every
+                  project milestone.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tractor image top right -->
+          <div
+            class="relative rounded-[24px] overflow-hidden group"
+            style="min-height: 340px;"
+          >
+            <img
+              src="/images/tractor-image.png"
+              alt="Tractor"
+              class="w-full h-full object-cover bg-white transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+
+          <!-- 50 Years stat card bottom left of right col -->
+          <div
+            class="bg-[#1E2854] rounded-[24px] p-7 lg:p-8 flex flex-col justify-center border border-[var(--color-yellow)]/15 transition-colors hover:border-[var(--color-yellow)]/40"
+            style="min-height: 300px;"
+          >
+            <div
+              class="text-[10px] text-[var(--color-yellow)] uppercase tracking-[0.18em] font-bold mb-5"
+            >
+              Proven Construction Knowledge
+            </div>
+            <div
+              class="text-white font-heading font-bold text-5xl tracking-tight mb-5"
+            >
+              50 Years
+            </div>
+            <p class="text-white/70 text-[13px] leading-relaxed font-medium">
+              Five decades of on-ground experience inform every stage of
+              planning and execution.
+            </p>
+          </div>
+        </div>
+
+        <!-- Second row of bento: stat card + wide image -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5">
+          <!-- 98% satisfaction card -->
+          <div
+            class="bg-[#1E2854] rounded-[24px] p-7 lg:p-8 flex flex-col justify-center border border-white/5 transition-colors hover:bg-[#252d5c]"
+            style="min-height: 260px;"
+          >
+            <div
+              class="text-[10px] text-[var(--color-yellow)] uppercase tracking-[0.18em] font-bold mb-5"
+            >
+              Client satisfaction
+            </div>
+            <div
+              class="text-[var(--color-yellow)] font-heading font-bold text-6xl tracking-tight mb-5"
+            >
+              98%
+            </div>
+            <p class="text-white/70 text-[13px] leading-relaxed font-medium">
+              We believe buyers should receive clear information and dependable
+              support throughout their journey.
+            </p>
+          </div>
+
+          <!-- Woman pointing image spans 2 cols -->
+          <div
+            class="md:col-span-2 relative rounded-[24px] overflow-hidden group"
+            style="min-height: 260px;"
+          >
+            <img
+              src="/images/woman-pointing-image.png"
+              alt="Engineer pointing"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section class="py-20 lg:py-28 bg-[var(--color-cream)]">
+      <div class="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20">
+        <!-- Header row -->
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12"
+        >
+          <div>
+            <div
+              class="inline-flex items-center border border-[var(--color-navy)]/20 rounded-full px-4 py-1.5 text-[10px] font-bold text-[var(--color-navy)] mb-7 uppercase tracking-[0.18em]"
+            >
+              Legacy Preview
+            </div>
+            <h2
+              class="font-heading text-[38px] md:text-5xl lg:text-[52px] font-bold text-[var(--color-navy)] max-w-xl leading-[1.1] tracking-tight mb-5"
+            >
+              The Work Behind Our Name
+            </h2>
+            <p
+              class="text-[var(--color-gray)] text-[14px] leading-[1.85] max-w-xl"
+            >
+              Our development journey is new, but our building experience is
+              not. Over the years, Hindustan Constructions has contributed its
+              contracting expertise to residential projects for respected names
+              across Goa.
+            </p>
+          </div>
+          <div class="flex items-center gap-5 pb-2 flex-shrink-0">
+            <a
+              href="#"
+              class="text-[13px] no-underline font-bold tracking-wide text-[var(--color-navy)] hover:text-[var(--color-yellow)] transition-colors flex items-center gap-2.5 uppercase"
+            >
+              View All
+              <span
+                class="w-7 h-7 no-underline rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center text-xs"
+                >→</span
+              >
+            </a>
+            <div class="hidden md:flex gap-2.5">
+              <button
+                class="w-11 h-11 rounded-full border border-[var(--color-gray)]/25 flex items-center justify-center text-[var(--color-navy)] hover:bg-[var(--color-navy)] hover:text-white transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M19 12H5"></path><polyline points="12 19 5 12 12 5"
+                  ></polyline></svg
+                >
+              </button>
+              <button
+                class="w-11 h-11 rounded-full border border-[var(--color-gray)]/25 flex items-center justify-center text-[var(--color-navy)] hover:bg-[var(--color-navy)] hover:text-white transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><path d="M5 12h14"></path><polyline points="12 5 19 12 12 19"
+                  ></polyline></svg
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project cards grid — 3 columns on desktop, horizontal scroll on mobile -->
+        <div class="hidden lg:grid grid-cols-3 gap-6">
+          {
+            [
+              {
+                title: "Casa Kewals",
+                label: "Residential",
+                coverImage:
+                  "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+              },
+              {
+                title: "Vil Maris",
+                label: "Hotel Build",
+                coverImage:
+                  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+              },
+              {
+                title: "Casa De Amora",
+                label: "Residential",
+                coverImage:
+                  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+              },
+            ].map((p) => (
+              <div class="group cursor-pointer">
+                <div class="relative h-[420px] rounded-[24px] overflow-hidden mb-5 shadow-md">
+                  <img
+                    src={p.coverImage}
+                    alt={p.title}
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-navy)]/75 via-black/5 to-transparent" />
+                  <div class="absolute top-5 left-5">
+                    <span class="bg-white/95 backdrop-blur text-[var(--color-navy)] text-[10px] font-bold px-3.5 py-1.5 rounded-full uppercase tracking-widest">
+                      {p.label}
+                    </span>
+                  </div>
+                  <div class="absolute bottom-7 left-7 right-7">
+                    <h3 class="text-white text-2xl font-bold font-heading mb-1.5 tracking-tight">
+                      {p.title}
+                    </h3>
+                    <p class="text-white/75 text-[13px] font-medium">
+                      Goa, India
+                    </p>
+                  </div>
+                </div>
+                <a
+                  href="#"
+                  class="inline-flex no-underline items-center gap-2.5 text-[var(--color-navy)] font-bold text-[13px] uppercase tracking-wide group-hover:text-[var(--color-yellow)] transition-colors"
+                >
+                  Explore our legacy
+                  <span class="w-6 h-6 no-underline rounded-full border-2 border-[var(--color-navy)] flex items-center justify-center text-[10px] group-hover:border-[var(--color-yellow)]">
+                    →
+                  </span>
+                </a>
+              </div>
+            ))
+          }
+        </div>
+
+        <!-- Mobile / tablet horizontal scroll -->
+        <div
+          class="lg:hidden flex overflow-x-auto gap-6 snap-x snap-mandatory pb-8 -mx-5 px-5"
+          style="scrollbar-width: none;"
+        >
+          {
+            [
+              {
+                title: "Casa Kewals",
+                label: "Residential",
+                coverImage:
+                  "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+              },
+              {
+                title: "Vil Maris",
+                label: "Hotel Build",
+                coverImage:
+                  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+              },
+              {
+                title: "Casa De Amora",
+                label: "Residential",
+                coverImage:
+                  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+              },
+            ].map((p) => (
+              <div class="min-w-[85vw] md:min-w-[400px] flex-none snap-start group cursor-pointer">
+                <div class="relative h-[460px] rounded-[24px] overflow-hidden mb-5 shadow-md">
+                  <img
+                    src={p.coverImage}
+                    alt={p.title}
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-navy)]/75 via-black/5 to-transparent" />
+                  <div class="absolute top-5 left-5">
+                    <span class="bg-white/95 backdrop-blur text-[var(--color-navy)] text-[10px] font-bold px-3.5 py-1.5 rounded-full uppercase tracking-widest">
+                      {p.label}
+                    </span>
+                  </div>
+                  <div class="absolute bottom-7 left-7 right-7">
+                    <h3 class="text-white text-2xl font-bold font-heading mb-1.5 tracking-tight">
+                      {p.title}
+                    </h3>
+                    <p class="text-white/75 text-[13px] font-medium">
+                      Goa, India
+                    </p>
+                  </div>
+                </div>
+                <a
+                  href="#"
+                  class="inline-flex no-underline items-center gap-2.5 text-[var(--color-navy)] font-bold text-[13px] uppercase tracking-wide group-hover:text-[var(--color-yellow)] transition-colors"
+                >
+                  Explore our legacy
+                  <span class="w-6 h-6 no-underline rounded-full border-2 border-[var(--color-navy)] flex items-center justify-center text-[10px] group-hover:border-[var(--color-yellow)]">
+                    →
+                  </span>
+                </a>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT CTA -->
+    <section
+      id="contact"
+      class="bg-[var(--color-navy)] relative overflow-hidden"
+    >
+      <div class="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20 relative z-10">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start py-20 lg:py-24"
+        >
+          <!-- Left: heading + form -->
+          <div>
+            <h2
+              class="font-heading text-[44px] md:text-6xl lg:text-[64px] font-bold text-white mb-6 leading-[1.05] tracking-tight"
+            >
+              Find Your<br />Place in Goa
+            </h2>
+            <p
+              class="text-white/65 mb-10 text-[14px] leading-[1.85] font-medium max-w-[400px]"
+            >
+              Explore Serene Meadows or speak with our team to learn more about
+              our current and upcoming developments.
+            </p>
+
+            <form class="bg-white rounded-[28px] p-7 md:p-9 shadow-2xl">
+              <div class="space-y-5">
+                <div>
+                  <label
+                    class="block text-[10px] font-bold text-[var(--color-navy)] mb-2 uppercase tracking-[0.12em]"
+                    >Name</label
+                  >
+                  <input
+                    type="text"
+                    placeholder="Jane Smith"
+                    class="w-full bg-[#F5F2ED] rounded-xl px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-[var(--color-navy)] transition-shadow font-medium"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="block text-[10px] font-bold text-[var(--color-navy)] mb-2 uppercase tracking-[0.12em]"
+                    >Email</label
+                  >
+                  <input
+                    type="email"
+                    placeholder="jane@example.com"
+                    class="w-full bg-[#F5F2ED] rounded-xl px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-[var(--color-navy)] transition-shadow font-medium"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="block text-[10px] font-bold text-[var(--color-navy)] mb-2 uppercase tracking-[0.12em]"
+                    >Phone number</label
+                  >
+                  <input
+                    type="tel"
+                    placeholder="+91 98765 43210"
+                    class="w-full bg-[#F5F2ED] rounded-xl px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-[var(--color-navy)] transition-shadow font-medium"
+                  />
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      class="block text-[10px] font-bold text-[var(--color-navy)] mb-2 uppercase tracking-[0.12em]"
+                      >Date</label
+                    >
+                    <input
+                      type="date"
+                      class="w-full bg-[#F5F2ED] rounded-xl px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-[var(--color-navy)] text-[var(--color-navy)] font-medium"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      class="block text-[10px] font-bold text-[var(--color-navy)] mb-2 uppercase tracking-[0.12em]"
+                      >Preferred Call Time</label
+                    >
+                    <select
+                      class="w-full bg-[#F5F2ED] rounded-xl px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-[var(--color-navy)] text-[var(--color-navy)] font-medium appearance-none"
+                    >
+                      <option>Morning (9 AM - 12 PM)</option>
+                      <option>Afternoon (12 PM - 4 PM)</option>
+                      <option>Evening (4 PM - 7 PM)</option>
+                    </select>
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  class="w-full bg-[var(--color-navy)] text-white rounded-full py-4 font-bold flex items-center justify-center gap-3 hover:bg-[var(--color-yellow)] hover:text-[var(--color-navy)] transition-colors mt-1 text-[13px] uppercase tracking-wide group"
+                >
+                  Submit an Enquiry
+                  <span
+                    class="w-7 h-7 rounded-full bg-white/20 text-white flex items-center justify-center text-sm group-hover:bg-[var(--color-navy)] group-hover:text-white transition-colors"
+                    >→</span
+                  >
+                </button>
+                <p
+                  class="text-[11px] text-center text-[var(--color-gray)] mt-3 font-medium px-4 leading-relaxed"
+                >
+                  Your inquiry is handled by a director. We never share details
+                  outside the practice.
+                </p>
+              </div>
+            </form>
+          </div>
+
+          <!-- Right: building image — absolute on desktop, hidden on mobile -->
+          <div class="hidden lg:block relative h-full min-h-[700px]">
+            <div
+              class="absolute inset-0 rounded-[32px] overflow-hidden shadow-2xl"
+            >
+              <img
+                src="/images/inquiry-section-bg-image.png"
+                alt="Building at dusk"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-[var(--color-navy)]/10"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer
+    class="bg-[var(--color-navy)] text-white pt-20 pb-10 border-t border-white/10"
+  >
+    <div class="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-16"
+      >
+        <div class="lg:col-span-5 pr-4">
+          <div class="flex items-center gap-3 mb-7">
+            <div
+              class="w-9 h-9 bg-[var(--color-yellow)] flex items-center justify-center rounded-sm"
+            >
+              <span
+                class="text-[var(--color-navy)] font-bold text-xl leading-none"
+                >H</span
+              >
+            </div>
+            <span class="font-heading text-base tracking-tight"
+              ><strong class="font-bold">Hindustan</strong> Developers</span
+            >
+          </div>
+          <h3
+            class="text-[28px] lg:text-[34px] font-heading font-bold text-white leading-tight mb-7 max-w-[360px] tracking-tight"
+          >
+            A building is a promise the architect makes to the future.
+          </h3>
+          <p
+            class="text-white/55 text-[14px] max-w-[320px] leading-[1.85] font-medium"
+          >
+            Built on five decades of contracting experience, Hindustan
+            Constructions brings proven construction expertise to thoughtfully
+            planned residential developments across Goa.
+          </p>
+        </div>
+
+        <div class="lg:col-span-2 lg:col-start-7">
+          <h4
+            class="font-bold text-[10px] tracking-[0.2em] uppercase text-white/45 mb-7"
+          >
+            Quick Links
+          </h4>
+          <ul class="space-y-4 text-[14px] font-medium">
+            <li>
+              <a
+                href="#"
+                class="no-underline hover:text-[var(--color-yellow)] transition-colors"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="#about"
+                class="no-underline hover:text-[var(--color-yellow)] transition-colors"
+                >About us</a
+              >
+            </li>
+            <li>
+              <a
+                href="#legacy"
+                class="no-underline hover:text-[var(--color-yellow)] transition-colors"
+                >Our Legacy</a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="no-underline hover:text-[var(--color-yellow)] transition-colors"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-4">
+          <h4
+            class="font-bold text-[10px] tracking-[0.2em] uppercase text-white/45 mb-7"
+          >
+            Featured Project
+          </h4>
+          <div
+            class="bg-white/5 rounded-[20px] p-5 border border-white/10 hover:bg-white/8 transition-colors group"
+          >
+            <h5 class="font-bold text-lg mb-1 font-heading">Serene Meadows</h5>
+            <p class="text-[13px] text-white/55 mb-5 font-medium">
+              Kadamba Plateau, Goa
+            </p>
+            <a
+              href="#"
+              class="inline-flex no-underline items-center gap-2.5 bg-white text-[var(--color-navy)] rounded-full px-5 py-2.5 text-[11px] font-bold uppercase tracking-wide group-hover:bg-[var(--color-yellow)] transition-colors"
+            >
+              Explore Project
+              <span
+                class="w-4 h-4 no-underline rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center text-[9px]"
+                >→</span
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-10">
+        <h4
+          class="font-bold text-[10px] tracking-[0.2em] uppercase text-white/45 mb-3"
+        >
+          Project Disclaimer
+        </h4>
+        <p
+          class="text-[11px] text-white/35 leading-relaxed max-w-4xl font-medium"
+        >
+          All project visuals are artist's impressions and are for
+          representational purposes only. Specifications, amenities, prices and
+          availability are subject to change. Please contact the sales team for
+          the latest information. Goa RERA Registration No. PRGO00000000.
+        </p>
+      </div>
+
+      <div
+        class="pt-7 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-5"
+      >
+        <p class="text-white/45 text-[13px] font-medium">
+          &copy; {new Date().getFullYear()} Hindustan Developers. All rights reserved.
+        </p>
+
+        <div class="flex gap-3">
+          <a
+            href="#"
+            class="w-9 h-9 no-underline rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-[var(--color-yellow)] hover:text-[var(--color-navy)] transition-colors"
+          >
+            <span class="no-underline sr-only">Instagram</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><rect x="2" y="2" width="20" height="20" rx="5" ry="5"
+              ></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+              ></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg
+            >
+          </a>
+          <a
+            href="#"
+            class="w-9 h-9 no-underline rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-[var(--color-yellow)] hover:text-[var(--color-navy)] transition-colors"
+          >
+            <span class="sr-only">Facebook</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path
+                d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+              ></path></svg
+            >
+          </a>
+          <a
+            href="#"
+            class="w-9 h-9 no-underline rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-[var(--color-yellow)] hover:text-[var(--color-navy)] transition-colors"
+          >
+            <span class="sr-only">LinkedIn</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path
+                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+              ></path><rect x="2" y="9" width="4" height="12"></rect><circle
+                cx="4"
+                cy="4"
+                r="2"></circle></svg
+            >
+          </a>
+        </div>
+
+        <div class="text-white/45 text-[13px] flex gap-5 font-medium">
+          <a href="#" class="no-underline hover:text-white transition-colors"
+            >Privacy Policy</a
+          >
+          <a href="#" class="no-underline hover:text-white transition-colors"
+            >Terms of Service</a
+          >
+        </div>
+      </div>
+    </div>
+  </footer>
 </Layout>

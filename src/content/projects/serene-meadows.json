@@ -1,0 +1,13 @@
+{
+  "title": "Serene Meadows",
+  "subtitle": "Luxury villas with panoramic Goa views",
+  "propertyType": "Villa",
+  "location": "Assagao, North Goa",
+  "coverImage": null,
+  "details": [
+    { "key": "Beds", "value": "3 BHK" },
+    { "key": "Baths", "value": "3" },
+    { "key": "Area", "value": "2,100 sq ft" },
+    { "key": "Price", "value": "₹ 1.25 Cr" }
+  ]
+}
