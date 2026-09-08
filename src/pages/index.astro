@@ -114,8 +114,14 @@ const displayFeatured = featuredProject || defaultFeatured;
     <!-- HERO — full viewport height, navbar sits absolutely on top -->
     <section
       class="relative h-screen min-h-[600px] flex flex-col justify-between"
-      style="background-image: url('/images/hero-section-image.png'); background-size: cover; background-position: center;"
     >
+      <!-- Scaled background image -->
+      <img
+        id="hero-bg"
+        src="/images/hero-section-image.png"
+        alt="Hero Background"
+        class="absolute inset-0 w-full h-full object-cover scale-115 -z-10 will-change-transform transform-gpu"
+      />
       <!-- Gradient: subtle dark at very top (for nav legibility), then clear in the middle, then strong dark at the bottom 40% -->
       <!-- <div
         class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-black/30 pointer-events-none"
@@ -190,41 +196,45 @@ const displayFeatured = featuredProject || defaultFeatured;
         >
           <div class="text-center my-[30px]">
             <div
-              class="text-white font-bold text-[32px] lg:text-[38px] leading-none tracking-tight mb-1"
+              class="text-white font-bold text-[32px] lg:text-[44px] leading-none tracking-tight mb-5"
             >
               100+
             </div>
             <div
-              class="text-white/60 text-[10px] uppercase tracking-widest font-medium"
+              class="text-white/60 text-[12px] uppercase tracking-widest font-medium"
             >
               Projects Completed
             </div>
+            <div class="h-15"></div>
           </div>
           <div class="w-px self-stretch bg-white/25"></div>
           <div class="text-center my-[30px]">
             <div
-              class="text-white font-bold text-[32px] lg:text-[38px] leading-none tracking-tight mb-1"
+              class="text-white font-bold text-[32px] lg:text-[44px] leading-none tracking-tight mb-5"
             >
               50+
             </div>
             <div
-              class="text-white/60 text-[10px] uppercase tracking-widest font-medium"
+              class="text-white/60 text-[12px] uppercase tracking-widest font-medium"
             >
               Years Experience
             </div>
+
+            <div class="h-15"></div>
           </div>
           <div class="w-px self-stretch bg-white/25"></div>
           <div class="text-center my-[30px]">
             <div
-              class="text-white font-bold text-[32px] lg:text-[38px] leading-none tracking-tight mb-1"
+              class="text-white font-bold text-[32px] lg:text-[44px] leading-none tracking-tight mb-5"
             >
               98%
             </div>
             <div
-              class="text-white/60 text-[10px] uppercase tracking-widest font-medium"
+              class="text-white/60 text-[12px] uppercase tracking-widest font-medium"
             >
               Client Satisfaction
             </div>
+            <div class="h-15"></div>
           </div>
         </div>
       </div>
@@ -1201,3 +1211,14 @@ const displayFeatured = featuredProject || defaultFeatured;
     </div>
   </footer>
 </Layout>
+
+<script>
+  const heroBg = document.getElementById("hero-bg");
+
+  if (heroBg) {
+    window.addEventListener("scroll", () => {
+      const scrollPosition = window.scrollY;
+      heroBg.style.transform = `translateY(${scrollPosition * 0.4}px)`;
+    });
+  }
+</script>
