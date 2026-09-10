@@ -35,125 +35,110 @@ const displayFeatured = featuredProject || defaultFeatured;
 ---
 
 <Layout>
-  <!-- NAVBAR — fixed translucent glass bar, visible throughout the page -->
-  <nav
-    class="fixed top-0 left-0 right-0 z-50 text-white bg-black/40 backdrop-blur-md border-b border-white/10"
-  >
+  <!-- NAVBAR — fixed, transparent over hero; GSAP collapses it to a yellow pill on scroll -->
+  <nav class="fixed top-0 left-0 right-0 z-50" id="nav-bar">
     <div
-      class="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20 h-[64px] flex items-center justify-between"
+      id="nav-inner"
+      class="flex items-center justify-between h-[70px] lg:h-[90px] px-[20px] lg:px-[30px] text-white"
     >
-      <!-- Logo: bold "Hindustan" + italic "developers", no icon box -->
-      <a href="/" class="flex items-center">
-        <span class="text-[15px] tracking-tight font-sans"
-          ><strong class="font-bold">Hindustan</strong>
-          <em class="font-normal not-italic" style="font-style: italic;"
-            >developers</em
-          ></span
-        >
-      </a>
+      <!-- Logo: serif "Hindustan" + italic serif "developers" -->
+      <a
+        href="/"
+        class="no-underline font-serif text-[22px] lg:text-[26px] leading-none text-current"
+        >Hindustan <em class="italic">developers</em></a
+      >
       <!-- Nav links: About Us / Serene Meadows / Our Legacy / Contact -->
-      <div class="hidden md:flex items-center gap-8">
+      <div class="nav-extra hidden lg:flex items-center gap-[52px]">
         <a
           href="#about"
-          class="text-[11px] no-underline tracking-[0.12em] uppercase text-white/90 hover:text-[var(--color-yellow)] transition-colors font-medium"
+          class="text-[13px] no-underline tracking-[0.14em] uppercase text-current hover:text-[var(--color-yellow)] transition-colors font-medium"
           >About Us</a
         >
         <a
           href="#featured"
-          class="text-[11px] no-underline tracking-[0.12em] uppercase text-white/90 hover:text-[var(--color-yellow)] transition-colors font-medium"
+          class="text-[13px] no-underline tracking-[0.14em] uppercase text-current hover:text-[var(--color-yellow)] transition-colors font-medium"
           >Serene Meadows</a
         >
         <a
           href="#legacy"
-          class="text-[11px] sno-underline tracking-[0.12em] uppercase text-white/90 hover:text-[var(--color-yellow)] transition-colors font-medium"
+          class="text-[13px] no-underline tracking-[0.14em] uppercase text-current hover:text-[var(--color-yellow)] transition-colors font-medium"
           >Our Legacy</a
         >
         <a
           href="#contact"
-          class="text-[11px] no-underline tracking-[0.12em] uppercase text-white/90 hover:text-[var(--color-yellow)] transition-colors font-medium"
+          class="text-[13px] no-underline tracking-[0.14em] uppercase text-current hover:text-[var(--color-yellow)] transition-colors font-medium"
           >Contact</a
         >
       </div>
-      <!-- Enquire Now button with diagonal arrow icon -->
-      <div class="hidden md:block">
-        <a
-          href="#contact"
-          class="inline-flex no-underline items-center gap-2 bg-[var(--color-yellow)] text-[var(--color-navy)] rounded-full pl-5 pr-3 py-2 font-bold text-[11px] tracking-[0.1em] uppercase hover:bg-white transition-colors"
-        >
-          Enquire Now
-          <span
-            class="w-6 h-6 rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="10"
-              height="10"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><line x1="7" y1="17" x2="17" y2="7"></line><polyline
-                points="7 7 17 7 17 17"></polyline></svg
-            >
-          </span>
-        </a>
-      </div>
-      <button
-        class="md:hidden w-8 h-8 flex flex-col justify-center items-center gap-1.5 cursor-pointer"
+      <!-- Enquire Now — yellow pill with diagonal arrow -->
+      <a
+        href="#contact"
+        class="nav-extra hidden lg:inline-flex no-underline items-center gap-[10px] h-[42px] pl-6 pr-[20px] rounded-full bg-[var(--color-yellow)] text-[var(--color-navy)] text-[12px] font-bold uppercase tracking-[0.12em] hover:bg-white transition-colors"
       >
-        <span class="w-6 h-[2px] bg-white"></span>
-        <span class="w-6 h-[2px] bg-white"></span>
-        <span class="w-6 h-[2px] bg-white"></span>
+        Enquire Now
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="12"
+          height="12"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><line x1="7" y1="17" x2="17" y2="7"></line><polyline
+            points="7 7 17 7 17 17"></polyline></svg
+        >
+      </a>
+      <!-- Hamburger: 2 lines -->
+      <button
+        class="lg:hidden w-8 h-8 flex flex-col justify-center items-center gap-[7px] cursor-pointer text-current"
+        aria-label="Menu"
+      >
+        <span class="w-6 h-[2px] bg-current"></span>
+        <span class="w-6 h-[2px] bg-current"></span>
       </button>
     </div>
   </nav>
 
   <main>
-    <!-- HERO — full viewport height, navbar sits absolutely on top -->
+    <!-- HERO — fixed-height, navbar floats transparently on top -->
     <section
-      class="relative h-screen min-h-[600px] flex flex-col justify-between"
+      class="relative h-[704px] lg:h-[760px] overflow-hidden"
+      id="hero-section"
     >
-      <!-- Scaled background image -->
+      <!-- Scaled background image (GSAP parallax) -->
       <img
         id="hero-bg"
         src="/images/hero-section-image.png"
         alt="Hero Background"
-        class="absolute inset-0 w-full h-full object-cover scale-115 -z-10 will-change-transform transform-gpu"
+        class="absolute inset-0 w-full h-full object-cover scale-[1.12] -z-10 will-change-transform transform-gpu"
       />
-      <!-- Gradient: subtle dark at very top (for nav legibility), then clear in the middle, then strong dark at the bottom 40% -->
-      <!-- <div
-        class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-black/30 pointer-events-none"
-      >
-      </div> -->
 
-      <!-- Main content: vertically centered in the hero -->
       <div
-        class="relative z-10 flex-1 flex flex-col justify-center max-w-[1280px] mx-auto w-full px-5 md:px-10 lg:px-20 pt-16"
+        class="relative z-10 h-full flex flex-col px-[20px] lg:px-[30px]"
       >
         <!-- Heading -->
         <h1
-          class="font-heading text-white font-bold leading-[1.0] tracking-tight mb-8"
-          style="font-size: clamp(40px, 6vw, 72px);"
+          class="font-heading text-white font-medium tracking-[-0.03em] leading-[1.16] md:leading-[1.24] text-[43px] md:text-[44px] lg:text-[72px] mt-[115px] md:mt-[245px] lg:mt-[214px]"
         >
-          A Legacy of Building.<br />A New Chapter in Living.
+          A Legacy of <br class="md:hidden" />Building. <br class="hidden lg:block" />A New <br class="md:hidden" />Chapter <br class="hidden md:block lg:hidden" />in Living.
         </h1>
         <!-- Two CTA buttons -->
-        <div class="flex items-center gap-6">
+        <div class="flex items-center gap-[14px] lg:gap-[28px] mt-[40px] lg:mt-[36px]">
           <!-- Primary CTA: white pill with dark circle arrow -->
           <a
             href="#featured"
-            class="inline-flex no-underline items-center gap-3 bg-white text-[var(--color-navy)] rounded-full pl-6 pr-2 py-2 font-semibold text-[13px] hover:bg-[var(--color-yellow)] transition-colors group shadow-lg"
+            class="inline-flex no-underline items-center gap-[10px] lg:gap-[14px] bg-white text-[var(--color-navy)] rounded-full h-[50px] lg:h-[55px] pl-5 lg:pl-6 pr-2 font-medium text-[14px] lg:text-[15px] hover:bg-[var(--color-yellow)] transition-colors group whitespace-nowrap"
           >
             Explore Serene Meadows
             <span
-              class="w-8 h-8 rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0 group-hover:bg-[var(--color-navy)] transition-colors"
+              class="w-[34px] h-[34px] lg:w-[38px] lg:h-[38px] rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0 transition-colors"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="13"
-                height="13"
+                width="14"
+                height="14"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -165,76 +150,76 @@ const displayFeatured = featuredProject || defaultFeatured;
               >
             </span>
           </a>
-          <!-- Secondary CTA: plain text link -->
+          <!-- Secondary CTA: underlined text link -->
           <a
             href="#legacy"
-            class="text-white/90 text-[13px] font-medium underline underline-offset-4 decoration-white/40 hover:text-[var(--color-yellow)] hover:decoration-[var(--color-yellow)] transition-colors"
+            class="text-white text-[13px] lg:text-[16px] font-normal underline underline-offset-4 decoration-white/60 hover:text-[var(--color-yellow)] hover:decoration-[var(--color-yellow)] transition-colors whitespace-nowrap"
           >
             View Projects
           </a>
         </div>
-      </div>
 
-      <!-- Bottom strip: paragraph text (left) + stats card flush to bottom-right -->
-      <div
-        class="relative z-10 w-full flex flex-col lg:flex-row items-end justify-between"
-      >
-        <!-- Left: descriptive paragraph with its own padding -->
-        <div class="px-5 md:px-10 lg:px-20 pb-8 lg:pb-10 flex-1">
+        <!-- Bottom strip: paragraph (left) + stats panel flush bottom-right -->
+        <div
+          class="mt-auto w-full flex flex-col lg:flex-row lg:items-end lg:justify-between"
+        >
           <p
-            class="text-white/80 text-[14px] leading-[1.8] max-w-[500px] font-normal"
+            class="text-white/85 text-[13px] md:text-[15px] lg:text-[16px] leading-[2.05] md:leading-[1.87] lg:leading-[1.8] max-w-[730px] font-normal pb-[50px] lg:pb-[45px] lg:pr-10"
           >
             For over 50 years, our work has helped shape residential
             developments across Goa. Today, Hindustan Constructions brings that
             experience to projects of its own homes created with quality, care
             and a clear understanding of how families live.
           </p>
-        </div>
-        <!-- Right: stats card — flush to bottom edge, sharp bottom corners, transparent glass -->
-        <div
-          class="flex items-center gap-8 lg:gap-10 backdrop-blur-xs rounded-tl-[20px] rounded-tr-[20px] rounded-bl-none rounded-br-none px-8 lg:px-10 border-t border-l border-r border-white/15 flex-shrink-0 lg:mr-20"
-        >
-          <div class="text-center my-[30px]">
+          <!-- Stats panel: navy glass, flush bottom; flush right on desktop -->
+          <div
+            class="flex items-stretch -mx-[20px] lg:mx-0 lg:-mr-[30px] flex-shrink-0 bg-black/20 backdrop-blur-lg border-t border-l border-r lg:border-r-0 border-white/15 rounded-t-[16px] lg:rounded-tr-none h-[114px] lg:h-[154px]"
+          >
             <div
-              class="text-white font-bold text-[32px] lg:text-[44px] leading-none tracking-tight mb-5"
+              class="flex-1 lg:flex-none lg:w-[175px] flex flex-col items-center justify-center"
             >
-              100+
+              <div
+                class="text-white font-light text-[26px] lg:text-[38px] leading-none tracking-tight"
+              >
+                100+
+              </div>
+              <div
+                class="text-white/80 text-[12px] lg:text-[13px] mt-[10px] lg:mt-[16px] text-center"
+              >
+                <span class="lg:hidden">Project Completed</span
+                ><span class="hidden lg:inline">Projects Completed</span>
+              </div>
             </div>
+            <div class="w-px self-stretch bg-white/15"></div>
             <div
-              class="text-white/60 text-[12px] uppercase tracking-widest font-medium"
+              class="flex-1 lg:flex-none lg:w-[175px] flex flex-col items-center justify-center"
             >
-              Projects Completed
+              <div
+                class="text-white font-light text-[26px] lg:text-[38px] leading-none tracking-tight"
+              >
+                50+
+              </div>
+              <div
+                class="text-white/80 text-[12px] lg:text-[13px] mt-[10px] lg:mt-[16px] text-center"
+              >
+                Years Experience
+              </div>
             </div>
-            <div class="h-15"></div>
-          </div>
-          <div class="w-px self-stretch bg-white/25"></div>
-          <div class="text-center my-[30px]">
+            <div class="w-px self-stretch bg-white/15"></div>
             <div
-              class="text-white font-bold text-[32px] lg:text-[44px] leading-none tracking-tight mb-5"
+              class="flex-1 lg:flex-none lg:w-[175px] flex flex-col items-center justify-center"
             >
-              50+
+              <div
+                class="text-white font-light text-[26px] lg:text-[38px] leading-none tracking-tight"
+              >
+                98%
+              </div>
+              <div
+                class="text-white/80 text-[12px] lg:text-[13px] mt-[10px] lg:mt-[16px] text-center"
+              >
+                Client Satisfaction
+              </div>
             </div>
-            <div
-              class="text-white/60 text-[12px] uppercase tracking-widest font-medium"
-            >
-              Years Experience
-            </div>
-
-            <div class="h-15"></div>
-          </div>
-          <div class="w-px self-stretch bg-white/25"></div>
-          <div class="text-center my-[30px]">
-            <div
-              class="text-white font-bold text-[32px] lg:text-[44px] leading-none tracking-tight mb-5"
-            >
-              98%
-            </div>
-            <div
-              class="text-white/60 text-[12px] uppercase tracking-widest font-medium"
-            >
-              Client Satisfaction
-            </div>
-            <div class="h-15"></div>
           </div>
         </div>
       </div>
@@ -1213,12 +1198,95 @@ const displayFeatured = featuredProject || defaultFeatured;
 </Layout>
 
 <script>
-  const heroBg = document.getElementById("hero-bg");
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-  if (heroBg) {
-    window.addEventListener("scroll", () => {
-      const scrollPosition = window.scrollY;
-      heroBg.style.transform = `translateY(${scrollPosition * 0.4}px)`;
+  // Register the plugin
+  gsap.registerPlugin(ScrollTrigger);
+
+  // START: Hero Section Background Image Parralax Animation
+
+  const heroBg = document.getElementById("hero-bg");
+  const heroSection = document.getElementById("hero-section");
+
+  if (heroSection && heroBg) {
+    gsap.to(heroBg, {
+      yPercent: 12, // subtle downward parallax glide over the scroll duration
+      ease: "none",
+      scrollTrigger: {
+        trigger: heroSection,
+        start: "top top", // Animation starts when top of hero hits top of viewport
+        end: "bottom top", // Animation ends when bottom of hero hits top of viewport
+        scrub: 0.5, // 1 second of smooth catch-up delay for buttery glide
+      },
     });
   }
+
+  // END: Hero Section Background Image Parralax Animation
+
+  //START: Nav Bar Control
+
+  const navInner = document.getElementById("nav-inner");
+
+  if (navInner) {
+    const extras = navInner.querySelectorAll(".nav-extra");
+
+    gsap.set(navInner, {
+      marginTop: "0px",
+      marginLeft: "0px",
+      width: "100%",
+      borderRadius: "0px",
+      backgroundColor: "rgba(244, 255, 177, 0)",
+      color: "#ffffff",
+      boxShadow: "none",
+      transformOrigin: "center top",
+    });
+
+    // Collapse: fade out links + CTA, shrink bar into a yellow pill around the logo
+    const navTween = gsap
+      .timeline({ paused: true })
+      .to(
+        extras,
+        { autoAlpha: 0, duration: 0.15, display: "none" },
+        0,
+      )
+      .to(
+        navInner,
+        {
+          marginTop: "16px",
+          marginLeft: "16px",
+          width: "280px",
+          height: "56px",
+          paddingLeft: "24px",
+          paddingRight: "24px",
+          borderRadius: "999px",
+          backgroundColor: "rgba(244, 255, 177, 1)",
+          color: "#10183B",
+          boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+          duration: 0.3,
+          ease: "power2.out",
+        },
+        0,
+      );
+
+    ScrollTrigger.observe({
+      target: window,
+      type: "scroll,wheel,touch",
+      onDown: () => {
+        if (window.scrollY > 20) {
+          navTween.play();
+        }
+      },
+      onUp: () => {
+        navTween.reverse();
+      },
+    });
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY <= 10) {
+        navTween.reverse();
+      }
+    });
+  }
+  // END: Nav Bar Control
 </script>
