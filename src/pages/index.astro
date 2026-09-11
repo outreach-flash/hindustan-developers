@@ -104,7 +104,7 @@ const displayFeatured = featuredProject || defaultFeatured;
   <main>
     <!-- HERO — fixed-height, navbar floats transparently on top -->
     <section
-      class="relative h-[704px] lg:h-[760px] overflow-hidden"
+      class="relative h-screen overflow-hidden"
       id="hero-section"
     >
       <!-- Scaled background image (GSAP parallax) -->
@@ -115,17 +115,21 @@ const displayFeatured = featuredProject || defaultFeatured;
         class="absolute inset-0 w-full h-full object-cover scale-[1.12] -z-10 will-change-transform transform-gpu"
       />
 
-      <div
-        class="relative z-10 h-full flex flex-col px-[20px] lg:px-[30px]"
-      >
+      <div class="relative z-10 h-full flex flex-col px-[20px] lg:px-[30px]">
         <!-- Heading -->
         <h1
           class="font-heading text-white font-medium tracking-[-0.03em] leading-[1.16] md:leading-[1.24] text-[43px] md:text-[44px] lg:text-[72px] mt-[115px] md:mt-[245px] lg:mt-[214px]"
         >
-          A Legacy of <br class="md:hidden" />Building. <br class="hidden lg:block" />A New <br class="md:hidden" />Chapter <br class="hidden md:block lg:hidden" />in Living.
+          A Legacy of <br class="md:hidden" />Building. <br
+            class="hidden lg:block"
+          />A New <br class="md:hidden" />Chapter <br
+            class="hidden md:block lg:hidden"
+          />in Living.
         </h1>
         <!-- Two CTA buttons -->
-        <div class="flex items-center gap-[14px] lg:gap-[28px] mt-[40px] lg:mt-[36px]">
+        <div
+          class="flex items-center gap-[14px] lg:gap-[28px] mt-[40px] lg:mt-[36px]"
+        >
           <!-- Primary CTA: white pill with dark circle arrow -->
           <a
             href="#featured"
@@ -186,8 +190,9 @@ const displayFeatured = featuredProject || defaultFeatured;
               <div
                 class="text-white/80 text-[12px] lg:text-[13px] mt-[10px] lg:mt-[16px] text-center"
               >
-                <span class="lg:hidden">Project Completed</span
-                ><span class="hidden lg:inline">Projects Completed</span>
+                <span class="lg:hidden">Project Completed</span><span
+                  class="hidden lg:inline">Projects Completed</span
+                >
               </div>
             </div>
             <div class="w-px self-stretch bg-white/15"></div>
@@ -226,28 +231,39 @@ const displayFeatured = featuredProject || defaultFeatured;
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="py-20 lg:py-28 bg-[var(--color-cream)]">
-      <div class="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20">
+    <section
+      id="about"
+      class="bg-[var(--color-cream)] min-h-screen flex items-center"
+    >
+      <div
+        class="w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px] py-[72px] lg:py-[48px]"
+      >
         <div
-          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+          class="flex flex-col lg:grid lg:grid-cols-[600px_minmax(0,1fr)] lg:gap-[28px]"
         >
-          <div>
+          <div class="flex flex-col">
+            <!-- Pill: gray with yellow dot -->
             <div
-              class="inline-flex items-center border border-[var(--color-navy)]/20 rounded-full px-4 py-1.5 text-[10px] font-bold text-[var(--color-navy)] mb-7 uppercase tracking-[0.18em]"
+              class="inline-flex w-fit items-center gap-[10px] h-[46px] px-[20px] rounded-full bg-[#A9A8AC] text-[#F4F1ED] text-[12px] font-medium"
             >
+              <span
+                class="w-2 h-2 rounded-full bg-[var(--color-yellow)] flex-shrink-0"
+              ></span>
               Our Legacy
             </div>
             <h2
-              class="font-heading text-[38px] md:text-5xl font-bold text-[var(--color-navy)] mb-6 leading-[1.1] tracking-tight"
+              class="font-heading font-bold text-[#0F172A] tracking-[-0.02em] text-[38px] leading-[46px] md:text-[40px] md:leading-[48px] lg:text-[56px] lg:leading-[74px] mt-[16px]"
             >
-              Experience You<br />Can Build a Life On
+              Experience You <br class="hidden lg:block" />Can <br
+                class="md:hidden"
+              />Build a Life On
             </h2>
             <div
-              class="text-[var(--color-gray)] text-[14px] leading-[1.85] space-y-5 max-w-[480px] mb-9"
+              class="text-[#0F172A] text-[13px] md:text-[14px] leading-[24px] lg:leading-[26px] mt-[28px] lg:mt-[40px] space-y-[16px] lg:space-y-[20px] max-w-[560px] font-normal"
             >
               <p>
                 Before becoming a developer, Hindustan Constructions spent
-                decades building for some of Goa's established real estate
+                decades building for some of Goa's established real-estate
                 names. That experience lives in every decision we make today,
                 from the strength of the structure and the quality of materials
                 to practical planning, thoughtful finishes and dependable
@@ -259,22 +275,38 @@ const displayFeatured = featuredProject || defaultFeatured;
                 homes that carry our own name and responsibility.
               </p>
             </div>
+            <!-- CTA: light pill with navy circle arrow -->
             <a
               href="#"
-              class="inline-flex no-underline items-center gap-3 text-[var(--color-navy)] font-bold text-sm tracking-wide group"
+              class="inline-flex w-fit no-underline items-center gap-[10px] h-[48px] lg:h-[60px] pl-5 lg:pl-6 pr-[6px] rounded-full bg-[#FFFCF7] border border-[#C9CEDD] text-[#0F172A] text-[14px] lg:text-[15px] font-medium mt-[28px] lg:mt-[120px] hover:border-[var(--color-navy)] transition-colors group"
             >
               Discover our Story
               <span
-                class="w-9 h-9 no-underline rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center text-sm group-hover:bg-[var(--color-yellow)] group-hover:text-[var(--color-navy)] transition-colors"
-                >→</span
+                class="w-[38px] h-[38px] lg:w-[48px] lg:h-[48px] rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0 group-hover:bg-[var(--color-yellow)] group-hover:text-[var(--color-navy)] transition-colors"
               >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><line x1="7" y1="17" x2="17" y2="7"></line><polyline
+                    points="7 7 17 7 17 17"></polyline></svg
+                >
+              </span>
             </a>
           </div>
-          <div class="h-[460px] lg:h-[560px] w-full">
+          <div
+            class="relative mt-[54px] lg:mt-0 aspect-[354/333] md:aspect-[732/459] lg:aspect-auto lg:min-h-[600px]"
+          >
             <img
               src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80"
               alt="Interior Living Room"
-              class="w-full h-full object-cover rounded-[28px] shadow-xl"
+              class="absolute inset-0 w-full h-full object-cover rounded-[14px]"
               loading="lazy"
             />
           </div>
@@ -287,7 +319,7 @@ const displayFeatured = featuredProject || defaultFeatured;
       <div class="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20">
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
           <div
-            class="bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8 transition-transform hover:-translate-y-1 duration-300"
+            class="tilt-card bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8"
           >
             <div class="mb-8 text-[var(--color-navy)]">
               <svg
@@ -317,7 +349,7 @@ const displayFeatured = featuredProject || defaultFeatured;
           </div>
 
           <div
-            class="bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8 transition-transform hover:-translate-y-1 duration-300"
+            class="tilt-card bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8"
           >
             <div class="mb-8 text-[var(--color-navy)]">
               <svg
@@ -347,7 +379,7 @@ const displayFeatured = featuredProject || defaultFeatured;
           </div>
 
           <div
-            class="bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8 transition-transform hover:-translate-y-1 duration-300"
+            class="tilt-card bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8"
           >
             <div class="mb-8 text-[var(--color-navy)]">
               <svg
@@ -378,7 +410,7 @@ const displayFeatured = featuredProject || defaultFeatured;
           </div>
 
           <div
-            class="bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8 transition-transform hover:-translate-y-1 duration-300"
+            class="tilt-card bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8"
           >
             <div class="mb-8 text-[var(--color-navy)]">
               <svg
@@ -421,7 +453,7 @@ const displayFeatured = featuredProject || defaultFeatured;
         >
           <!-- Image LEFT -->
           <div class="order-2 lg:order-1">
-            <div class="h-[460px] lg:h-[620px] w-full relative">
+            <div class="tilt-card h-[460px] lg:h-[620px] w-full relative">
               <img
                 src={featuredProject?.coverImage ||
                   "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80"}
@@ -499,197 +531,223 @@ const displayFeatured = featuredProject || defaultFeatured;
     </section>
 
     <!-- GOA MAP -->
-    <section class="py-20 lg:py-28 bg-[var(--color-cream)]">
-      <div class="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20">
-        <div
-          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+    <section
+      id="goa-map-section"
+      class="relative bg-[var(--color-cream)] min-h-screen overflow-hidden flex flex-col"
+    >
+      <!-- Map image: full-bleed, blends into cream bg (baked-in sea/fade) -->
+      <div
+        class="relative order-2 lg:order-none lg:absolute lg:inset-y-0 lg:right-0 lg:h-full lg:w-auto lg:aspect-[2880/1744] mt-[40px] lg:mt-0"
+      >
+        <img
+          id="goa-map-img"
+          src="/images/map-image.png"
+          alt="Map of North Goa"
+          class="w-full h-auto lg:w-auto lg:h-full object-cover object-right block scale-[1.12] will-change-transform transform-gpu"
+          loading="lazy"
+        />
+      </div>
+      <!-- Text -->
+      <div
+        class="relative z-10 order-1 w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px] pt-[72px] lg:pt-[110px]"
+      >
+        <h2
+          class="font-heading font-bold text-[#0F172A] tracking-[-0.02em] text-[32px] leading-[34px] md:text-[42px] md:leading-[64px] lg:text-[56px] lg:leading-[66px]"
         >
-          <div>
-            <div
-              class="inline-flex items-center border border-[var(--color-navy)]/20 rounded-full px-4 py-1.5 text-[10px] font-bold text-[var(--color-navy)] mb-7 uppercase tracking-[0.18em]"
-            >
-              Why Us
-            </div>
-            <h2
-              class="font-heading text-[38px] md:text-5xl lg:text-[56px] font-bold text-[var(--color-navy)] mb-6 leading-[1.1] tracking-tight"
-            >
-              The Best of Goa,<br />Close to Home
-            </h2>
-            <p
-              class="text-[var(--color-gray)] text-[14px] leading-[1.85] max-w-[400px]"
-            >
-              From Assagao to Kadamba Plateau, our featured projects are shaped
-              by thoughtful design, enduring quality, and a strong connection to
-              their surroundings.
-            </p>
-          </div>
-          <div class="relative w-full flex justify-center lg:justify-end">
-            <img
-              src="/images/map-image.png"
-              alt="Map of North Goa"
-              class="w-full max-w-[480px] object-contain drop-shadow-xl"
-              loading="lazy"
-            />
-          </div>
-        </div>
+          The Best of Goa,<br />Close to Home
+        </h2>
+        <p
+          class="text-[#0F172A] text-[13px] lg:text-[14px] leading-[24px] lg:leading-[26px] mt-[14px] md:mt-[18px] lg:mt-[16px] md:max-w-[560px] lg:max-w-[430px]"
+        >
+          From Assagao to Kadamba Plateau, our featured projects are shaped by
+          thoughtful design, enduring quality, and a strong connection to their
+          surroundings.
+        </p>
       </div>
     </section>
 
     <!-- EXPERIENCE (BENTO GRID) -->
-    <section class="py-20 lg:py-28 bg-[var(--color-navy)] text-white">
-      <div class="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20">
-        <!-- Section header -->
-        <div class="mb-14 lg:mb-16">
+    <section
+      id="legacy"
+      class="bg-[var(--color-cream)] min-h-screen flex flex-col justify-center py-[72px] lg:py-[48px]"
+    >
+      <div class="w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px]">
+        <!-- Section header: centered pill + heading -->
+        <div class="flex flex-col items-center text-center">
           <div
-            class="inline-flex items-center border border-white/20 rounded-full px-4 py-1.5 text-[10px] font-bold text-white/70 mb-6 uppercase tracking-[0.18em]"
+            class="inline-flex items-center gap-[10px] h-[46px] px-[20px] rounded-full bg-[#A9A8AC] text-[#F4F1ED] text-[12px] font-medium"
           >
+            <span
+              class="w-2 h-2 rounded-full bg-[var(--color-yellow)] flex-shrink-0"
+            ></span>
             Why us
           </div>
           <h2
-            class="font-heading text-[38px] md:text-5xl lg:text-[56px] font-bold leading-[1.1] max-w-2xl tracking-tight"
+            class="mt-[16px] font-heading font-bold text-[#0F172A] tracking-[-0.02em] text-[34px] leading-[44px] md:text-[40px] md:leading-[46px] lg:text-[56px] lg:leading-[66px]"
           >
-            Built with Experience.<br />Guided by Responsibility.
+            Build<span class="hidden lg:inline">t</span> with Experience<span
+              class="hidden lg:inline">.</span
+            ><br />Guided by <br class="md:hidden" />Responsibility<span
+              class="hidden lg:inline"
+              >.</span
+            >
           </h2>
         </div>
 
-        <!-- Bento grid -->
+        <!-- Bento cards -->
         <div
-          class="grid grid-cols-1 md:grid-cols-3 gap-5"
-          style="grid-template-rows: 340px 300px;"
+          class="mt-[40px] lg:mt-[48px] flex flex-col lg:flex-row gap-[18px] md:max-w-[553px] md:mx-auto lg:max-w-none"
         >
-          <!-- Large image spanning 2 cols, 2 rows -->
-          <div
-            class="md:col-span-2 md:row-span-2 relative rounded-[24px] overflow-hidden group"
-            style="min-height: 340px;"
-          >
-            <img
-              src="/images/construction-workers.png"
-              alt="Team"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
-            />
+          <!-- Left column -->
+          <div class="lg:w-[65%] flex flex-col gap-[18px]">
+            <!-- Navy stat card -->
             <div
-              class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent"
+              class="tilt-card relative overflow-hidden rounded-[16px] bg-[var(--color-navy)] h-[196px] lg:h-[300px] p-[24px] lg:p-[28px] flex flex-col"
             >
-            </div>
-            <div class="absolute bottom-8 left-8 right-8">
-              <div
-                class="text-[10px] text-white/65 uppercase tracking-[0.18em] font-bold mb-3"
+              <span class="text-white/70 text-[11px] lg:text-[12px] font-normal"
+                >Projects Completed</span
               >
-                Projects Completed
-              </div>
-              <div
-                class="flex flex-col sm:flex-row sm:items-end gap-3 sm:gap-7"
-              >
+              <div class="mt-auto relative z-10">
                 <div
-                  class="text-[var(--color-yellow)] font-heading font-bold text-7xl lg:text-[88px] leading-none tracking-tight"
+                  class="text-white font-heading font-bold text-[26px] lg:text-[30px] leading-none tracking-tight"
                 >
                   100+
                 </div>
                 <p
-                  class="text-white/85 text-[13px] max-w-[220px] leading-relaxed font-medium pb-2"
+                  class="text-white/75 text-[12px] lg:text-[13px] leading-[22px] lg:leading-[25px] mt-[8px] max-w-[270px]"
                 >
                   Disciplined planning and experienced execution guide every
                   project milestone.
                 </p>
               </div>
+              <img
+                src="/images/tractor-image.png"
+                alt=""
+                class="absolute right-[14px] bottom-[14px] lg:right-[24px] lg:bottom-[20px] w-[120px] lg:w-[280px]"
+                loading="lazy"
+              />
+              <svg
+                class="absolute top-[18px] right-[18px] lg:top-[24px] lg:right-[24px]"
+                width="46"
+                height="46"
+                viewBox="0 0 46 46"
+                fill="none"
+              >
+                <g fill="#FFFFFF" opacity="0.25">
+                  <circle cx="23" cy="3" r="3"></circle>
+                  <circle cx="33" cy="3" r="3"></circle>
+                  <circle cx="43" cy="3" r="3"></circle>
+                  <circle cx="23" cy="13" r="3"></circle>
+                  <circle cx="33" cy="13" r="3"></circle>
+                  <circle cx="43" cy="13" r="3"></circle>
+                  <circle cx="33" cy="23" r="3"></circle>
+                  <circle cx="43" cy="23" r="3"></circle>
+                  <circle cx="43" cy="33" r="3"></circle>
+                </g>
+              </svg>
+            </div>
+            <!-- Workers image + white stat card -->
+            <div class="flex flex-col lg:flex-row gap-[18px]">
+              <div
+                class="tilt-card rounded-[16px] overflow-hidden h-[232px] lg:h-[307px] lg:w-[65.8%] flex-shrink-0"
+              >
+                <img
+                  src="/images/construction-workers.png"
+                  alt="Hindustan Constructions team on site"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div
+                class="tilt-card rounded-[16px] bg-[#FFFCF7] h-[172px] lg:h-[307px] flex-1 p-[24px] lg:p-[28px] flex flex-col"
+              >
+                <span class="text-[#0F172A]/55 text-[11px] font-normal"
+                  >Proven Construction Knowledge</span
+                >
+                <div class="mt-auto">
+                  <div
+                    class="text-[#0F172A] font-heading font-bold text-[24px] lg:text-[28px] leading-none tracking-tight"
+                  >
+                    50 Years
+                  </div>
+                  <p
+                    class="text-[#0F172A]/70 text-[12px] lg:text-[13px] leading-[20px] lg:leading-[22px] mt-[8px]"
+                  >
+                    Five decades of on-ground experience inform every stage of
+                    planning and execution.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-
-          <!-- Tractor image top right -->
-          <div
-            class="relative rounded-[24px] overflow-hidden group"
-            style="min-height: 340px;"
-          >
-            <img
-              src="/images/tractor-image.png"
-              alt="Tractor"
-              class="w-full h-full object-cover bg-white transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
-            />
-          </div>
-
-          <!-- 50 Years stat card bottom left of right col -->
-          <div
-            class="bg-[#1E2854] rounded-[24px] p-7 lg:p-8 flex flex-col justify-center border border-[var(--color-yellow)]/15 transition-colors hover:border-[var(--color-yellow)]/40"
-            style="min-height: 300px;"
-          >
+          <!-- Right column -->
+          <div class="lg:flex-1 flex flex-col gap-[18px]">
             <div
-              class="text-[10px] text-[var(--color-yellow)] uppercase tracking-[0.18em] font-bold mb-5"
+              class="tilt-card rounded-[16px] overflow-hidden h-[232px] lg:h-[381px] flex-shrink-0"
             >
-              Proven Construction Knowledge
+              <img
+                src="/images/woman-pointing-image.png"
+                alt="Engineer pointing at construction site"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
             </div>
             <div
-              class="text-white font-heading font-bold text-5xl tracking-tight mb-5"
+              class="tilt-card rounded-[16px] bg-[var(--color-yellow)] h-[232px] lg:h-auto lg:flex-1 p-[24px] lg:p-[28px] flex flex-col"
             >
-              50 Years
+              <span class="text-[#0F172A]/55 text-[11px] font-normal"
+                >Client satisfaction</span
+              >
+              <div
+                class="text-[#0F172A] font-heading font-bold text-[24px] lg:text-[28px] leading-none tracking-tight mt-[6px]"
+              >
+                98%
+              </div>
+              <p
+                class="text-[#0F172A]/70 text-[12px] lg:text-[13px] leading-[20px] lg:leading-[22px] mt-[8px] max-w-[340px]"
+              >
+                We believe buyers should receive clear information and
+                dependable support throughout their journey.
+              </p>
+              <!-- Avatar placeholders — final photos pending -->
+              <div class="flex items-center mt-auto pt-[16px]">
+                {
+                  [0, 1, 2, 3, 4].map((i) => (
+                    <span
+                      class={`w-[32px] h-[32px] lg:w-[36px] lg:h-[36px] rounded-full border-2 border-white bg-gradient-to-br ${i % 2 ? "from-[#C9C4BB] to-[#A39E94]" : "from-[#B9BDCF] to-[#8B91A8]"} ${i ? "-ml-[10px]" : ""}`}
+                    />
+                  ))
+                }
+              </div>
             </div>
-            <p class="text-white/70 text-[13px] leading-relaxed font-medium">
-              Five decades of on-ground experience inform every stage of
-              planning and execution.
-            </p>
-          </div>
-        </div>
-
-        <!-- Second row of bento: stat card + wide image -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5">
-          <!-- 98% satisfaction card -->
-          <div
-            class="bg-[#1E2854] rounded-[24px] p-7 lg:p-8 flex flex-col justify-center border border-white/5 transition-colors hover:bg-[#252d5c]"
-            style="min-height: 260px;"
-          >
-            <div
-              class="text-[10px] text-[var(--color-yellow)] uppercase tracking-[0.18em] font-bold mb-5"
-            >
-              Client satisfaction
-            </div>
-            <div
-              class="text-[var(--color-yellow)] font-heading font-bold text-6xl tracking-tight mb-5"
-            >
-              98%
-            </div>
-            <p class="text-white/70 text-[13px] leading-relaxed font-medium">
-              We believe buyers should receive clear information and dependable
-              support throughout their journey.
-            </p>
-          </div>
-
-          <!-- Woman pointing image spans 2 cols -->
-          <div
-            class="md:col-span-2 relative rounded-[24px] overflow-hidden group"
-            style="min-height: 260px;"
-          >
-            <img
-              src="/images/woman-pointing-image.png"
-              alt="Engineer pointing"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              loading="lazy"
-            />
           </div>
         </div>
       </div>
     </section>
 
     <!-- PORTFOLIO -->
-    <section class="py-20 lg:py-28 bg-[var(--color-cream)]">
-      <div class="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20">
-        <!-- Header row -->
+    <section class="bg-[var(--color-cream)] min-h-screen flex flex-col justify-center py-[72px] lg:py-[48px]">
+      <div class="w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px]">
+        <!-- Header -->
         <div
-          class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12"
+          class="flex flex-col items-center text-center lg:flex-row lg:items-end lg:justify-between lg:text-left"
         >
-          <div>
+          <div class="flex flex-col items-center lg:items-start">
             <div
-              class="inline-flex items-center border border-[var(--color-navy)]/20 rounded-full px-4 py-1.5 text-[10px] font-bold text-[var(--color-navy)] mb-7 uppercase tracking-[0.18em]"
+              class="inline-flex w-fit items-center gap-[10px] h-[46px] px-[20px] rounded-full bg-[#A9A8AC] text-[#F4F1ED] text-[12px] font-medium"
             >
+              <span
+                class="w-2 h-2 rounded-full bg-[var(--color-yellow)] flex-shrink-0"
+              ></span>
               Legacy Preview
             </div>
             <h2
-              class="font-heading text-[38px] md:text-5xl lg:text-[52px] font-bold text-[var(--color-navy)] max-w-xl leading-[1.1] tracking-tight mb-5"
+              class="mt-[16px] font-heading font-bold text-[#0F172A] tracking-[-0.02em] text-[34px] leading-[44px] md:text-[40px] md:leading-[46px] lg:text-[56px] lg:leading-[64px]"
             >
-              The Work Behind Our Name
+              The Work Behind <br class="lg:hidden" />Our Name
             </h2>
             <p
-              class="text-[var(--color-gray)] text-[14px] leading-[1.85] max-w-xl"
+              class="text-[#0F172A] text-[13px] lg:text-[14px] leading-[24px] mt-[18px] lg:mt-[16px] max-w-[560px]"
             >
               Our development journey is new, but our building experience is
               not. Over the years, Hindustan Constructions has contributed its
@@ -697,332 +755,303 @@ const displayFeatured = featuredProject || defaultFeatured;
               across Goa.
             </p>
           </div>
-          <div class="flex items-center gap-5 pb-2 flex-shrink-0">
-            <a
-              href="#"
-              class="text-[13px] no-underline font-bold tracking-wide text-[var(--color-navy)] hover:text-[var(--color-yellow)] transition-colors flex items-center gap-2.5 uppercase"
+          <a
+            href="#"
+            class="inline-flex w-fit no-underline items-center gap-[10px] h-[48px] lg:h-[56px] pl-5 lg:pl-6 pr-[6px] rounded-full bg-[#FFFCF7] border border-[#C9CEDD] text-[#0F172A] text-[14px] lg:text-[15px] font-medium mt-[28px] lg:mt-0 hover:border-[var(--color-navy)] transition-colors group"
+          >
+            View All
+            <span
+              class="w-[38px] h-[38px] lg:w-[44px] lg:h-[44px] rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0 group-hover:bg-[var(--color-yellow)] group-hover:text-[var(--color-navy)] transition-colors"
             >
-              View All
-              <span
-                class="w-7 h-7 no-underline rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center text-xs"
-                >→</span
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><line x1="7" y1="17" x2="17" y2="7"></line><polyline
+                  points="7 7 17 7 17 17"></polyline></svg
               >
-            </a>
-            <div class="hidden md:flex gap-2.5">
-              <button
-                class="w-11 h-11 rounded-full border border-[var(--color-gray)]/25 flex items-center justify-center text-[var(--color-navy)] hover:bg-[var(--color-navy)] hover:text-white transition-colors"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  ><path d="M19 12H5"></path><polyline points="12 19 5 12 12 5"
-                  ></polyline></svg
-                >
-              </button>
-              <button
-                class="w-11 h-11 rounded-full border border-[var(--color-gray)]/25 flex items-center justify-center text-[var(--color-navy)] hover:bg-[var(--color-navy)] hover:text-white transition-colors"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  ><path d="M5 12h14"></path><polyline points="12 5 19 12 12 19"
-                  ></polyline></svg
-                >
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project cards grid — 3 columns on desktop, horizontal scroll on mobile -->
-        <div class="hidden lg:grid grid-cols-3 gap-6">
-          {
-            [
-              {
-                title: "Casa Kewals",
-                label: "Residential",
-                coverImage:
-                  "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
-              },
-              {
-                title: "Vil Maris",
-                label: "Hotel Build",
-                coverImage:
-                  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
-              },
-              {
-                title: "Casa De Amora",
-                label: "Residential",
-                coverImage:
-                  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
-              },
-            ].map((p) => (
-              <div class="group cursor-pointer">
-                <div class="relative h-[420px] rounded-[24px] overflow-hidden mb-5 shadow-md">
-                  <img
-                    src={p.coverImage}
-                    alt={p.title}
-                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-navy)]/75 via-black/5 to-transparent" />
-                  <div class="absolute top-5 left-5">
-                    <span class="bg-white/95 backdrop-blur text-[var(--color-navy)] text-[10px] font-bold px-3.5 py-1.5 rounded-full uppercase tracking-widest">
-                      {p.label}
-                    </span>
-                  </div>
-                  <div class="absolute bottom-7 left-7 right-7">
-                    <h3 class="text-white text-2xl font-bold font-heading mb-1.5 tracking-tight">
-                      {p.title}
-                    </h3>
-                    <p class="text-white/75 text-[13px] font-medium">
-                      Goa, India
-                    </p>
-                  </div>
-                </div>
-                <a
-                  href="#"
-                  class="inline-flex no-underline items-center gap-2.5 text-[var(--color-navy)] font-bold text-[13px] uppercase tracking-wide group-hover:text-[var(--color-yellow)] transition-colors"
-                >
-                  Explore our legacy
-                  <span class="w-6 h-6 no-underline rounded-full border-2 border-[var(--color-navy)] flex items-center justify-center text-[10px] group-hover:border-[var(--color-yellow)]">
-                    →
-                  </span>
-                </a>
-              </div>
-            ))
-          }
-        </div>
-
-        <!-- Mobile / tablet horizontal scroll -->
-        <div
-          class="lg:hidden flex overflow-x-auto gap-6 snap-x snap-mandatory pb-8 -mx-5 px-5"
-          style="scrollbar-width: none;"
-        >
-          {
-            [
-              {
-                title: "Casa Kewals",
-                label: "Residential",
-                coverImage:
-                  "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
-              },
-              {
-                title: "Vil Maris",
-                label: "Hotel Build",
-                coverImage:
-                  "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
-              },
-              {
-                title: "Casa De Amora",
-                label: "Residential",
-                coverImage:
-                  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
-              },
-            ].map((p) => (
-              <div class="min-w-[85vw] md:min-w-[400px] flex-none snap-start group cursor-pointer">
-                <div class="relative h-[460px] rounded-[24px] overflow-hidden mb-5 shadow-md">
-                  <img
-                    src={p.coverImage}
-                    alt={p.title}
-                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-navy)]/75 via-black/5 to-transparent" />
-                  <div class="absolute top-5 left-5">
-                    <span class="bg-white/95 backdrop-blur text-[var(--color-navy)] text-[10px] font-bold px-3.5 py-1.5 rounded-full uppercase tracking-widest">
-                      {p.label}
-                    </span>
-                  </div>
-                  <div class="absolute bottom-7 left-7 right-7">
-                    <h3 class="text-white text-2xl font-bold font-heading mb-1.5 tracking-tight">
-                      {p.title}
-                    </h3>
-                    <p class="text-white/75 text-[13px] font-medium">
-                      Goa, India
-                    </p>
-                  </div>
-                </div>
-                <a
-                  href="#"
-                  class="inline-flex no-underline items-center gap-2.5 text-[var(--color-navy)] font-bold text-[13px] uppercase tracking-wide group-hover:text-[var(--color-yellow)] transition-colors"
-                >
-                  Explore our legacy
-                  <span class="w-6 h-6 no-underline rounded-full border-2 border-[var(--color-navy)] flex items-center justify-center text-[10px] group-hover:border-[var(--color-yellow)]">
-                    →
-                  </span>
-                </a>
-              </div>
-            ))
-          }
+            </span>
+          </a>
         </div>
       </div>
+
+      <!-- Cards -->
+      <div
+        id="legacy-cards"
+        class="mt-[48px] lg:mt-[60px] w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px] flex lg:grid lg:grid-cols-3 gap-[18px] lg:gap-[20px] overflow-x-auto lg:overflow-visible snap-x snap-mandatory"
+        style="scrollbar-width: none;"
+      >
+        {
+          [
+            {
+              name: "Casa Kewals",
+              label: "Residential",
+              chip: true,
+              caption: "For Beera Home",
+              img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+            },
+            {
+              name: "Vil Maris",
+              label: "Residential",
+              chip: false,
+              caption: "For Ritesh Mehta",
+              img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
+            },
+            {
+              name: "Casa De Amora",
+              label: "Hotel Build",
+              chip: true,
+              caption: "For Anand Incorporation",
+              img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
+            },
+          ].map((p) => (
+            <div class="min-w-full md:min-w-[calc(50%-9px)] lg:min-w-0 snap-start">
+              <div class="tilt-card relative h-[443px] md:h-[423px] lg:h-[493px] rounded-[14px] overflow-hidden">
+                <img
+                  src={p.img}
+                  alt={p.name}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+                {p.chip ? (
+                  <span class="absolute top-[16px] left-[16px] bg-white text-[var(--color-navy)] text-[10px] font-semibold uppercase tracking-[0.12em] px-[14px] py-[7px] rounded-full">
+                    {p.label}
+                  </span>
+                ) : (
+                  <span class="absolute top-[16px] left-[16px] text-[var(--color-navy)] text-[10px] font-semibold uppercase tracking-[0.12em] px-[6px] py-[7px]">
+                    {p.label}
+                  </span>
+                )}
+                <h3 class="absolute bottom-[18px] left-[20px] text-white font-heading font-medium text-[22px] lg:text-[24px] tracking-[-0.01em]">
+                  {p.name}
+                </h3>
+              </div>
+              <div class="mt-[14px] text-[#35302F]/70 text-[10px] font-medium uppercase tracking-[0.16em]">
+                {p.caption}
+              </div>
+              <a
+                href="#"
+                class="mt-[28px] lg:mt-[36px] inline-flex w-full lg:w-fit no-underline items-center justify-between lg:justify-start gap-[10px] h-[48px] lg:h-[56px] pl-5 lg:pl-6 pr-[6px] rounded-full bg-[var(--color-navy)] text-white text-[14px] font-medium hover:bg-[#1b2452] transition-colors"
+              >
+                Explore our legacy
+                <span class="w-[38px] h-[38px] lg:w-[44px] lg:h-[44px] rounded-full bg-white text-[var(--color-navy)] flex items-center justify-center flex-shrink-0">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </span>
+              </a>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Carousel arrows (mobile) -->
+      <div class="lg:hidden mt-[36px] flex items-center justify-center gap-[16px]">
+        <button
+          type="button"
+          data-scroll="-1"
+          aria-label="Previous project"
+          class="w-[48px] h-[48px] rounded-full border border-[#0F172A]/25 flex items-center justify-center text-[#0F172A] hover:bg-[var(--color-navy)] hover:text-white hover:border-[var(--color-navy)] transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"></path><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </button>
+        <button
+          type="button"
+          data-scroll="1"
+          aria-label="Next project"
+          class="w-[48px] h-[48px] rounded-full border border-[#0F172A]/25 flex items-center justify-center text-[#0F172A] hover:bg-[var(--color-navy)] hover:text-white hover:border-[var(--color-navy)] transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </div>
+      <script>
+        document.querySelectorAll("[data-scroll]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const row = document.getElementById("legacy-cards");
+            const card = row?.querySelector(":scope > div");
+            if (row && card) {
+              const w = card.getBoundingClientRect().width + 18;
+              row.scrollBy({ left: w * Number(btn.dataset.scroll), behavior: "smooth" });
+            }
+          });
+        });
+      </script>
     </section>
 
     <!-- CONTACT CTA -->
-    <section
-      id="contact"
-      class="bg-[var(--color-navy)] relative overflow-hidden"
-    >
-      <div class="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20 relative z-10">
-        <div
-          class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start py-20 lg:py-24"
+    <section id="contact" class="relative min-h-screen overflow-hidden">
+      <!-- Full-bleed dusk photo background -->
+      <img
+        id="contact-bg"
+        src="/images/inquiry-section-bg-image.png"
+        alt=""
+        class="absolute inset-0 w-full h-full object-cover scale-[1.12] will-change-transform transform-gpu"
+        loading="lazy"
+      />
+      <div
+        class="relative z-10 w-full max-w-[1440px] mx-auto px-[20px] lg:px-[60px] min-h-screen flex flex-col lg:flex-row lg:items-center lg:justify-between py-[64px] lg:py-[48px]"
+      >
+        <!-- Left: heading + paragraph -->
+        <div class="lg:pl-[83px] lg:pt-[24px]">
+          <h2
+            class="font-heading font-light text-[#FBF9F5] tracking-[-0.02em] text-[36px] leading-[44px] md:text-[44px] md:leading-[54px] lg:text-[72px] lg:leading-[88px]"
+          >
+            Find Your<br />Place in Goa
+          </h2>
+          <p
+            class="text-[#FBF9F5]/80 text-[13px] lg:text-[14px] leading-[24px] mt-[20px] lg:mt-[24px] max-w-[430px]"
+          >
+            Explore Serene Meadows or speak with our team to learn more about
+            our current and upcoming developments.
+          </p>
+        </div>
+
+        <!-- Right: enquiry form card -->
+        <form
+          class="bg-white rounded-[20px] p-[24px] lg:p-[32px] w-full lg:w-[560px] lg:flex-shrink-0 mt-[48px] lg:mt-0"
         >
-          <!-- Left: heading + form -->
-          <div>
-            <h2
-              class="font-heading text-[44px] md:text-6xl lg:text-[64px] font-bold text-white mb-6 leading-[1.05] tracking-tight"
-            >
-              Find Your<br />Place in Goa
-            </h2>
-            <p
-              class="text-white/65 mb-10 text-[14px] leading-[1.85] font-medium max-w-[400px]"
-            >
-              Explore Serene Meadows or speak with our team to learn more about
-              our current and upcoming developments.
-            </p>
-
-            <form class="bg-white rounded-[28px] p-7 md:p-9 shadow-2xl">
-              <div class="space-y-5">
-                <div>
-                  <label
-                    class="block text-[10px] font-bold text-[var(--color-navy)] mb-2 uppercase tracking-[0.12em]"
-                    >Name</label
-                  >
-                  <input
-                    type="text"
-                    placeholder="Jane Smith"
-                    class="w-full bg-[#F5F2ED] rounded-xl px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-[var(--color-navy)] transition-shadow font-medium"
-                  />
-                </div>
-                <div>
-                  <label
-                    class="block text-[10px] font-bold text-[var(--color-navy)] mb-2 uppercase tracking-[0.12em]"
-                    >Email</label
-                  >
-                  <input
-                    type="email"
-                    placeholder="jane@example.com"
-                    class="w-full bg-[#F5F2ED] rounded-xl px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-[var(--color-navy)] transition-shadow font-medium"
-                  />
-                </div>
-                <div>
-                  <label
-                    class="block text-[10px] font-bold text-[var(--color-navy)] mb-2 uppercase tracking-[0.12em]"
-                    >Phone number</label
-                  >
-                  <input
-                    type="tel"
-                    placeholder="+91 98765 43210"
-                    class="w-full bg-[#F5F2ED] rounded-xl px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-[var(--color-navy)] transition-shadow font-medium"
-                  />
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                  <div>
-                    <label
-                      class="block text-[10px] font-bold text-[var(--color-navy)] mb-2 uppercase tracking-[0.12em]"
-                      >Date</label
-                    >
-                    <input
-                      type="date"
-                      class="w-full bg-[#F5F2ED] rounded-xl px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-[var(--color-navy)] text-[var(--color-navy)] font-medium"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      class="block text-[10px] font-bold text-[var(--color-navy)] mb-2 uppercase tracking-[0.12em]"
-                      >Preferred Call Time</label
-                    >
-                    <select
-                      class="w-full bg-[#F5F2ED] rounded-xl px-4 py-3.5 text-sm outline-none focus:ring-2 focus:ring-[var(--color-navy)] text-[var(--color-navy)] font-medium appearance-none"
-                    >
-                      <option>Morning (9 AM - 12 PM)</option>
-                      <option>Afternoon (12 PM - 4 PM)</option>
-                      <option>Evening (4 PM - 7 PM)</option>
-                    </select>
-                  </div>
-                </div>
-                <button
-                  type="submit"
-                  class="w-full bg-[var(--color-navy)] text-white rounded-full py-4 font-bold flex items-center justify-center gap-3 hover:bg-[var(--color-yellow)] hover:text-[var(--color-navy)] transition-colors mt-1 text-[13px] uppercase tracking-wide group"
-                >
-                  Submit an Enquiry
-                  <span
-                    class="w-7 h-7 rounded-full bg-white/20 text-white flex items-center justify-center text-sm group-hover:bg-[var(--color-navy)] group-hover:text-white transition-colors"
-                    >→</span
-                  >
-                </button>
-                <p
-                  class="text-[11px] text-center text-[var(--color-gray)] mt-3 font-medium px-4 leading-relaxed"
-                >
-                  Your inquiry is handled by a director. We never share details
-                  outside the practice.
-                </p>
-              </div>
-            </form>
-          </div>
-
-          <!-- Right: building image — absolute on desktop, hidden on mobile -->
-          <div class="hidden lg:block relative h-full min-h-[700px]">
-            <div
-              class="absolute inset-0 rounded-[32px] overflow-hidden shadow-2xl"
-            >
-              <img
-                src="/images/inquiry-section-bg-image.png"
-                alt="Building at dusk"
-                class="w-full h-full object-cover"
-                loading="lazy"
+          <div class="space-y-[20px] lg:space-y-[24px]">
+            <div>
+              <label
+                class="block text-[13px] font-medium text-[var(--color-navy)] mb-[8px]"
+                >Name</label
+              >
+              <input
+                type="text"
+                placeholder="Jane Smith"
+                class="w-full h-[48px] bg-white border border-[#D9D6D2] rounded-[10px] px-[16px] text-[14px] text-[var(--color-navy)] placeholder:text-[#A6ACBC] outline-none focus:border-[var(--color-navy)] transition-colors"
               />
-              <div class="absolute inset-0 bg-[var(--color-navy)]/10"></div>
+            </div>
+            <div>
+              <label
+                class="block text-[13px] font-medium text-[var(--color-navy)] mb-[8px]"
+                >Email</label
+              >
+              <input
+                type="email"
+                placeholder="jane@example.com"
+                class="w-full h-[48px] bg-white border border-[#D9D6D2] rounded-[10px] px-[16px] text-[14px] text-[var(--color-navy)] placeholder:text-[#A6ACBC] outline-none focus:border-[var(--color-navy)] transition-colors"
+              />
+            </div>
+            <div>
+              <label
+                class="block text-[13px] font-medium text-[var(--color-navy)] mb-[8px]"
+                >Phone number</label
+              >
+              <input
+                type="tel"
+                placeholder="+91 98765 43210"
+                class="w-full h-[48px] bg-white border border-[#D9D6D2] rounded-[10px] px-[16px] text-[14px] text-[var(--color-navy)] placeholder:text-[#A6ACBC] outline-none focus:border-[var(--color-navy)] transition-colors"
+              />
+            </div>
+            <div>
+              <label
+                class="block text-[13px] font-medium text-[var(--color-navy)] mb-[8px]"
+                >Date</label
+              >
+              <input
+                type="text"
+                placeholder="mm/dd/yyyy"
+                class="w-full h-[48px] bg-white border border-[#D9D6D2] rounded-[10px] px-[16px] text-[14px] text-[var(--color-navy)] placeholder:text-[#A6ACBC] outline-none focus:border-[var(--color-navy)] transition-colors"
+              />
+            </div>
+            <div>
+              <label
+                class="block text-[13px] font-medium text-[var(--color-navy)] mb-[8px]"
+                >Preferred Call Time</label
+              >
+              <div class="relative">
+                <select
+                  class="w-full h-[48px] bg-white border border-[#D9D6D2] rounded-[10px] px-[16px] text-[14px] text-[var(--color-navy)] outline-none focus:border-[var(--color-navy)] transition-colors appearance-none"
+                >
+                  <option>Morning (9 AM - 12 PM)</option>
+                  <option>Afternoon (12 PM - 4 PM)</option>
+                  <option>Evening (4 PM - 7 PM)</option>
+                </select>
+                <svg
+                  class="absolute right-[16px] top-1/2 -translate-y-1/2 pointer-events-none text-[#A6ACBC]"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  ><polyline points="6 9 12 15 18 9"></polyline></svg
+                >
+              </div>
+            </div>
+            <div class="pt-[4px]">
+              <button
+                type="submit"
+                class="inline-flex items-center gap-[10px] h-[48px] pl-6 pr-[6px] rounded-full bg-[var(--color-navy)] text-white text-[14px] font-medium hover:bg-[#1b2452] transition-colors"
+              >
+                Submit an Enquiry
+                <span
+                  class="w-[36px] h-[36px] rounded-full bg-white text-[var(--color-navy)] flex items-center justify-center flex-shrink-0"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    ><line x1="5" y1="12" x2="19" y2="12"></line><polyline
+                      points="12 5 19 12 12 19"></polyline></svg
+                  >
+                </span>
+              </button>
+              <p class="text-[10px] text-[#9BA0AE] mt-[16px] leading-[16px]">
+                Your inquiry is handled by a director. We never share details
+                outside the practice.
+              </p>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </section>
   </main>
 
   <!-- FOOTER -->
-  <footer
-    class="bg-[var(--color-navy)] text-white pt-20 pb-10 border-t border-white/10"
-  >
-    <div class="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20">
-      <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-16"
-      >
-        <div class="lg:col-span-5 pr-4">
-          <div class="flex items-center gap-3 mb-7">
-            <div
-              class="w-9 h-9 bg-[var(--color-yellow)] flex items-center justify-center rounded-sm"
-            >
-              <span
-                class="text-[var(--color-navy)] font-bold text-xl leading-none"
-                >H</span
-              >
-            </div>
-            <span class="font-heading text-base tracking-tight"
-              ><strong class="font-bold">Hindustan</strong> Developers</span
-            >
-          </div>
+  <footer class="relative bg-[var(--color-navy)] overflow-hidden">
+    <!-- Main footer content -->
+    <div
+      class="relative z-10 w-full max-w-[1440px] mx-auto px-[18px] lg:px-[85px] pt-[64px] lg:pt-[96px] pb-[48px] lg:pb-[200px]"
+    >
+      <div class="flex flex-col lg:flex-row gap-[48px] lg:gap-0">
+        <!-- Col 1: quote + blurb -->
+        <div class="lg:w-[412px] lg:flex-shrink-0">
           <h3
-            class="text-[28px] lg:text-[34px] font-heading font-bold text-white leading-tight mb-7 max-w-[360px] tracking-tight"
+            class="font-serif text-[#FBF9F5] text-[34px] leading-[42px] lg:text-[42px] lg:leading-[50px] font-normal"
           >
-            A building is a promise the architect makes to the future.
+            A building is<br />a promise the<br />architect makes<br />to the
+            future.
           </h3>
           <p
-            class="text-white/55 text-[14px] max-w-[320px] leading-[1.85] font-medium"
+            class="text-white/55 text-[11px] leading-[20px] max-w-[320px] mt-[28px] lg:mt-[36px]"
           >
             Built on five decades of contracting experience, Hindustan
             Constructions brings proven construction expertise to thoughtfully
@@ -1030,166 +1059,126 @@ const displayFeatured = featuredProject || defaultFeatured;
           </p>
         </div>
 
-        <div class="lg:col-span-2 lg:col-start-7">
+        <!-- Col 2: quick links -->
+        <div class="lg:w-[187px] lg:flex-shrink-0">
           <h4
-            class="font-bold text-[10px] tracking-[0.2em] uppercase text-white/45 mb-7"
+            class="text-[10px] font-medium tracking-[0.22em] uppercase text-white/40 mb-[20px]"
           >
             Quick Links
           </h4>
-          <ul class="space-y-4 text-[14px] font-medium">
+          <ul class="space-y-[14px] text-[13px]">
             <li>
               <a
-                href="#"
-                class="no-underline hover:text-[var(--color-yellow)] transition-colors"
+                href="/"
+                class="no-underline text-white/85 hover:text-[var(--color-yellow)] transition-colors"
                 >Home</a
               >
             </li>
             <li>
               <a
                 href="#about"
-                class="no-underline hover:text-[var(--color-yellow)] transition-colors"
+                class="no-underline text-white/85 hover:text-[var(--color-yellow)] transition-colors"
                 >About us</a
               >
             </li>
             <li>
               <a
                 href="#legacy"
-                class="no-underline hover:text-[var(--color-yellow)] transition-colors"
+                class="no-underline text-white/85 hover:text-[var(--color-yellow)] transition-colors"
                 >Our Legacy</a
               >
             </li>
             <li>
               <a
                 href="#contact"
-                class="no-underline hover:text-[var(--color-yellow)] transition-colors"
+                class="no-underline text-white/85 hover:text-[var(--color-yellow)] transition-colors"
                 >Contact</a
               >
             </li>
           </ul>
         </div>
 
-        <div class="lg:col-span-4">
+        <!-- Col 3: featured project -->
+        <div class="lg:w-[252px] lg:flex-shrink-0">
           <h4
-            class="font-bold text-[10px] tracking-[0.2em] uppercase text-white/45 mb-7"
+            class="text-[10px] font-medium tracking-[0.22em] uppercase text-white/40 mb-[20px]"
           >
             Featured Project
           </h4>
-          <div
-            class="bg-white/5 rounded-[20px] p-5 border border-white/10 hover:bg-white/8 transition-colors group"
-          >
-            <h5 class="font-bold text-lg mb-1 font-heading">Serene Meadows</h5>
-            <p class="text-[13px] text-white/55 mb-5 font-medium">
-              Kadamba Plateau, Goa
-            </p>
-            <a
-              href="#"
-              class="inline-flex no-underline items-center gap-2.5 bg-white text-[var(--color-navy)] rounded-full px-5 py-2.5 text-[11px] font-bold uppercase tracking-wide group-hover:bg-[var(--color-yellow)] transition-colors"
-            >
-              Explore Project
-              <span
-                class="w-4 h-4 no-underline rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center text-[9px]"
-                >→</span
-              >
-            </a>
+          <div class="text-[13px] text-white/85">Serene Meadows</div>
+          <div class="text-[13px] text-white/55 mt-[2px]">
+            Kadamba Plateau, Goa
           </div>
+          <a
+            href="#featured"
+            class="mt-[20px] inline-flex w-fit no-underline items-center gap-[10px] h-[48px] pl-5 pr-[6px] rounded-full bg-[#FFFCF7] text-[#0F172A] text-[14px] font-medium hover:bg-[var(--color-yellow)] transition-colors group"
+          >
+            Explore Project
+            <span
+              class="w-[36px] h-[36px] rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                ><line x1="7" y1="17" x2="17" y2="7"></line><polyline
+                  points="7 7 17 7 17 17"></polyline></svg
+              >
+            </span>
+          </a>
+        </div>
+
+        <!-- Col 4: disclaimer -->
+        <div class="lg:flex-1 lg:max-w-[340px]">
+          <h4
+            class="text-[10px] font-medium tracking-[0.22em] uppercase text-white/40 mb-[20px]"
+          >
+            Project Disclaimer
+          </h4>
+          <p class="text-[11px] text-white/50 leading-[22px]">
+            All project visuals are artist's impressions and are for
+            representational purposes only. Specifications, amenities, prices
+            and availability are subject to change. Please contact the sales
+            team for the latest information. [INSERT GOA RERA REGISTRATION
+            NUMBER].
+          </p>
         </div>
       </div>
+    </div>
 
-      <div class="mb-10">
-        <h4
-          class="font-bold text-[10px] tracking-[0.2em] uppercase text-white/45 mb-3"
-        >
-          Project Disclaimer
-        </h4>
-        <p
-          class="text-[11px] text-white/35 leading-relaxed max-w-4xl font-medium"
-        >
-          All project visuals are artist's impressions and are for
-          representational purposes only. Specifications, amenities, prices and
-          availability are subject to change. Please contact the sales team for
-          the latest information. Goa RERA Registration No. PRGO00000000.
-        </p>
-      </div>
+    <!-- Giant watermark -->
+    <div
+      aria-hidden="true"
+      class="absolute bottom-[-10px] lg:bottom-[-32px] left-1/2 -translate-x-1/2 font-serif whitespace-nowrap select-none text-[#1E2653] text-[64px] md:text-[120px] lg:text-[190px] leading-none pointer-events-none"
+    >
+      Hindustan Developers
+    </div>
 
+    <!-- Bottom bar -->
+    <div class="relative z-10 border-t border-white/10">
       <div
-        class="pt-7 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-5"
+        class="w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px] py-[22px] flex flex-col gap-[12px]"
       >
-        <p class="text-white/45 text-[13px] font-medium">
-          &copy; {new Date().getFullYear()} Hindustan Developers. All rights reserved.
+        <p class="text-[11px] text-white/40">
+          <span class="hidden lg:inline"
+            >&copy; 2026 Hindustan Constructions. All rights reserved.</span
+          >
+          <span class="lg:hidden"
+            >&copy; 2026 Hindustan Construction. All right reserved.</span
+          >
         </p>
-
-        <div class="flex gap-3">
-          <a
-            href="#"
-            class="w-9 h-9 no-underline rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-[var(--color-yellow)] hover:text-[var(--color-navy)] transition-colors"
-          >
-            <span class="no-underline sr-only">Instagram</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="15"
-              height="15"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><rect x="2" y="2" width="20" height="20" rx="5" ry="5"
-              ></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
-              ></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg
-            >
-          </a>
-          <a
-            href="#"
-            class="w-9 h-9 no-underline rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-[var(--color-yellow)] hover:text-[var(--color-navy)] transition-colors"
-          >
-            <span class="sr-only">Facebook</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="15"
-              height="15"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><path
-                d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
-              ></path></svg
-            >
-          </a>
-          <a
-            href="#"
-            class="w-9 h-9 no-underline rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-[var(--color-yellow)] hover:text-[var(--color-navy)] transition-colors"
-          >
-            <span class="sr-only">LinkedIn</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="15"
-              height="15"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              ><path
-                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
-              ></path><rect x="2" y="9" width="4" height="12"></rect><circle
-                cx="4"
-                cy="4"
-                r="2"></circle></svg
-            >
-          </a>
-        </div>
-
-        <div class="text-white/45 text-[13px] flex gap-5 font-medium">
+        <div class="lg:hidden flex gap-[24px] text-[11px] text-white/40">
           <a href="#" class="no-underline hover:text-white transition-colors"
-            >Privacy Policy</a
+            >Privacy</a
           >
           <a href="#" class="no-underline hover:text-white transition-colors"
-            >Terms of Service</a
+            >Terms</a
           >
         </div>
       </div>
@@ -1208,10 +1197,11 @@ const displayFeatured = featuredProject || defaultFeatured;
 
   const heroBg = document.getElementById("hero-bg");
   const heroSection = document.getElementById("hero-section");
+  const aboutSection = document.getElementById("about");
 
   if (heroSection && heroBg) {
     gsap.to(heroBg, {
-      yPercent: 12, // subtle downward parallax glide over the scroll duration
+      yPercent: 20, // subtle downward parallax glide over the scroll duration
       ease: "none",
       scrollTrigger: {
         trigger: heroSection,
@@ -1223,6 +1213,63 @@ const displayFeatured = featuredProject || defaultFeatured;
   }
 
   // END: Hero Section Background Image Parralax Animation
+
+  // START: Goa Map Section Parallax Animation
+  const mapSection = document.getElementById("goa-map-section");
+  const mapImg = document.getElementById("goa-map-img");
+  if (mapSection && mapImg) {
+    gsap.to(mapImg, {
+      yPercent: 15,
+      ease: "none",
+      scrollTrigger: {
+        trigger: mapSection,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 0.5,
+      },
+    });
+  }
+  // END: Goa Map Section Parallax Animation
+
+  // START: Contact Section Background Parallax Animation
+  const contactSection = document.getElementById("contact");
+  const contactBg = document.getElementById("contact-bg");
+  if (contactSection && contactBg) {
+    gsap.to(contactBg, {
+      yPercent: 20,
+      ease: "none",
+      scrollTrigger: {
+        trigger: contactSection,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 0.5,
+      },
+    });
+  }
+  // END: Contact Section Background Parallax Animation
+
+  // START: 3D Tilt Hover for Cards
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    document.querySelectorAll(".tilt-card").forEach((card) => {
+      const el = card as HTMLElement;
+      el.style.transformStyle = "preserve-3d";
+      el.style.willChange = "transform";
+      el.style.transition = "transform 0.15s ease-out";
+      el.addEventListener("mousemove", (e) => {
+        const r = el.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transform = `perspective(800px) rotateX(${(-py * 10).toFixed(2)}deg) rotateY(${(px * 12).toFixed(2)}deg) scale(1.02)`;
+      });
+      el.addEventListener("mouseleave", () => {
+        el.style.transition = "transform 0.4s ease-out";
+        el.style.transform =
+          "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)";
+        setTimeout(() => (el.style.transition = "transform 0.15s ease-out"), 400);
+      });
+    });
+  }
+  // END: 3D Tilt Hover for Cards
 
   //START: Nav Bar Control
 
@@ -1240,16 +1287,13 @@ const displayFeatured = featuredProject || defaultFeatured;
       color: "#ffffff",
       boxShadow: "none",
       transformOrigin: "center top",
+      backdropFilter: "blur(10px)",
     });
 
     // Collapse: fade out links + CTA, shrink bar into a yellow pill around the logo
     const navTween = gsap
       .timeline({ paused: true })
-      .to(
-        extras,
-        { autoAlpha: 0, duration: 0.15, display: "none" },
-        0,
-      )
+      .to(extras, { autoAlpha: 0, duration: 0.15, display: "none" }, 0)
       .to(
         navInner,
         {
@@ -1288,5 +1332,44 @@ const displayFeatured = featuredProject || defaultFeatured;
       }
     });
   }
+
+  if (aboutSection) {
+    gsap.to(aboutSection, {
+      scrollTrigger: {
+        trigger: aboutSection,
+        start: "top top",
+        end: "bottom top",
+        scrub: 1,
+      },
+    });
+  }
+
+  // START: Scroll Breakpoints for Nav Style (GSAP)
+  ScrollTrigger.create({
+    trigger: document.body,
+    start: "top top",
+    end: "bottom bottom",
+    onUpdate: (self) => {
+      const scrollY = self.scroll();
+      const vh = window.innerHeight;
+
+      // Update the style of the nav bar (or navInner) based on viewport height breakpoints
+      if (scrollY >= vh && scrollY < vh * 2) {
+        // Between 100vh and 200vh (e.g., roughly the About section area)
+        gsap.set(navInner, { backgroundColor: "var(--color-navy)", color: "var(--color-white)" });
+      } else if (scrollY < vh) {
+        // Top 100vh (e.g., Hero section)
+        // Revert to yellow pill (or transparent if at the very top)
+        gsap.set(navInner, { backgroundColor: "", color: "" });
+      } else if (scrollY >= vh * 2 && scrollY < vh * 3) {
+        // Between 200vh and 300vh
+        // Add your style here
+      } else {
+        // Fallback style for anything beyond 300vh
+      }
+    },
+  });
+  // END: Scroll Breakpoints for Nav Style
+
   // END: Nav Bar Control
 </script>
