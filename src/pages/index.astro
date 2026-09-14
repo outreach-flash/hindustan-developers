@@ -3,9 +3,12 @@ export const prerender = true;
 import { createReader } from "@keystatic/core/reader";
 import keystaticConfig from "../../keystatic.config";
 import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 
 const reader = createReader(process.cwd(), keystaticConfig);
 let featuredProject = null;
+let featuredProjectSlug = null;
 let allProjects = [];
 try {
   const featured = await reader.singletons.featuredProject.read();
@@ -13,6 +16,7 @@ try {
     featuredProject = await reader.collections.projects.read(
       featured.projectSlug,
     );
+    featuredProjectSlug = featuredProject ? featured.projectSlug : null;
   }
   const projects = await reader.collections.projects.all();
   allProjects = projects || [];
@@ -35,77 +39,14 @@ const displayFeatured = featuredProject || defaultFeatured;
 ---
 
 <Layout>
-  <!-- NAVBAR — fixed, transparent over hero; GSAP collapses it to a yellow pill on scroll -->
-  <nav class="fixed top-0 left-0 right-0 z-50" id="nav-bar">
-    <div
-      id="nav-inner"
-      class="flex items-center justify-between h-[70px] lg:h-[90px] px-[20px] lg:px-[30px] text-white"
-    >
-      <!-- Logo: serif "Hindustan" + italic serif "developers" -->
-      <a
-        href="/"
-        class="no-underline font-serif text-[22px] lg:text-[26px] leading-none text-current"
-        >Hindustan <em class="italic">developers</em></a
-      >
-      <!-- Nav links: About Us / Serene Meadows / Our Legacy / Contact -->
-      <div class="nav-extra hidden lg:flex items-center gap-[52px]">
-        <a
-          href="#about"
-          class="text-[13px] no-underline tracking-[0.14em] uppercase text-current hover:text-[var(--color-yellow)] transition-colors font-medium"
-          >About Us</a
-        >
-        <a
-          href="#featured"
-          class="text-[13px] no-underline tracking-[0.14em] uppercase text-current hover:text-[var(--color-yellow)] transition-colors font-medium"
-          >Serene Meadows</a
-        >
-        <a
-          href="#legacy"
-          class="text-[13px] no-underline tracking-[0.14em] uppercase text-current hover:text-[var(--color-yellow)] transition-colors font-medium"
-          >Our Legacy</a
-        >
-        <a
-          href="#contact"
-          class="text-[13px] no-underline tracking-[0.14em] uppercase text-current hover:text-[var(--color-yellow)] transition-colors font-medium"
-          >Contact</a
-        >
-      </div>
-      <!-- Enquire Now — yellow pill with diagonal arrow -->
-      <a
-        href="#contact"
-        class="nav-extra hidden lg:inline-flex no-underline items-center gap-[10px] h-[42px] pl-6 pr-[20px] rounded-full bg-[var(--color-yellow)] text-[var(--color-navy)] text-[12px] font-bold uppercase tracking-[0.12em] hover:bg-white transition-colors"
-      >
-        Enquire Now
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="12"
-          height="12"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          ><line x1="7" y1="17" x2="17" y2="7"></line><polyline
-            points="7 7 17 7 17 17"></polyline></svg
-        >
-      </a>
-      <!-- Hamburger: 2 lines -->
-      <button
-        class="lg:hidden w-8 h-8 flex flex-col justify-center items-center gap-[7px] cursor-pointer text-current"
-        aria-label="Menu"
-      >
-        <span class="w-6 h-[2px] bg-current"></span>
-        <span class="w-6 h-[2px] bg-current"></span>
-      </button>
-    </div>
-  </nav>
+  <Navbar variant="overlay" />
 
   <main>
     <!-- HERO — fixed-height, navbar floats transparently on top -->
     <section
       class="relative h-screen overflow-hidden"
       id="hero-section"
+      data-nav-theme="dark"
     >
       <!-- Scaled background image (GSAP parallax) -->
       <img
@@ -115,9 +56,10 @@ const displayFeatured = featuredProject || defaultFeatured;
         class="absolute inset-0 w-full h-full object-cover scale-[1.12] -z-10 will-change-transform transform-gpu"
       />
 
-      <div class="relative z-10 h-full flex flex-col px-[20px] lg:px-[30px]">
+      <div class="relative z-10 h-full flex flex-col px-[20px] lg:px-[30px]" data-reveal-group>
         <!-- Heading -->
         <h1
+          data-reveal-title
           class="font-heading text-white font-medium tracking-[-0.03em] leading-[1.16] md:leading-[1.24] text-[43px] md:text-[44px] lg:text-[72px] mt-[115px] md:mt-[245px] lg:mt-[214px]"
         >
           A Legacy of <br class="md:hidden" />Building. <br
@@ -128,6 +70,7 @@ const displayFeatured = featuredProject || defaultFeatured;
         </h1>
         <!-- Two CTA buttons -->
         <div
+          data-reveal-text
           class="flex items-center gap-[14px] lg:gap-[28px] mt-[40px] lg:mt-[36px]"
         >
           <!-- Primary CTA: white pill with dark circle arrow -->
@@ -168,6 +111,7 @@ const displayFeatured = featuredProject || defaultFeatured;
           class="mt-auto w-full flex flex-col lg:flex-row lg:items-end lg:justify-between"
         >
           <p
+            data-reveal-text
             class="text-white/85 text-[13px] md:text-[15px] lg:text-[16px] leading-[2.05] md:leading-[1.87] lg:leading-[1.8] max-w-[730px] font-normal pb-[50px] lg:pb-[45px] lg:pr-10"
           >
             For over 50 years, our work has helped shape residential
@@ -177,6 +121,7 @@ const displayFeatured = featuredProject || defaultFeatured;
           </p>
           <!-- Stats panel: navy glass, flush bottom; flush right on desktop -->
           <div
+            data-reveal-card
             class="flex items-stretch -mx-[20px] lg:mx-0 lg:-mr-[30px] flex-shrink-0 bg-black/20 backdrop-blur-lg border-t border-l border-r lg:border-r-0 border-white/15 rounded-t-[16px] lg:rounded-tr-none h-[114px] lg:h-[154px]"
           >
             <div
@@ -241,9 +186,10 @@ const displayFeatured = featuredProject || defaultFeatured;
         <div
           class="flex flex-col lg:grid lg:grid-cols-[600px_minmax(0,1fr)] lg:gap-[28px]"
         >
-          <div class="flex flex-col">
+          <div class="flex flex-col" data-reveal-group>
             <!-- Pill: gray with yellow dot -->
             <div
+              data-reveal-text
               class="inline-flex w-fit items-center gap-[10px] h-[46px] px-[20px] rounded-full bg-[#A9A8AC] text-[#F4F1ED] text-[12px] font-medium"
             >
               <span
@@ -252,6 +198,7 @@ const displayFeatured = featuredProject || defaultFeatured;
               Our Legacy
             </div>
             <h2
+              data-reveal-title
               class="font-heading font-bold text-[#0F172A] tracking-[-0.02em] text-[38px] leading-[46px] md:text-[40px] md:leading-[48px] lg:text-[56px] lg:leading-[74px] mt-[16px]"
             >
               Experience You <br class="hidden lg:block" />Can <br
@@ -259,6 +206,7 @@ const displayFeatured = featuredProject || defaultFeatured;
               />Build a Life On
             </h2>
             <div
+              data-reveal-text
               class="text-[#0F172A] text-[13px] md:text-[14px] leading-[24px] lg:leading-[26px] mt-[28px] lg:mt-[40px] space-y-[16px] lg:space-y-[20px] max-w-[560px] font-normal"
             >
               <p>
@@ -277,6 +225,7 @@ const displayFeatured = featuredProject || defaultFeatured;
             </div>
             <!-- CTA: light pill with navy circle arrow -->
             <a
+              data-reveal-btn
               href="#"
               class="inline-flex w-fit no-underline items-center gap-[10px] h-[48px] lg:h-[60px] pl-5 lg:pl-6 pr-[6px] rounded-full bg-[#FFFCF7] border border-[#C9CEDD] text-[#0F172A] text-[14px] lg:text-[15px] font-medium mt-[28px] lg:mt-[120px] hover:border-[var(--color-navy)] transition-colors group"
             >
@@ -301,9 +250,10 @@ const displayFeatured = featuredProject || defaultFeatured;
             </a>
           </div>
           <div
-            class="relative mt-[54px] lg:mt-0 aspect-[354/333] md:aspect-[732/459] lg:aspect-auto lg:min-h-[600px]"
+            class="relative mt-[54px] lg:mt-0 aspect-[354/333] md:aspect-[732/459] lg:aspect-auto lg:min-h-[600px] overflow-hidden rounded-[14px]"
           >
             <img
+              data-reveal-img
               src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80"
               alt="Interior Living Room"
               class="absolute inset-0 w-full h-full object-cover rounded-[14px]"
@@ -317,8 +267,9 @@ const displayFeatured = featuredProject || defaultFeatured;
     <!-- FEATURES -->
     <section class="pb-20 lg:pb-28 bg-[var(--color-cream)]">
       <div class="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20">
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5" data-reveal-cards>
           <div
+            data-reveal-card
             class="tilt-card bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8"
           >
             <div class="mb-8 text-[var(--color-navy)]">
@@ -349,6 +300,7 @@ const displayFeatured = featuredProject || defaultFeatured;
           </div>
 
           <div
+            data-reveal-card
             class="tilt-card bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8"
           >
             <div class="mb-8 text-[var(--color-navy)]">
@@ -379,6 +331,7 @@ const displayFeatured = featuredProject || defaultFeatured;
           </div>
 
           <div
+            data-reveal-card
             class="tilt-card bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8"
           >
             <div class="mb-8 text-[var(--color-navy)]">
@@ -410,6 +363,7 @@ const displayFeatured = featuredProject || defaultFeatured;
           </div>
 
           <div
+            data-reveal-card
             class="tilt-card bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8"
           >
             <div class="mb-8 text-[var(--color-navy)]">
@@ -453,12 +407,13 @@ const displayFeatured = featuredProject || defaultFeatured;
         >
           <!-- Image LEFT -->
           <div class="order-2 lg:order-1">
-            <div class="tilt-card h-[460px] lg:h-[620px] w-full relative">
+            <div class="tilt-card h-[460px] lg:h-[620px] w-full relative overflow-hidden rounded-[28px] shadow-2xl">
               <img
+                data-reveal-img
                 src={featuredProject?.coverImage ||
                   "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80"}
                 alt={displayFeatured.title}
-                class="w-full h-full object-cover rounded-[28px] shadow-2xl"
+                class="w-full h-full object-cover rounded-[28px]"
                 loading="lazy"
               />
             </div>
@@ -483,24 +438,27 @@ const displayFeatured = featuredProject || defaultFeatured;
           </div>
 
           <!-- Content RIGHT -->
-          <div class="order-1 lg:order-2">
+          <div class="order-1 lg:order-2" data-reveal-group>
             <div
+              data-reveal-text
               class="inline-flex items-center bg-[var(--color-navy)]/6 rounded-full px-4 py-1.5 text-[10px] font-bold text-[var(--color-navy)] mb-7 uppercase tracking-[0.18em]"
             >
               Featured Project
             </div>
             <h2
+              data-reveal-title
               class="font-heading text-[42px] md:text-5xl lg:text-[58px] font-bold text-[var(--color-navy)] mb-6 tracking-tight leading-[1.05]"
             >
               {displayFeatured.title}
             </h2>
             <p
+              data-reveal-text
               class="text-[var(--color-gray)] text-[14px] leading-[1.85] max-w-[460px] mb-10"
             >
               {displayFeatured.subtitle}
             </p>
 
-            <div class="grid grid-cols-2 gap-y-8 gap-x-6 mb-10">
+            <div class="grid grid-cols-2 gap-y-8 gap-x-6 mb-10" data-reveal-card>
               {
                 displayFeatured.details.map((detail) => (
                   <div class="border-l-2 border-[var(--color-navy)]/12 pl-4">
@@ -516,7 +474,8 @@ const displayFeatured = featuredProject || defaultFeatured;
             </div>
 
             <a
-              href="#"
+              data-reveal-btn
+              href={featuredProjectSlug ? `/projects/${featuredProjectSlug}` : "#"}
               class="inline-flex no-underline items-center gap-3 bg-[var(--color-navy)] text-white rounded-full px-7 py-3.5 font-bold text-sm hover:bg-[var(--color-yellow)] hover:text-[var(--color-navy)] transition-colors group"
             >
               View Project
@@ -549,14 +508,17 @@ const displayFeatured = featuredProject || defaultFeatured;
       </div>
       <!-- Text -->
       <div
+        data-reveal-group
         class="relative z-10 order-1 w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px] pt-[72px] lg:pt-[110px]"
       >
         <h2
+          data-reveal-title
           class="font-heading font-bold text-[#0F172A] tracking-[-0.02em] text-[32px] leading-[34px] md:text-[42px] md:leading-[64px] lg:text-[56px] lg:leading-[66px]"
         >
           The Best of Goa,<br />Close to Home
         </h2>
         <p
+          data-reveal-text
           class="text-[#0F172A] text-[13px] lg:text-[14px] leading-[24px] lg:leading-[26px] mt-[14px] md:mt-[18px] lg:mt-[16px] md:max-w-[560px] lg:max-w-[430px]"
         >
           From Assagao to Kadamba Plateau, our featured projects are shaped by
@@ -573,8 +535,9 @@ const displayFeatured = featuredProject || defaultFeatured;
     >
       <div class="w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px]">
         <!-- Section header: centered pill + heading -->
-        <div class="flex flex-col items-center text-center">
+        <div class="flex flex-col items-center text-center" data-reveal-group>
           <div
+            data-reveal-text
             class="inline-flex items-center gap-[10px] h-[46px] px-[20px] rounded-full bg-[#A9A8AC] text-[#F4F1ED] text-[12px] font-medium"
           >
             <span
@@ -583,6 +546,7 @@ const displayFeatured = featuredProject || defaultFeatured;
             Why us
           </div>
           <h2
+            data-reveal-title
             class="mt-[16px] font-heading font-bold text-[#0F172A] tracking-[-0.02em] text-[34px] leading-[44px] md:text-[40px] md:leading-[46px] lg:text-[56px] lg:leading-[66px]"
           >
             Build<span class="hidden lg:inline">t</span> with Experience<span
@@ -596,12 +560,14 @@ const displayFeatured = featuredProject || defaultFeatured;
 
         <!-- Bento cards -->
         <div
+          data-reveal-cards
           class="mt-[40px] lg:mt-[48px] flex flex-col lg:flex-row gap-[18px] md:max-w-[553px] md:mx-auto lg:max-w-none"
         >
           <!-- Left column -->
           <div class="lg:w-[65%] flex flex-col gap-[18px]">
             <!-- Navy stat card -->
             <div
+              data-reveal-card
               class="tilt-card relative overflow-hidden rounded-[16px] bg-[var(--color-navy)] h-[196px] lg:h-[300px] p-[24px] lg:p-[28px] flex flex-col"
             >
               <span class="text-white/70 text-[11px] lg:text-[12px] font-normal"
@@ -649,9 +615,11 @@ const displayFeatured = featuredProject || defaultFeatured;
             <!-- Workers image + white stat card -->
             <div class="flex flex-col lg:flex-row gap-[18px]">
               <div
+                data-reveal-card
                 class="tilt-card rounded-[16px] overflow-hidden h-[232px] lg:h-[307px] lg:w-[65.8%] flex-shrink-0"
               >
                 <img
+                  data-reveal-img
                   src="/images/construction-workers.png"
                   alt="Hindustan Constructions team on site"
                   class="w-full h-full object-cover"
@@ -659,6 +627,7 @@ const displayFeatured = featuredProject || defaultFeatured;
                 />
               </div>
               <div
+                data-reveal-card
                 class="tilt-card rounded-[16px] bg-[#FFFCF7] h-[172px] lg:h-[307px] flex-1 p-[24px] lg:p-[28px] flex flex-col"
               >
                 <span class="text-[#0F172A]/55 text-[11px] font-normal"
@@ -683,9 +652,11 @@ const displayFeatured = featuredProject || defaultFeatured;
           <!-- Right column -->
           <div class="lg:flex-1 flex flex-col gap-[18px]">
             <div
+              data-reveal-card
               class="tilt-card rounded-[16px] overflow-hidden h-[232px] lg:h-[381px] flex-shrink-0"
             >
               <img
+                data-reveal-img
                 src="/images/woman-pointing-image.png"
                 alt="Engineer pointing at construction site"
                 class="w-full h-full object-cover"
@@ -693,6 +664,7 @@ const displayFeatured = featuredProject || defaultFeatured;
               />
             </div>
             <div
+              data-reveal-card
               class="tilt-card rounded-[16px] bg-[var(--color-yellow)] h-[232px] lg:h-auto lg:flex-1 p-[24px] lg:p-[28px] flex flex-col"
             >
               <span class="text-[#0F172A]/55 text-[11px] font-normal"
@@ -730,10 +702,12 @@ const displayFeatured = featuredProject || defaultFeatured;
       <div class="w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px]">
         <!-- Header -->
         <div
+          data-reveal-group
           class="flex flex-col items-center text-center lg:flex-row lg:items-end lg:justify-between lg:text-left"
         >
           <div class="flex flex-col items-center lg:items-start">
             <div
+              data-reveal-text
               class="inline-flex w-fit items-center gap-[10px] h-[46px] px-[20px] rounded-full bg-[#A9A8AC] text-[#F4F1ED] text-[12px] font-medium"
             >
               <span
@@ -742,11 +716,13 @@ const displayFeatured = featuredProject || defaultFeatured;
               Legacy Preview
             </div>
             <h2
+              data-reveal-title
               class="mt-[16px] font-heading font-bold text-[#0F172A] tracking-[-0.02em] text-[34px] leading-[44px] md:text-[40px] md:leading-[46px] lg:text-[56px] lg:leading-[64px]"
             >
               The Work Behind <br class="lg:hidden" />Our Name
             </h2>
             <p
+              data-reveal-text
               class="text-[#0F172A] text-[13px] lg:text-[14px] leading-[24px] mt-[18px] lg:mt-[16px] max-w-[560px]"
             >
               Our development journey is new, but our building experience is
@@ -756,7 +732,8 @@ const displayFeatured = featuredProject || defaultFeatured;
             </p>
           </div>
           <a
-            href="#"
+            data-reveal-btn
+            href="/projects"
             class="inline-flex w-fit no-underline items-center gap-[10px] h-[48px] lg:h-[56px] pl-5 lg:pl-6 pr-[6px] rounded-full bg-[#FFFCF7] border border-[#C9CEDD] text-[#0F172A] text-[14px] lg:text-[15px] font-medium mt-[28px] lg:mt-0 hover:border-[var(--color-navy)] transition-colors group"
           >
             View All
@@ -784,6 +761,7 @@ const displayFeatured = featuredProject || defaultFeatured;
       <!-- Cards -->
       <div
         id="legacy-cards"
+        data-reveal-cards
         class="mt-[48px] lg:mt-[60px] w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px] flex lg:grid lg:grid-cols-3 gap-[18px] lg:gap-[20px] overflow-x-auto lg:overflow-visible snap-x snap-mandatory"
         style="scrollbar-width: none;"
       >
@@ -811,9 +789,10 @@ const displayFeatured = featuredProject || defaultFeatured;
               img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
             },
           ].map((p) => (
-            <div class="min-w-full md:min-w-[calc(50%-9px)] lg:min-w-0 snap-start">
+            <div data-reveal-card class="min-w-full md:min-w-[calc(50%-9px)] lg:min-w-0 snap-start">
               <div class="tilt-card relative h-[443px] md:h-[423px] lg:h-[493px] rounded-[14px] overflow-hidden">
                 <img
+                  data-reveal-img
                   src={p.img}
                   alt={p.name}
                   class="w-full h-full object-cover"
@@ -836,7 +815,7 @@ const displayFeatured = featuredProject || defaultFeatured;
                 {p.caption}
               </div>
               <a
-                href="#"
+                href="/projects"
                 class="mt-[28px] lg:mt-[36px] inline-flex w-full lg:w-fit no-underline items-center justify-between lg:justify-start gap-[10px] h-[48px] lg:h-[56px] pl-5 lg:pl-6 pr-[6px] rounded-full bg-[var(--color-navy)] text-white text-[14px] font-medium hover:bg-[#1b2452] transition-colors"
               >
                 Explore our legacy
@@ -896,7 +875,11 @@ const displayFeatured = featuredProject || defaultFeatured;
     </section>
 
     <!-- CONTACT CTA -->
-    <section id="contact" class="relative min-h-screen overflow-hidden">
+    <section
+      id="contact"
+      class="relative min-h-screen overflow-hidden"
+      data-nav-theme="dark"
+    >
       <!-- Full-bleed dusk photo background -->
       <img
         id="contact-bg"
@@ -909,13 +892,15 @@ const displayFeatured = featuredProject || defaultFeatured;
         class="relative z-10 w-full max-w-[1440px] mx-auto px-[20px] lg:px-[60px] min-h-screen flex flex-col lg:flex-row lg:items-center lg:justify-between py-[64px] lg:py-[48px]"
       >
         <!-- Left: heading + paragraph -->
-        <div class="lg:pl-[83px] lg:pt-[24px]">
+        <div class="lg:pl-[83px] lg:pt-[24px]" data-reveal-group>
           <h2
+            data-reveal-title
             class="font-heading font-light text-[#FBF9F5] tracking-[-0.02em] text-[36px] leading-[44px] md:text-[44px] md:leading-[54px] lg:text-[72px] lg:leading-[88px]"
           >
             Find Your<br />Place in Goa
           </h2>
           <p
+            data-reveal-text
             class="text-[#FBF9F5]/80 text-[13px] lg:text-[14px] leading-[24px] mt-[20px] lg:mt-[24px] max-w-[430px]"
           >
             Explore Serene Meadows or speak with our team to learn more about
@@ -925,6 +910,7 @@ const displayFeatured = featuredProject || defaultFeatured;
 
         <!-- Right: enquiry form card -->
         <form
+          data-reveal-card
           class="bg-white rounded-[20px] p-[24px] lg:p-[32px] w-full lg:w-[560px] lg:flex-shrink-0 mt-[48px] lg:mt-0"
         >
           <div class="space-y-[20px] lg:space-y-[24px]">
@@ -1035,155 +1021,7 @@ const displayFeatured = featuredProject || defaultFeatured;
     </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="relative bg-[var(--color-navy)] overflow-hidden">
-    <!-- Main footer content -->
-    <div
-      class="relative z-10 w-full max-w-[1440px] mx-auto px-[18px] lg:px-[85px] pt-[64px] lg:pt-[96px] pb-[48px] lg:pb-[200px]"
-    >
-      <div class="flex flex-col lg:flex-row gap-[48px] lg:gap-0">
-        <!-- Col 1: quote + blurb -->
-        <div class="lg:w-[412px] lg:flex-shrink-0">
-          <h3
-            class="font-serif text-[#FBF9F5] text-[34px] leading-[42px] lg:text-[42px] lg:leading-[50px] font-normal"
-          >
-            A building is<br />a promise the<br />architect makes<br />to the
-            future.
-          </h3>
-          <p
-            class="text-white/55 text-[11px] leading-[20px] max-w-[320px] mt-[28px] lg:mt-[36px]"
-          >
-            Built on five decades of contracting experience, Hindustan
-            Constructions brings proven construction expertise to thoughtfully
-            planned residential developments across Goa.
-          </p>
-        </div>
-
-        <!-- Col 2: quick links -->
-        <div class="lg:w-[187px] lg:flex-shrink-0">
-          <h4
-            class="text-[10px] font-medium tracking-[0.22em] uppercase text-white/40 mb-[20px]"
-          >
-            Quick Links
-          </h4>
-          <ul class="space-y-[14px] text-[13px]">
-            <li>
-              <a
-                href="/"
-                class="no-underline text-white/85 hover:text-[var(--color-yellow)] transition-colors"
-                >Home</a
-              >
-            </li>
-            <li>
-              <a
-                href="#about"
-                class="no-underline text-white/85 hover:text-[var(--color-yellow)] transition-colors"
-                >About us</a
-              >
-            </li>
-            <li>
-              <a
-                href="#legacy"
-                class="no-underline text-white/85 hover:text-[var(--color-yellow)] transition-colors"
-                >Our Legacy</a
-              >
-            </li>
-            <li>
-              <a
-                href="#contact"
-                class="no-underline text-white/85 hover:text-[var(--color-yellow)] transition-colors"
-                >Contact</a
-              >
-            </li>
-          </ul>
-        </div>
-
-        <!-- Col 3: featured project -->
-        <div class="lg:w-[252px] lg:flex-shrink-0">
-          <h4
-            class="text-[10px] font-medium tracking-[0.22em] uppercase text-white/40 mb-[20px]"
-          >
-            Featured Project
-          </h4>
-          <div class="text-[13px] text-white/85">Serene Meadows</div>
-          <div class="text-[13px] text-white/55 mt-[2px]">
-            Kadamba Plateau, Goa
-          </div>
-          <a
-            href="#featured"
-            class="mt-[20px] inline-flex w-fit no-underline items-center gap-[10px] h-[48px] pl-5 pr-[6px] rounded-full bg-[#FFFCF7] text-[#0F172A] text-[14px] font-medium hover:bg-[var(--color-yellow)] transition-colors group"
-          >
-            Explore Project
-            <span
-              class="w-[36px] h-[36px] rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                ><line x1="7" y1="17" x2="17" y2="7"></line><polyline
-                  points="7 7 17 7 17 17"></polyline></svg
-              >
-            </span>
-          </a>
-        </div>
-
-        <!-- Col 4: disclaimer -->
-        <div class="lg:flex-1 lg:max-w-[340px]">
-          <h4
-            class="text-[10px] font-medium tracking-[0.22em] uppercase text-white/40 mb-[20px]"
-          >
-            Project Disclaimer
-          </h4>
-          <p class="text-[11px] text-white/50 leading-[22px]">
-            All project visuals are artist's impressions and are for
-            representational purposes only. Specifications, amenities, prices
-            and availability are subject to change. Please contact the sales
-            team for the latest information. [INSERT GOA RERA REGISTRATION
-            NUMBER].
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Giant watermark -->
-    <div
-      aria-hidden="true"
-      class="absolute bottom-[-10px] lg:bottom-[-32px] left-1/2 -translate-x-1/2 font-serif whitespace-nowrap select-none text-[#1E2653] text-[64px] md:text-[120px] lg:text-[190px] leading-none pointer-events-none"
-    >
-      Hindustan Developers
-    </div>
-
-    <!-- Bottom bar -->
-    <div class="relative z-10 border-t border-white/10">
-      <div
-        class="w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px] py-[22px] flex flex-col gap-[12px]"
-      >
-        <p class="text-[11px] text-white/40">
-          <span class="hidden lg:inline"
-            >&copy; 2026 Hindustan Constructions. All rights reserved.</span
-          >
-          <span class="lg:hidden"
-            >&copy; 2026 Hindustan Construction. All right reserved.</span
-          >
-        </p>
-        <div class="lg:hidden flex gap-[24px] text-[11px] text-white/40">
-          <a href="#" class="no-underline hover:text-white transition-colors"
-            >Privacy</a
-          >
-          <a href="#" class="no-underline hover:text-white transition-colors"
-            >Terms</a
-          >
-        </div>
-      </div>
-    </div>
-  </footer>
+  <Footer />
 </Layout>
 
 <script>
@@ -1271,67 +1109,7 @@ const displayFeatured = featuredProject || defaultFeatured;
   }
   // END: 3D Tilt Hover for Cards
 
-  //START: Nav Bar Control
-
-  const navInner = document.getElementById("nav-inner");
-
-  if (navInner) {
-    const extras = navInner.querySelectorAll(".nav-extra");
-
-    gsap.set(navInner, {
-      marginTop: "0px",
-      marginLeft: "0px",
-      width: "100%",
-      borderRadius: "0px",
-      backgroundColor: "rgba(244, 255, 177, 0)",
-      color: "#ffffff",
-      boxShadow: "none",
-      transformOrigin: "center top",
-      backdropFilter: "blur(10px)",
-    });
-
-    // Collapse: fade out links + CTA, shrink bar into a yellow pill around the logo
-    const navTween = gsap
-      .timeline({ paused: true })
-      .to(extras, { autoAlpha: 0, duration: 0.15, display: "none" }, 0)
-      .to(
-        navInner,
-        {
-          marginTop: "16px",
-          marginLeft: "16px",
-          width: "280px",
-          height: "56px",
-          paddingLeft: "24px",
-          paddingRight: "24px",
-          borderRadius: "999px",
-          backgroundColor: "rgba(244, 255, 177, 1)",
-          color: "#10183B",
-          boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
-          duration: 0.3,
-          ease: "power2.out",
-        },
-        0,
-      );
-
-    ScrollTrigger.observe({
-      target: window,
-      type: "scroll,wheel,touch",
-      onDown: () => {
-        if (window.scrollY > 20) {
-          navTween.play();
-        }
-      },
-      onUp: () => {
-        navTween.reverse();
-      },
-    });
-
-    window.addEventListener("scroll", () => {
-      if (window.scrollY <= 10) {
-        navTween.reverse();
-      }
-    });
-  }
+  // START: Nav style state is handled inside the shared Navbar component.
 
   if (aboutSection) {
     gsap.to(aboutSection, {
@@ -1345,6 +1123,7 @@ const displayFeatured = featuredProject || defaultFeatured;
   }
 
   // START: Scroll Breakpoints for Nav Style (GSAP)
+  const navInner = document.getElementById("nav-inner");
   ScrollTrigger.create({
     trigger: document.body,
     start: "top top",

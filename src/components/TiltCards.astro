@@ -1,0 +1,29 @@
+<!--
+  TiltCards — Shared 3D tilt-on-hover effect for `.tilt-card` elements.
+  Import this component at the bottom of any page layout that has tilt cards.
+  Matches the exact implementation used in index.astro.
+  Only activates on true pointer devices (mouse); touch/trackpad users are unaffected.
+-->
+<script>
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    document.querySelectorAll<HTMLElement>(".tilt-card").forEach((el) => {
+      el.style.transformStyle = "preserve-3d";
+      el.style.willChange = "transform";
+      el.style.transition = "transform 0.15s ease-out";
+
+      el.addEventListener("mousemove", (e) => {
+        const r = el.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transform = `perspective(800px) rotateX(${(-py * 10).toFixed(2)}deg) rotateY(${(px * 12).toFixed(2)}deg) scale(1.02)`;
+      });
+
+      el.addEventListener("mouseleave", () => {
+        el.style.transition = "transform 0.4s ease-out";
+        el.style.transform =
+          "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)";
+        setTimeout(() => (el.style.transition = "transform 0.15s ease-out"), 400);
+      });
+    });
+  }
+</script>

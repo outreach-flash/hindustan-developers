@@ -1,13 +1,93 @@
 {
   "title": "Serene Meadows",
-  "subtitle": "Luxury villas with panoramic Goa views",
-  "propertyType": "Villa",
-  "location": "Assagao, North Goa",
-  "coverImage": null,
+  "subtitle": "A premium gated community of 71 thoughtfully planned 2 and 3 BHK residences, created for families, second-home buyers and investors seeking a well-connected address in Goa.",
+  "propertyType": "Apartment",
+  "location": "Kadamba Plateau, Goa",
+  "priceLine": "2 & 3 BHK Apartments Starting from ₹1.05 Crore",
+  "coverImage": "/images/hero-section-image.png",
+  "overviewBody": "Serene Meadows is an exclusive community of 71 premium residences comprising 63 spacious 2 BHK apartments and 8 elegant 3 BHK apartments. Each home is planned to balance generous living spaces, practical layouts and a sense of everyday ease.\n\nWithin the secure gated community, residents can enjoy a signature swimming pool, a well-equipped gymnasium, landscaped gardens and shared spaces designed to bring comfort, wellness and connection into daily life.",
+  "highlights": [
+    "Prime Location at Kadamba Plateau, Goa",
+    "71 premium apartments",
+    "63 two-bedroom and 8 three-bedroom residences",
+    "₹1.05 crore onwards",
+    "Secure, gated residential development",
+    "RERA registered [INSERT GOA RERA REGISTRATION NUMBER]"
+  ],
+  "settingBody": "From Serene Meadows, the character of nearby Old Goa unfolds through views of historic churches, rolling green hills and foliage-filled landscapes. Mornings arrive with soft light across the horizon, while evenings bring a slower rhythm home. It is a setting where Goa's heritage and natural landscape remain part of everyday life.",
+  "lifestyleBody": "The double-height atrium creates a welcoming centre for the community, while the swimming pool, gymnasium and landscaped areas make space for movement, rest and time together. A community hall with a pantry and common washroom adds a practical setting for celebrations, meetings and shared occasions.",
+  "amenities": [
+    "Swimming pool",
+    "Well-equipped gymnasium",
+    "Landscaped garden and green areas",
+    "Double-height atrium",
+    "Community hall with pantry and common washroom",
+    "Car parking",
+    "Large terrace spaces",
+    "Power backup for lifts and common areas",
+    "CCTV surveillance",
+    "Provision for solar water heaters",
+    "Provision for EV charging",
+    "24/7 manned gate"
+  ],
+  "apartmentFeatures": [
+    "Jaquar make stainless-steel fittings",
+    "Anchor/Finolex fire-resistant wiring",
+    "Concrete-reinforced sloping roof with tiles",
+    "Teakwood main door",
+    "Solid wood bedroom doors",
+    "UPVC windows"
+  ],
+  "connectivityIntro": "Serene Meadows places healthcare, education, shopping, transport links and Panaji within convenient driving distance.",
+  "connectivityPlaces": [
+    { "name": "Goa International Airport", "travelTime": "30 Minutes", "icon": "airport" },
+    { "name": "MOPA Railway Station", "travelTime": "10 Minutes", "icon": "train" },
+    { "name": "Baga Beach", "travelTime": "20 Minutes", "icon": "beach" },
+    { "name": "Calangute Beach", "travelTime": "25 Minutes", "icon": "beach" },
+    { "name": "Mapusa (Shopping & Market)", "travelTime": "20 Minutes", "icon": "shopping" },
+    { "name": "Mall de Goa", "travelTime": "20 Minutes", "icon": "shopping" },
+    { "name": "Panaji City", "travelTime": "15 Minutes", "icon": "city" }
+  ],
+  "mapImage": "/images/map-image.png",
+  "floorPlans": [
+    { "label": "2BHK", "image": "/images/projects/casa-kewals.png" },
+    { "label": "3BHK", "image": "/images/projects/vil-maris.png" },
+    { "label": "Terrace", "image": "/images/projects/casa-de-amora.png" }
+  ],
+  "gallery": [
+    {
+      "label": "Landscape Areas",
+      "description": "Disciplined planning and experienced execution guide every project milestone.",
+      "images": ["/images/projects/casa-kewals.png", "/images/hero-section-image.png"]
+    },
+    {
+      "label": "Exterior",
+      "description": "A contemporary facade shaped by Goa's light and landscape.",
+      "images": ["/images/projects/vil-maris.png"]
+    },
+    {
+      "label": "Amenities",
+      "description": "Spaces designed for movement, rest and time together.",
+      "images": ["/images/projects/casa-de-amora.png"]
+    },
+    {
+      "label": "Living & Dining",
+      "description": "Generous living spaces with practical, comfortable layouts.",
+      "images": ["/images/projects/casa-kewals.png"]
+    },
+    {
+      "label": "Bedroom",
+      "description": "Calm, well-lit bedrooms planned for everyday ease.",
+      "images": ["/images/projects/vil-maris.png"]
+    }
+  ],
+  "reraId": "[INSERT GOA RERA REGISTRATION NUMBER]",
+  "ctaImage": "/images/inquiry-section-bg-image.png",
+  "sortOrder": 1,
   "details": [
-    { "key": "Beds", "value": "3 BHK" },
-    { "key": "Baths", "value": "3" },
-    { "key": "Area", "value": "2,100 sq ft" },
-    { "key": "Price", "value": "₹ 1.25 Cr" }
+    { "key": "Residences", "value": "71 Premium" },
+    { "key": "Spacious", "value": "63 2 BHK" },
+    { "key": "Elegant", "value": "8 3 BHK" },
+    { "key": "Starting from", "value": "₹ 1.05 Crores" }
   ]
 }

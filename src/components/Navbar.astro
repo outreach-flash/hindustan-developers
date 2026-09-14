@@ -1,0 +1,245 @@
+---
+interface Props {
+  variant?: "overlay" | "light";
+}
+
+const { variant = "overlay" } = Astro.props;
+const isLight = variant === "light";
+
+const linkBase =
+  "text-[13px] no-underline tracking-[0.14em] uppercase text-current transition-colors font-medium";
+const linkHover = isLight
+  ? "hover:text-[var(--color-navy-mid)]"
+  : "hover:text-[var(--color-yellow)]";
+---
+
+<nav
+  class="fixed top-0 left-0 right-0 z-50"
+  id="nav-bar"
+  data-variant={variant}
+>
+  <div
+    id="nav-inner"
+    class:list={[
+      "flex items-center justify-between h-[70px] lg:h-[90px] px-[20px] lg:px-[30px] transition-colors duration-300 backdrop-blur-md",
+      isLight ? "text-[#0F172A] bg-white/60" : "text-white bg-black/10",
+    ]}
+  >
+    <!-- Logo: serif "Hindustan" + italic serif "developers" -->
+    <a
+      href="/"
+      class="no-underline font-serif text-[22px] lg:text-[26px] leading-none text-current"
+      >Hindustan <em class="italic">developers</em></a
+    >
+    <!-- Nav links -->
+    <div class="nav-extra hidden lg:flex items-center gap-[52px]">
+      <a href="/about" class:list={[linkBase, linkHover]}>About Us</a>
+      <a href="/#featured" class:list={[linkBase, linkHover]}>Serene Meadows</a>
+      <a href="/#legacy" class:list={[linkBase, linkHover]}>Our Legacy</a>
+      <a href="/contact" class:list={[linkBase, linkHover]}>Contact</a>
+    </div>
+    <!-- Enquire Now -->
+    {
+      isLight ? (
+        <a
+          href="/contact"
+          class="nav-extra hidden lg:inline-flex no-underline items-center gap-[14px] h-[48px] pl-6 pr-[6px] rounded-full bg-[#FFFCF7] border border-[#C9CEDD] text-[#0F172A] text-[14px] font-medium hover:bg-[var(--color-yellow)] transition-colors group"
+        >
+          Enquire Now
+          <span class="w-[36px] h-[36px] rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0 group-hover:bg-[#1b2452] transition-colors">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="7" y1="17" x2="17" y2="7" />
+              <polyline points="7 7 17 7 17 17" />
+            </svg>
+          </span>
+        </a>
+      ) : (
+        <a
+          href="/contact"
+          class="nav-extra hidden lg:inline-flex no-underline items-center gap-[10px] h-[42px] pl-6 pr-[20px] rounded-full bg-[var(--color-yellow)] text-[var(--color-navy)] text-[12px] font-bold uppercase tracking-[0.12em] hover:bg-white transition-colors"
+        >
+          Enquire Now
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="7" y1="17" x2="17" y2="7" />
+            <polyline points="7 7 17 7 17 17" />
+          </svg>
+        </a>
+      )
+    }
+    <!-- Hamburger: 2 lines -->
+    <button
+      id="nav-menu-btn"
+      class="lg:hidden w-8 h-8 flex flex-col justify-center items-center gap-[7px] cursor-pointer text-current"
+      aria-label="Menu"
+      aria-expanded="false"
+    >
+      <span class="w-6 h-[2px] bg-current"></span>
+      <span class="w-6 h-[2px] bg-current"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu overlay -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-[60] bg-[var(--color-navy)] text-white hidden flex-col"
+  aria-hidden="true"
+>
+  <div class="flex items-center justify-between h-[70px] px-[20px]">
+    <a
+      href="/"
+      class="no-underline font-serif text-[22px] leading-none text-white"
+      >Hindustan <em class="italic">developers</em></a
+    >
+    <button
+      id="mobile-menu-close"
+      class="w-8 h-8 flex items-center justify-center cursor-pointer text-white"
+      aria-label="Close menu"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><line x1="18" y1="6" x2="6" y2="18"></line><line
+          x1="6"
+          y1="6"
+          x2="18"
+          y2="18"></line></svg
+      >
+    </button>
+  </div>
+  <nav class="flex-1 flex flex-col justify-center px-[24px] gap-[28px]">
+    <a
+      href="/about"
+      class="mobile-menu-link no-underline text-white font-heading font-medium text-[32px] leading-[40px] tracking-[-0.02em]"
+      >About Us</a
+    >
+    <a
+      href="/#featured"
+      class="mobile-menu-link no-underline text-white font-heading font-medium text-[32px] leading-[40px] tracking-[-0.02em]"
+      >Serene Meadows</a
+    >
+    <a
+      href="/#legacy"
+      class="mobile-menu-link no-underline text-white font-heading font-medium text-[32px] leading-[40px] tracking-[-0.02em]"
+      >Our Legacy</a
+    >
+    <a
+      href="/contact"
+      class="mobile-menu-link no-underline text-white font-heading font-medium text-[32px] leading-[40px] tracking-[-0.02em]"
+      >Contact</a
+    >
+    <a
+      href="/contact"
+      class="mobile-menu-link mt-[16px] inline-flex w-fit no-underline items-center gap-[10px] h-[50px] pl-6 pr-[20px] rounded-full bg-[var(--color-yellow)] text-[var(--color-navy)] text-[12px] font-bold uppercase tracking-[0.12em]"
+    >
+      Enquire Now
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="12"
+        height="12"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><line x1="7" y1="17" x2="17" y2="7"></line><polyline
+          points="7 7 17 7 17 17"></polyline></svg
+      >
+    </a>
+  </nav>
+</div>
+
+<script>
+  const menuBtn = document.getElementById("nav-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const closeBtn = document.getElementById("mobile-menu-close");
+
+  function openMenu() {
+    if (!mobileMenu || !menuBtn) return;
+    mobileMenu.classList.remove("hidden");
+    mobileMenu.classList.add("flex");
+    mobileMenu.setAttribute("aria-hidden", "false");
+    menuBtn.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    if (!mobileMenu || !menuBtn) return;
+    mobileMenu.classList.add("hidden");
+    mobileMenu.classList.remove("flex");
+    mobileMenu.setAttribute("aria-hidden", "true");
+    menuBtn.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }
+
+  menuBtn?.addEventListener("click", openMenu);
+  closeBtn?.addEventListener("click", closeMenu);
+  mobileMenu
+    ?.querySelectorAll(".mobile-menu-link")
+    .forEach((link) => link.addEventListener("click", closeMenu));
+</script>
+
+<style>
+  /* Frost tint over dark sections (hero, contact, footer) */
+  #nav-bar[data-variant="overlay"] #nav-inner {
+    background: rgba(0, 0, 0, 0.12);
+  }
+  /* Frost tint over light/cream sections */
+  #nav-bar[data-variant="overlay"].nav-on-light #nav-inner {
+    color: #0f172a;
+    background: rgba(255, 255, 255, 0.62);
+  }
+</style>
+
+<script>
+  const navBar = document.getElementById("nav-bar");
+
+  if (navBar?.dataset.variant === "overlay") {
+    const sections = document.querySelectorAll(
+      "main > section, [data-nav-theme]",
+    );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const theme =
+              entry.target.getAttribute("data-nav-theme") ?? "light";
+            navBar.classList.toggle("nav-on-light", theme === "light");
+          }
+        }
+      },
+      // Shrink the root to the strip under the navbar so only the section
+      // directly beneath it counts as intersecting.
+      { rootMargin: `0px 0px -${window.innerHeight - 80}px 0px` },
+    );
+    sections.forEach((s) => observer.observe(s));
+  }
+</script>

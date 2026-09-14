@@ -1,3 +1,15 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "Hindustan Developers – A Legacy of Building",
+	description = "Hindustan Developers – A new chapter in living in Goa.",
+} = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -6,17 +18,21 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Hindustan Developers – A Legacy of Building</title>
-		<meta name="description" content="Hindustan Developers – A new chapter in living in Goa." />
+		<title>{title}</title>
+		<meta name="description" content={description} />
 		
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 		
 		<link rel="preload" as="image" href="/images/hero-section-image.png">
+		<script is:inline>
+			document.documentElement.classList.add('js');
+		</script>
 	</head>
 	<body>
 		<slot />
+		<script src="../scripts/reveals.ts"></script>
 	</body>
 </html>
 

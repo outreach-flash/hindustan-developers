@@ -27,3 +27,45 @@ body {
   background-color: var(--color-cream);
   color: var(--color-dark);
 }
+
+/* Reveal animations initial state (only active when JS is enabled) */
+html.js [data-reveal-img] {
+  opacity: 0;
+  transform: scale(1.18);
+  will-change: transform, opacity;
+}
+
+html.js [data-reveal-title] {
+  opacity: 0;
+  transform: translateY(35px);
+  will-change: transform, opacity;
+}
+
+html.js [data-reveal-text] {
+  opacity: 0;
+  transform: translateY(25px);
+  will-change: transform, opacity;
+}
+
+html.js [data-reveal-card] {
+  opacity: 0;
+  transform: translateY(30px);
+  will-change: transform, opacity;
+}
+
+/* Ensure reveal image containers clip scaling images cleanly */
+.reveal-img-container,
+[data-reveal-container] {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal-img],
+  html.js [data-reveal-title],
+  html.js [data-reveal-text],
+  html.js [data-reveal-card] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
