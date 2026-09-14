@@ -7,7 +7,7 @@ const { variant = "overlay" } = Astro.props;
 const isLight = variant === "light";
 
 const linkBase =
-  "text-[13px] no-underline tracking-[0.14em] uppercase text-current transition-colors font-medium";
+  "nav-link text-[13px] no-underline tracking-[0.14em] uppercase text-current transition-colors font-medium";
 const linkHover = isLight
   ? "hover:text-[var(--color-navy-mid)]"
   : "hover:text-[var(--color-yellow)]";
@@ -39,53 +39,28 @@ const linkHover = isLight
       <a href="/contact" class:list={[linkBase, linkHover]}>Contact</a>
     </div>
     <!-- Enquire Now -->
-    {
-      isLight ? (
-        <a
-          href="/contact"
-          class="nav-extra hidden lg:inline-flex no-underline items-center gap-[14px] h-[48px] pl-6 pr-[6px] rounded-full bg-[#FFFCF7] border border-[#C9CEDD] text-[#0F172A] text-[14px] font-medium hover:bg-[var(--color-yellow)] transition-colors group"
+    <a
+      href="/contact"
+      class="nav-extra hidden lg:inline-flex no-underline items-center gap-[14px] h-[48px] pl-6 pr-[6px] rounded-full bg-[#FFFCF7] border border-[#C9CEDD] text-[#0F172A] text-[14px] font-medium hover:bg-[var(--color-yellow)] hover:border-[var(--color-yellow)] transition-colors group"
+    >
+      Enquire Now
+      <span class="w-[36px] h-[36px] rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0 group-hover:bg-[#1b2452] transition-colors">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
         >
-          Enquire Now
-          <span class="w-[36px] h-[36px] rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0 group-hover:bg-[#1b2452] transition-colors">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <line x1="7" y1="17" x2="17" y2="7" />
-              <polyline points="7 7 17 7 17 17" />
-            </svg>
-          </span>
-        </a>
-      ) : (
-        <a
-          href="/contact"
-          class="nav-extra hidden lg:inline-flex no-underline items-center gap-[10px] h-[42px] pl-6 pr-[20px] rounded-full bg-[var(--color-yellow)] text-[var(--color-navy)] text-[12px] font-bold uppercase tracking-[0.12em] hover:bg-white transition-colors"
-        >
-          Enquire Now
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <line x1="7" y1="17" x2="17" y2="7" />
-            <polyline points="7 7 17 7 17 17" />
-          </svg>
-        </a>
-      )
-    }
+          <line x1="7" y1="17" x2="17" y2="7" />
+          <polyline points="7 7 17 7 17 17" />
+        </svg>
+      </span>
+    </a>
     <!-- Hamburger: 2 lines -->
     <button
       id="nav-menu-btn"
@@ -157,22 +132,25 @@ const linkHover = isLight
     >
     <a
       href="/contact"
-      class="mobile-menu-link mt-[16px] inline-flex w-fit no-underline items-center gap-[10px] h-[50px] pl-6 pr-[20px] rounded-full bg-[var(--color-yellow)] text-[var(--color-navy)] text-[12px] font-bold uppercase tracking-[0.12em]"
+      class="mobile-menu-link mt-[16px] inline-flex w-fit no-underline items-center gap-[14px] h-[48px] pl-6 pr-[6px] rounded-full bg-[#FFFCF7] text-[#0F172A] text-[14px] font-medium hover:bg-[var(--color-yellow)] transition-colors group"
     >
       Enquire Now
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="12"
-        height="12"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        ><line x1="7" y1="17" x2="17" y2="7"></line><polyline
-          points="7 7 17 7 17 17"></polyline></svg
-      >
+      <span class="w-[36px] h-[36px] rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0 group-hover:bg-[#1b2452] transition-colors">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="7" y1="17" x2="17" y2="7" />
+          <polyline points="7 7 17 7 17 17" />
+        </svg>
+      </span>
     </a>
   </nav>
 </div>
@@ -216,6 +194,10 @@ const linkHover = isLight
   #nav-bar[data-variant="overlay"].nav-on-light #nav-inner {
     color: #0f172a;
     background: rgba(255, 255, 255, 0.62);
+  }
+  /* Link hover color over light sections */
+  #nav-bar[data-variant="overlay"].nav-on-light .nav-link:hover {
+    color: var(--color-navy-mid);
   }
 </style>
 
