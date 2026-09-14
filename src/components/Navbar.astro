@@ -34,7 +34,7 @@ const linkHover = isLight
     <!-- Nav links -->
     <div class="nav-extra hidden lg:flex items-center gap-[52px]">
       <a href="/about" class:list={[linkBase, linkHover]}>About Us</a>
-      <a href="/#featured" class:list={[linkBase, linkHover]}>Serene Meadows</a>
+      <a href="/projects/serene-meadows" class:list={[linkBase, linkHover]}>Serene Meadows</a>
       <a href="/#legacy" class:list={[linkBase, linkHover]}>Our Legacy</a>
       <a href="/contact" class:list={[linkBase, linkHover]}>Contact</a>
     </div>
@@ -141,7 +141,7 @@ const linkHover = isLight
       >About Us</a
     >
     <a
-      href="/#featured"
+      href="/projects/serene-meadows"
       class="mobile-menu-link no-underline text-white font-heading font-medium text-[32px] leading-[40px] tracking-[-0.02em]"
       >Serene Meadows</a
     >
@@ -223,23 +223,25 @@ const linkHover = isLight
   const navBar = document.getElementById("nav-bar");
 
   if (navBar?.dataset.variant === "overlay") {
-    const sections = document.querySelectorAll(
+    const sections = document.querySelectorAll<HTMLElement>(
       "main > section, [data-nav-theme]",
     );
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            const theme =
-              entry.target.getAttribute("data-nav-theme") ?? "light";
-            navBar.classList.toggle("nav-on-light", theme === "light");
-          }
+
+    const updateTheme = () => {
+      const navHeight = 80;
+      let activeTheme = "light";
+
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= navHeight && rect.bottom > navHeight) {
+          activeTheme = section.getAttribute("data-nav-theme") ?? "light";
         }
-      },
-      // Shrink the root to the strip under the navbar so only the section
-      // directly beneath it counts as intersecting.
-      { rootMargin: `0px 0px -${window.innerHeight - 80}px 0px` },
-    );
-    sections.forEach((s) => observer.observe(s));
+      });
+
+      navBar.classList.toggle("nav-on-light", activeTheme === "light");
+    };
+
+    window.addEventListener("scroll", updateTheme, { passive: true });
+    updateTheme();
   }
 </script>

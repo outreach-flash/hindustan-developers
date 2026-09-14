@@ -7,6 +7,20 @@ import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import TiltCards from "../components/TiltCards.astro";
 
+type RealEstateProject = {
+  slug: string;
+  title: string;
+  subtitle?: string;
+  propertyType?: string;
+  location?: string;
+  priceLine?: string;
+  coverImage?: string | null;
+  overviewBody?: string;
+  highlights?: string[];
+  sortOrder?: number;
+  details?: { key: string; value: string }[];
+};
+
 type LegacyProject = {
   title: string;
   location: string;
@@ -51,9 +65,39 @@ const fallbackProjects: LegacyProject[] = [
   },
 ];
 
+const fallbackRealEstate: RealEstateProject[] = [
+  {
+    slug: "serene-meadows",
+    title: "Serene Meadows",
+    subtitle:
+      "A premium gated community of 71 thoughtfully planned 2 and 3 BHK residences, created for families, second-home buyers and investors seeking a well-connected address in Goa.",
+    propertyType: "Apartment",
+    location: "Kadamba Plateau, Goa",
+    priceLine: "2 & 3 BHK Apartments Starting from ₹1.05 Crore",
+    coverImage: "/images/hero-section-image.png",
+    details: [
+      { key: "Residences", value: "71 Premium" },
+      { key: "Spacious", value: "63 2 BHK" },
+      { key: "Elegant", value: "8 3 BHK" },
+      { key: "Starting from", value: "₹ 1.05 Crores" },
+    ],
+  },
+];
+
 let legacyProjects: LegacyProject[] = fallbackProjects;
+let realEstateProjects: RealEstateProject[] = [];
+
 try {
   const reader = createReader(process.cwd(), keystaticConfig);
+  const realEstateEntries = await reader.collections.projects.all();
+  if (realEstateEntries && realEstateEntries.length) {
+    realEstateProjects = realEstateEntries
+      .map(({ slug, entry }) => ({
+        slug,
+        ...(entry as any),
+      }))
+      .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
+  }
   const entries = await reader.collections.legacyProjects.all();
   if (entries && entries.length) {
     legacyProjects = entries
@@ -61,6 +105,10 @@ try {
       .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
   }
 } catch (error) {}
+
+const displayDevelopments = realEstateProjects.length
+  ? realEstateProjects
+  : fallbackRealEstate;
 
 const metaProject = legacyProjects[0];
 
@@ -162,6 +210,139 @@ const experienceCards = [
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUR DEVELOPMENTS — Real Estate Projects -->
+    <section id="developments" class="py-[72px] lg:py-[100px] border-b border-[#0F172A]/8 bg-[#FAF6F2]">
+      <div class="w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px]">
+        <div data-reveal-group class="flex flex-col">
+          <span
+            data-reveal-text
+            class="inline-flex w-fit items-center gap-[10px] h-[46px] px-[20px] rounded-full bg-[#A9A8AC] text-[#F4F1ED] text-[12px] font-medium"
+          >
+            <span class="w-[6px] h-[6px] rounded-full bg-[var(--color-navy)]"></span>
+            Independent Developments
+          </span>
+          <div class="mt-[24px] lg:mt-[32px] flex flex-col lg:flex-row lg:items-end justify-between gap-[20px]">
+            <div>
+              <h2
+                data-reveal-title
+                class="font-heading font-bold text-[30px] leading-[38px] md:text-[38px] md:leading-[46px] lg:text-[48px] lg:leading-[56px] tracking-[-0.02em] text-[#0F172A]"
+              >
+                Our Developments
+              </h2>
+              <p data-reveal-text class="mt-[12px] text-[14px] lg:text-[15px] leading-[26px] text-[#0F172A]/70 max-w-[620px]">
+                Built on five decades of contracting experience, these residential projects reflect our commitment to thoughtful planning, dependable construction and spaces created for how families live.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-[48px] lg:mt-[64px] flex flex-col gap-[48px]" data-reveal-cards>
+          {
+            displayDevelopments.map((dev) => (
+              <article
+                data-reveal-card
+                class="tilt-card rounded-[28px] bg-white border border-[#0F172A]/6 shadow-[0_12px_40px_rgba(16,24,59,0.06)] overflow-hidden lg:grid lg:grid-cols-2 lg:items-stretch"
+              >
+                <!-- Image container -->
+                <div class="relative h-[320px] sm:h-[400px] lg:h-auto min-h-[380px] overflow-hidden">
+                  <a href={`/projects/${dev.slug}`} class="block w-full h-full group cursor-pointer">
+                    <img
+                      data-reveal-img
+                      src={dev.coverImage || "/images/hero-section-image.png"}
+                      alt={dev.title}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
+                    />
+                  </a>
+                  {dev.propertyType && (
+                    <span class="absolute top-[20px] left-[20px] bg-white/90 backdrop-blur-md text-[var(--color-navy)] text-[11px] font-semibold uppercase tracking-[0.14em] px-[16px] py-[8px] rounded-full shadow-sm">
+                      {dev.propertyType}
+                    </span>
+                  )}
+                </div>
+
+                <!-- Content container -->
+                <div class="p-[28px] sm:p-[40px] lg:p-[56px] flex flex-col justify-between">
+                  <div>
+                    {dev.location && (
+                      <div class="flex items-center gap-[8px] text-[13px] font-medium text-[#0F172A]/60 mb-[16px]">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                          <circle cx="12" cy="10" r="3" />
+                        </svg>
+                        {dev.location}
+                      </div>
+                    )}
+                    <h3 class="font-heading font-bold text-[32px] lg:text-[40px] leading-tight tracking-[-0.02em] text-[#0F172A]">
+                      <a href={`/projects/${dev.slug}`} class="no-underline text-inherit hover:text-[var(--color-navy-mid)] transition-colors">
+                        {dev.title}
+                      </a>
+                    </h3>
+                    {dev.priceLine && (
+                      <div class="mt-[10px] text-[15px] lg:text-[16px] font-semibold text-[var(--color-navy)]">
+                        {dev.priceLine}
+                      </div>
+                    )}
+                    {dev.subtitle && (
+                      <p class="mt-[16px] text-[14px] lg:text-[15px] leading-[26px] text-[#0F172A]/70">
+                        {dev.subtitle}
+                      </p>
+                    )}
+
+                    {dev.details && dev.details.length > 0 && (
+                      <div class="mt-[24px] grid grid-cols-2 gap-3">
+                        {dev.details.map((d) => (
+                          <div class="bg-[var(--color-cream)] rounded-[14px] px-[16px] py-[10px] border border-[#0F172A]/5">
+                            <div class="text-[14px] font-bold text-[var(--color-navy)]">{d.value}</div>
+                            <div class="text-[11px] uppercase tracking-wider text-[#0F172A]/50 mt-[2px]">{d.key}</div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  <div class="mt-[32px] pt-[24px] border-t border-[#0F172A]/8 flex items-center justify-between">
+                    <a
+                      href={`/projects/${dev.slug}`}
+                      class="inline-flex no-underline items-center gap-[12px] h-[50px] pl-6 pr-[6px] rounded-full bg-[var(--color-navy)] text-white text-[14px] font-medium hover:bg-[#1b2452] transition-colors group"
+                    >
+                      <span>Explore Project</span>
+                      <span class="w-[38px] h-[38px] rounded-full bg-white text-[var(--color-navy)] flex items-center justify-center flex-shrink-0 group-hover:bg-[var(--color-yellow)] transition-colors">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <line x1="5" y1="12" x2="19" y2="12"></line>
+                          <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -374,7 +555,7 @@ const experienceCards = [
         </p>
         <a
           data-reveal-btn
-          href="/#featured"
+          href="/projects/serene-meadows"
           class="mt-[28px] lg:mt-[36px] inline-flex w-fit no-underline items-center gap-[14px] h-[48px] pl-6 pr-[6px] rounded-full bg-[#FFFCF7] text-[#0F172A] text-[14px] font-medium hover:bg-[var(--color-yellow)] transition-colors group"
         >
           Explore Serene Meadows

@@ -10,6 +10,8 @@ const reader = createReader(process.cwd(), keystaticConfig);
 let featuredProject = null;
 let featuredProjectSlug = null;
 let allProjects = [];
+let legacyProjects = [];
+
 try {
   const featured = await reader.singletons.featuredProject.read();
   if (featured?.projectSlug) {
@@ -20,6 +22,12 @@ try {
   }
   const projects = await reader.collections.projects.all();
   allProjects = projects || [];
+  const legacy = await reader.collections.legacyProjects.all();
+  if (legacy && legacy.length) {
+    legacyProjects = legacy
+      .map(({ entry }) => entry)
+      .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
+  }
 } catch (error) {}
 
 const defaultFeatured = {
@@ -35,7 +43,29 @@ const defaultFeatured = {
   ],
 };
 
+const fallbackLegacyProjects = [
+  {
+    title: "Casa Kewals",
+    location: "Anjuna, Goa",
+    client: "Beera Home",
+    image: "/images/projects/casa-kewals.png",
+  },
+  {
+    title: "Vil Maris",
+    location: "Assagao, Goa",
+    client: "Ritesh Mehta",
+    image: "/images/projects/vil-maris.png",
+  },
+  {
+    title: "Casa De Amora",
+    location: "Pilerne, Goa",
+    client: "Anand Incorporation",
+    image: "/images/projects/casa-de-amora.png",
+  },
+];
+
 const displayFeatured = featuredProject || defaultFeatured;
+const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyProjects;
 ---
 
 <Layout>
@@ -75,10 +105,10 @@ const displayFeatured = featuredProject || defaultFeatured;
         >
           <!-- Primary CTA: white pill with dark circle arrow -->
           <a
-            href="#featured"
+            href={featuredProjectSlug ? `/projects/${featuredProjectSlug}` : "/projects/serene-meadows"}
             class="inline-flex no-underline items-center gap-[10px] lg:gap-[14px] bg-white text-[var(--color-navy)] rounded-full h-[50px] lg:h-[55px] pl-5 lg:pl-6 pr-2 font-medium text-[14px] lg:text-[15px] hover:bg-[var(--color-yellow)] transition-colors group whitespace-nowrap"
           >
-            Explore Serene Meadows
+            Explore {displayFeatured.title}
             <span
               class="w-[34px] h-[34px] lg:w-[38px] lg:h-[38px] rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0 transition-colors"
             >
@@ -128,6 +158,7 @@ const displayFeatured = featuredProject || defaultFeatured;
               class="flex-1 lg:flex-none lg:w-[175px] flex flex-col items-center justify-center"
             >
               <div
+                data-counter
                 class="text-white font-light text-[26px] lg:text-[38px] leading-none tracking-tight"
               >
                 100+
@@ -145,6 +176,7 @@ const displayFeatured = featuredProject || defaultFeatured;
               class="flex-1 lg:flex-none lg:w-[175px] flex flex-col items-center justify-center"
             >
               <div
+                data-counter
                 class="text-white font-light text-[26px] lg:text-[38px] leading-none tracking-tight"
               >
                 50+
@@ -160,6 +192,7 @@ const displayFeatured = featuredProject || defaultFeatured;
               class="flex-1 lg:flex-none lg:w-[175px] flex flex-col items-center justify-center"
             >
               <div
+                data-counter
                 class="text-white font-light text-[26px] lg:text-[38px] leading-none tracking-tight"
               >
                 98%
@@ -290,7 +323,7 @@ const displayFeatured = featuredProject || defaultFeatured;
             <h3
               class="font-heading font-bold text-[var(--color-navy)] text-lg mb-2 tracking-tight"
             >
-              50+ Years
+              <span data-counter>50+</span> Years
             </h3>
             <p
               class="text-[var(--color-navy)]/65 text-[13px] leading-relaxed font-medium"
@@ -407,16 +440,19 @@ const displayFeatured = featuredProject || defaultFeatured;
         >
           <!-- Image LEFT -->
           <div class="order-2 lg:order-1">
-            <div class="tilt-card h-[460px] lg:h-[620px] w-full relative overflow-hidden rounded-[28px] shadow-2xl">
+            <a
+              href={featuredProjectSlug ? `/projects/${featuredProjectSlug}` : "/projects/serene-meadows"}
+              class="block tilt-card h-[460px] lg:h-[620px] w-full relative overflow-hidden rounded-[28px] shadow-2xl group cursor-pointer"
+            >
               <img
                 data-reveal-img
                 src={featuredProject?.coverImage ||
-                  "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80"}
+                  "/images/hero-section-image.png"}
                 alt={displayFeatured.title}
-                class="w-full h-full object-cover rounded-[28px]"
+                class="w-full h-full object-cover rounded-[28px] group-hover:scale-105 transition-transform duration-700"
                 loading="lazy"
               />
-            </div>
+            </a>
             <div
               class="mt-5 flex items-center gap-2 text-[var(--color-gray)] text-[13px] font-semibold tracking-wide"
             >
@@ -449,7 +485,12 @@ const displayFeatured = featuredProject || defaultFeatured;
               data-reveal-title
               class="font-heading text-[42px] md:text-5xl lg:text-[58px] font-bold text-[var(--color-navy)] mb-6 tracking-tight leading-[1.05]"
             >
-              {displayFeatured.title}
+              <a
+                href={featuredProjectSlug ? `/projects/${featuredProjectSlug}` : "/projects/serene-meadows"}
+                class="no-underline text-inherit hover:text-[var(--color-navy-mid)] transition-colors"
+              >
+                {displayFeatured.title}
+              </a>
             </h2>
             <p
               data-reveal-text
@@ -475,10 +516,10 @@ const displayFeatured = featuredProject || defaultFeatured;
 
             <a
               data-reveal-btn
-              href={featuredProjectSlug ? `/projects/${featuredProjectSlug}` : "#"}
+              href={featuredProjectSlug ? `/projects/${featuredProjectSlug}` : "/projects/serene-meadows"}
               class="inline-flex no-underline items-center gap-3 bg-[var(--color-navy)] text-white rounded-full px-7 py-3.5 font-bold text-sm hover:bg-[var(--color-yellow)] hover:text-[var(--color-navy)] transition-colors group"
             >
-              View Project
+              Explore Project
               <span
                 class="w-7 h-7 no-underline rounded-full bg-white/15 text-white flex items-center justify-center text-sm group-hover:bg-[var(--color-navy)] group-hover:text-white transition-colors"
                 >→</span
@@ -575,6 +616,7 @@ const displayFeatured = featuredProject || defaultFeatured;
               >
               <div class="mt-auto relative z-10">
                 <div
+                  data-counter
                   class="text-white font-heading font-bold text-[26px] lg:text-[30px] leading-none tracking-tight"
                 >
                   100+
@@ -637,7 +679,7 @@ const displayFeatured = featuredProject || defaultFeatured;
                   <div
                     class="text-[#0F172A] font-heading font-bold text-[24px] lg:text-[28px] leading-none tracking-tight"
                   >
-                    50 Years
+                    <span data-counter>50</span> Years
                   </div>
                   <p
                     class="text-[#0F172A]/70 text-[12px] lg:text-[13px] leading-[20px] lg:leading-[22px] mt-[8px]"
@@ -671,6 +713,7 @@ const displayFeatured = featuredProject || defaultFeatured;
                 >Client satisfaction</span
               >
               <div
+                data-counter
                 class="text-[#0F172A] font-heading font-bold text-[24px] lg:text-[28px] leading-none tracking-tight mt-[6px]"
               >
                 98%
@@ -766,53 +809,25 @@ const displayFeatured = featuredProject || defaultFeatured;
         style="scrollbar-width: none;"
       >
         {
-          [
-            {
-              name: "Casa Kewals",
-              label: "Residential",
-              chip: true,
-              caption: "For Beera Home",
-              img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
-            },
-            {
-              name: "Vil Maris",
-              label: "Residential",
-              chip: false,
-              caption: "For Ritesh Mehta",
-              img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80",
-            },
-            {
-              name: "Casa De Amora",
-              label: "Hotel Build",
-              chip: true,
-              caption: "For Anand Incorporation",
-              img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
-            },
-          ].map((p) => (
+          displayLegacy.map((p) => (
             <div data-reveal-card class="min-w-full md:min-w-[calc(50%-9px)] lg:min-w-0 snap-start">
               <div class="tilt-card relative h-[443px] md:h-[423px] lg:h-[493px] rounded-[14px] overflow-hidden">
                 <img
                   data-reveal-img
-                  src={p.img}
-                  alt={p.name}
+                  src={p.image}
+                  alt={p.title}
                   class="w-full h-full object-cover"
                   loading="lazy"
                 />
-                {p.chip ? (
-                  <span class="absolute top-[16px] left-[16px] bg-white text-[var(--color-navy)] text-[10px] font-semibold uppercase tracking-[0.12em] px-[14px] py-[7px] rounded-full">
-                    {p.label}
-                  </span>
-                ) : (
-                  <span class="absolute top-[16px] left-[16px] text-[var(--color-navy)] text-[10px] font-semibold uppercase tracking-[0.12em] px-[6px] py-[7px]">
-                    {p.label}
-                  </span>
-                )}
+                <span class="absolute top-[16px] left-[16px] bg-white text-[var(--color-navy)] text-[10px] font-semibold uppercase tracking-[0.12em] px-[14px] py-[7px] rounded-full">
+                  {p.location || "Goa"}
+                </span>
                 <h3 class="absolute bottom-[18px] left-[20px] text-white font-heading font-medium text-[22px] lg:text-[24px] tracking-[-0.01em]">
-                  {p.name}
+                  {p.title}
                 </h3>
               </div>
               <div class="mt-[14px] text-[#35302F]/70 text-[10px] font-medium uppercase tracking-[0.16em]">
-                {p.caption}
+                {p.client ? `For ${p.client}` : "Residential Development"}
               </div>
               <a
                 href="/projects"

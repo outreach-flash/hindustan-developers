@@ -28,27 +28,32 @@ body {
   color: var(--color-dark);
 }
 
-/* Reveal animations initial state (only active when JS is enabled) */
-html.js [data-reveal-img] {
+/* Reveal animations initial state (only active when JS is enabled and element not yet revealed) */
+html.js [data-reveal-img]:not(.revealed),
+html.js [data-reveal-title]:not(.revealed),
+html.js [data-reveal-text]:not(.revealed),
+html.js [data-reveal-card]:not(.revealed),
+html.js [data-reveal-btn]:not(.revealed) {
   opacity: 0;
+}
+
+html.js [data-reveal-img]:not(.revealed) {
   transform: scale(1.18);
   will-change: transform, opacity;
 }
 
-html.js [data-reveal-title] {
-  opacity: 0;
+html.js [data-reveal-title]:not(.revealed) {
   transform: translateY(35px);
   will-change: transform, opacity;
 }
 
-html.js [data-reveal-text] {
-  opacity: 0;
+html.js [data-reveal-text]:not(.revealed),
+html.js [data-reveal-btn]:not(.revealed) {
   transform: translateY(25px);
   will-change: transform, opacity;
 }
 
-html.js [data-reveal-card] {
-  opacity: 0;
+html.js [data-reveal-card]:not(.revealed) {
   transform: translateY(30px);
   will-change: transform, opacity;
 }
@@ -59,11 +64,18 @@ html.js [data-reveal-card] {
   overflow: hidden;
 }
 
+/* Animated counter numbers */
+[data-counter] {
+  font-variant-numeric: tabular-nums;
+  display: inline-block;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html.js [data-reveal-img],
   html.js [data-reveal-title],
   html.js [data-reveal-text],
-  html.js [data-reveal-card] {
+  html.js [data-reveal-card],
+  html.js [data-reveal-btn] {
     opacity: 1 !important;
     transform: none !important;
   }
