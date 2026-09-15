@@ -91,7 +91,7 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
 >
   <Navbar variant="light" />
 
-  <main class="bg-[var(--color-cream)] text-[#0F172A] overflow-x-clip">
+  <main class="bg-[var(--color-cream)] text-[#10183B] overflow-x-clip">
     <!-- HERO -->
     <section class="bg-white">
       <div
@@ -114,14 +114,14 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
         </h1>
         {
           project.subtitle && (
-            <p data-reveal-text class="mt-[16px] lg:mt-[20px] mx-auto max-w-[760px] text-[14px] lg:text-[16px] leading-[26px] lg:leading-[28px] text-[#0F172A]/80">
+            <p data-reveal-text class="mt-[16px] lg:mt-[20px] mx-auto max-w-[760px] text-[14px] lg:text-[16px] leading-[26px] lg:leading-[28px] text-[#10183B]/80">
               {project.subtitle}
             </p>
           )
         }
         {
           project.priceLine && (
-            <p data-reveal-text class="mt-[14px] lg:mt-[16px] text-[14px] lg:text-[15px] font-medium text-[#0F172A]/60">
+            <p data-reveal-text class="mt-[14px] lg:mt-[16px] text-[14px] lg:text-[15px] font-medium text-[#10183B]/60">
               {project.priceLine}
             </p>
           )
@@ -132,7 +132,7 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
         >
           <a
             href="/contact"
-            class="inline-flex no-underline items-center gap-[12px] h-[52px] pl-[24px] pr-[6px] rounded-full border border-[#0F172A]/15 bg-white text-[14px] font-medium text-[#0F172A] hover:border-[#0F172A]/40 transition-colors"
+            class="inline-flex no-underline items-center gap-[12px] h-[52px] pl-[24px] pr-[6px] rounded-full border border-[#10183B]/15 bg-white text-[14px] font-medium text-[#10183B] hover:border-[#10183B]/40 transition-colors"
           >
             Submit an Enquiry
             <span
@@ -145,7 +145,7 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
             floorPlans.length > 0 && (
               <a
                 href="#floor-plans"
-                class="text-[14px] font-medium text-[#0F172A] underline underline-offset-4 hover:text-[#0F172A]/60 transition-colors"
+                class="text-[14px] font-medium text-[#10183B] underline underline-offset-4 hover:text-[#10183B]/60 transition-colors"
               >
                 View floor plans
               </a>
@@ -190,7 +190,7 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
         <div data-reveal-text class="mt-[20px] lg:mt-[24px] space-y-[16px] max-w-full">
           {
             paragraphs(project.overviewBody).map((paragraph) => (
-              <p class="text-[14px] lg:text-[15px] leading-[26px] lg:leading-[28px] text-[#0F172A]/80">
+              <p class="text-[14px] lg:text-[15px] leading-[26px] lg:leading-[28px] text-[#10183B]/80">
                 {paragraph}
               </p>
             ))
@@ -202,7 +202,7 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
               <h3 class="mt-[36px] lg:mt-[48px] font-heading font-bold text-[24px] lg:text-[28px] tracking-[-0.01em]">
                 Project Highlights
               </h3>
-              <ul class="mt-[16px] space-y-[10px] list-disc pl-[20px] text-[14px] lg:text-[15px] leading-[24px] text-[#0F172A]/80">
+              <ul class="mt-[16px] space-y-[10px] list-disc pl-[20px] text-[14px] lg:text-[15px] leading-[24px] text-[#10183B]/80">
                 {highlights.map((highlight) => (
                   <li>{highlight}</li>
                 ))}
@@ -225,7 +225,7 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
             <h2 data-reveal-title class="mt-[24px] font-heading font-bold text-[30px] leading-[38px] md:text-[38px] md:leading-[46px] lg:text-[48px] lg:leading-[56px] tracking-[-0.02em]">
               Every View Tells a Story
             </h2>
-            <p data-reveal-text class="mt-[20px] lg:mt-[24px] text-[14px] lg:text-[15px] leading-[26px] lg:leading-[28px] text-[#0F172A]/80">
+            <p data-reveal-text class="mt-[20px] lg:mt-[24px] text-[14px] lg:text-[15px] leading-[26px] lg:leading-[28px] text-[#10183B]/80">
               {project.settingBody}
             </p>
           </div>
@@ -246,7 +246,7 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
               More Meaning in the Everyday
             </h2>
             {project.lifestyleBody && (
-              <p data-reveal-text class="mt-[20px] lg:mt-[24px] text-[14px] lg:text-[15px] leading-[26px] lg:leading-[28px] text-[#0F172A]/80">
+              <p data-reveal-text class="mt-[20px] lg:mt-[24px] text-[14px] lg:text-[15px] leading-[26px] lg:leading-[28px] text-[#10183B]/80">
                 {project.lifestyleBody}
               </p>
             )}
@@ -255,7 +255,7 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
                 <h3 class="mt-[36px] lg:mt-[48px] font-heading font-bold text-[24px] lg:text-[28px] tracking-[-0.01em]">
                   Project amenities
                 </h3>
-                <ul class="mt-[16px] space-y-[10px] list-disc pl-[20px] text-[14px] lg:text-[15px] leading-[24px] text-[#0F172A]/80">
+                <ul class="mt-[16px] space-y-[10px] list-disc pl-[20px] text-[14px] lg:text-[15px] leading-[24px] text-[#10183B]/80">
                   {amenities.map((amenity) => (
                     <li>{amenity}</li>
                   ))}
@@ -267,7 +267,7 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
                 <h3 class="mt-[36px] lg:mt-[48px] font-heading font-bold text-[24px] lg:text-[28px] tracking-[-0.01em]">
                   Apartment features
                 </h3>
-                <ul class="mt-[16px] space-y-[10px] list-disc pl-[20px] text-[14px] lg:text-[15px] leading-[24px] text-[#0F172A]/80">
+                <ul class="mt-[16px] space-y-[10px] list-disc pl-[20px] text-[14px] lg:text-[15px] leading-[24px] text-[#10183B]/80">
                   {apartmentFeatures.map((feature) => (
                     <li>{feature}</li>
                   ))}
@@ -294,7 +294,7 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
                   Well Connected to Everyday Goa
                 </h2>
                 {project.connectivityIntro && (
-                  <p data-reveal-text class="mt-[16px] text-[14px] lg:text-[15px] leading-[26px] lg:leading-[28px] text-[#0F172A]/70 max-w-[520px]">
+                  <p data-reveal-text class="mt-[16px] text-[14px] lg:text-[15px] leading-[26px] lg:leading-[28px] text-[#10183B]/70 max-w-[520px]">
                     {project.connectivityIntro}
                   </p>
                 )}
@@ -317,11 +317,11 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
                           />
                         </span>
                         <div>
-                          <div class="text-[12px] text-[#0F172A]/60">{place.name}</div>
+                          <div class="text-[12px] text-[#10183B]/60">{place.name}</div>
                           <div class="font-heading font-bold text-[18px] lg:text-[20px] tracking-[-0.01em]">
                             {place.travelTime}
                           </div>
-                          <div class="text-[11px] text-[#0F172A]/50">by car</div>
+                          <div class="text-[11px] text-[#10183B]/50">by car</div>
                         </div>
                       </div>
                     ))}
@@ -357,7 +357,7 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
             <h2 data-reveal-title class="mt-[24px] font-heading font-bold text-[30px] leading-[38px] md:text-[38px] md:leading-[46px] lg:text-[48px] lg:leading-[56px] tracking-[-0.02em]">
               Explore the Residences
             </h2>
-            <p data-reveal-text class="mt-[16px] mx-auto max-w-[640px] text-[14px] lg:text-[15px] leading-[26px] lg:leading-[28px] text-[#0F172A]/70">
+            <p data-reveal-text class="mt-[16px] mx-auto max-w-[640px] text-[14px] lg:text-[15px] leading-[26px] lg:leading-[28px] text-[#10183B]/70">
               View the site plan and apartment layouts to understand how each
               residence has been planned for comfortable, functional living.
             </p>
@@ -369,8 +369,8 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
                   class:list={[
                     "h-[44px] px-[28px] rounded-full text-[14px] font-medium transition-colors",
                     index === 0
-                      ? "bg-white text-[#0F172A] shadow-[0_4px_16px_rgba(16,24,59,0.10)]"
-                      : "text-[#0F172A]/60 hover:text-[#0F172A]",
+                      ? "bg-white text-[#10183B] shadow-[0_4px_16px_rgba(16,24,59,0.10)]"
+                      : "text-[#10183B]/60 hover:text-[#10183B]",
                   ]}
                 >
                   {plan.label}
@@ -396,7 +396,7 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
                 </div>
               ))}
             </div>
-            <p class="mt-[20px] text-[12px] lg:text-[13px] font-medium text-[#0F172A]/60">
+            <p class="mt-[20px] text-[12px] lg:text-[13px] font-medium text-[#10183B]/60">
               Plans are indicative and should be read together with the final
               agreement and approved project documentation.
             </p>
@@ -440,7 +440,7 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
                     class="w-full aspect-[4/3] object-cover"
                     loading="lazy"
                   />
-                  <div class="absolute inset-0 bg-gradient-to-t from-[#0F172A]/80 via-[#0F172A]/10 to-transparent pointer-events-none" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-[#10183B]/80 via-[#10183B]/10 to-transparent pointer-events-none" />
                   <div class="absolute left-[20px] bottom-[20px] right-[20px] text-white">
                     <div class="font-heading font-bold text-[22px] lg:text-[24px] tracking-[-0.01em]">
                       {category.label}
@@ -474,7 +474,7 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
                 </div>
               ))}
             </div>
-            <p class="mt-[20px] text-right text-[11px] lg:text-[12px] text-[#0F172A]/50">
+            <p class="mt-[20px] text-right text-[11px] lg:text-[12px] text-[#10183B]/50">
               Artist's impressions are for representational purposes only.
             </p>
           </div>
@@ -495,7 +495,7 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
           />
         )
       }
-      <div class="absolute inset-0 bg-[#0F172A]/55"></div>
+      <div class="absolute inset-0 bg-[#10183B]/55"></div>
       <div
         data-reveal-group
         class="relative w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px] py-[72px] lg:py-[140px]"
@@ -516,7 +516,7 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
         <a
           data-reveal-btn
           href="/contact"
-          class="mt-[28px] inline-flex no-underline items-center gap-[12px] h-[52px] pl-[24px] pr-[6px] rounded-full bg-white text-[14px] font-medium text-[#0F172A] hover:bg-[var(--color-cream)] transition-colors"
+          class="mt-[28px] inline-flex no-underline items-center gap-[12px] h-[52px] pl-[24px] pr-[6px] rounded-full bg-white text-[14px] font-medium text-[#10183B] hover:bg-[var(--color-cream)] transition-colors"
         >
           Submit an Enquiry
           <span
@@ -534,16 +534,16 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
   <script>
     const tabs = Array.from(document.querySelectorAll("[data-floor-tab]"));
     const panels = Array.from(document.querySelectorAll("[data-floor-panel]"));
-    const activeClasses = ["bg-white", "text-[#0F172A]", "shadow-[0_4px_16px_rgba(16,24,59,0.10)]"];
-    const inactiveClasses = ["text-[#0F172A]/60"];
+    const activeClasses = ["bg-white", "text-[#10183B]", "shadow-[0_4px_16px_rgba(16,24,59,0.10)]"];
+    const inactiveClasses = ["text-[#10183B]/60"];
 
     tabs.forEach((tab) => {
       tab.addEventListener("click", () => {
         const target = tab.getAttribute("data-floor-tab");
         tabs.forEach((t) => {
           const isActive = t.getAttribute("data-floor-tab") === target;
-          t.classList.remove(...activeClasses, ...inactiveClasses, "hover:text-[#0F172A]");
-          t.classList.add(...(isActive ? activeClasses : [...inactiveClasses, "hover:text-[#0F172A]"]));
+          t.classList.remove(...activeClasses, ...inactiveClasses, "hover:text-[#10183B]");
+          t.classList.add(...(isActive ? activeClasses : [...inactiveClasses, "hover:text-[#10183B]"]));
         });
         panels.forEach((panel) => {
           panel.classList.toggle(
