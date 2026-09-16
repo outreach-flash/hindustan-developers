@@ -65,7 +65,9 @@ const fallbackLegacyProjects = [
 ];
 
 const displayFeatured = featuredProject || defaultFeatured;
-const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyProjects;
+const displayLegacy = legacyProjects.length
+  ? legacyProjects
+  : fallbackLegacyProjects;
 ---
 
 <Layout>
@@ -86,7 +88,10 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
         class="absolute inset-0 w-full h-full object-cover lg:scale-[1.12] -z-10 will-change-transform transform-gpu"
       />
 
-      <div class="relative z-10 h-full flex flex-col px-[20px] lg:px-[30px]" data-reveal-group>
+      <div
+        class="relative z-10 h-full flex flex-col px-[20px] lg:px-[30px]"
+        data-reveal-group
+      >
         <!-- Heading -->
         <h1
           data-reveal-title
@@ -105,7 +110,9 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
         >
           <!-- Primary CTA: white pill with dark circle arrow -->
           <a
-            href={featuredProjectSlug ? `/projects/${featuredProjectSlug}` : "/projects/serene-meadows"}
+            href={featuredProjectSlug
+              ? `/projects/${featuredProjectSlug}`
+              : "/projects/serene-meadows"}
             class="inline-flex no-underline items-center gap-[10px] lg:gap-[14px] bg-white text-[var(--color-navy)] rounded-full h-[50px] lg:h-[55px] pl-5 lg:pl-6 pr-2 font-medium text-[14px] lg:text-[15px] hover:bg-[var(--color-yellow)] transition-colors group whitespace-nowrap"
           >
             Explore {displayFeatured.title}
@@ -211,7 +218,7 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
     <!-- ABOUT -->
     <section
       id="about"
-      class="bg-[var(--color-cream)] min-h-screen flex items-center"
+      class="bg-[var(--color-cream)] min-h-[85vh] flex items-center"
     >
       <div
         class="w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px] py-[72px] lg:py-[48px]"
@@ -300,7 +307,10 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
     <!-- FEATURES -->
     <section class="pb-20 lg:pb-28 bg-[var(--color-cream)]">
       <div class="max-w-[1280px] mx-auto px-5 md:px-10 lg:px-20">
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5" data-reveal-cards>
+        <div
+          class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5"
+          data-reveal-cards
+        >
           <div
             data-reveal-card
             class="tilt-card bg-[var(--color-card)] rounded-[24px] p-7 lg:p-8"
@@ -441,7 +451,9 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
           <!-- Image LEFT -->
           <div class="order-2 lg:order-1">
             <a
-              href={featuredProjectSlug ? `/projects/${featuredProjectSlug}` : "/projects/serene-meadows"}
+              href={featuredProjectSlug
+                ? `/projects/${featuredProjectSlug}`
+                : "/projects/serene-meadows"}
               class="block tilt-card h-[460px] lg:h-[620px] w-full relative overflow-hidden rounded-[28px] shadow-2xl group cursor-pointer"
             >
               <img
@@ -486,7 +498,9 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
               class="font-heading text-[42px] md:text-5xl lg:text-[58px] font-bold text-[var(--color-navy)] mb-6 tracking-tight leading-[1.05]"
             >
               <a
-                href={featuredProjectSlug ? `/projects/${featuredProjectSlug}` : "/projects/serene-meadows"}
+                href={featuredProjectSlug
+                  ? `/projects/${featuredProjectSlug}`
+                  : "/projects/serene-meadows"}
                 class="no-underline text-inherit hover:text-[var(--color-navy-mid)] transition-colors"
               >
                 {displayFeatured.title}
@@ -499,7 +513,10 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
               {displayFeatured.subtitle}
             </p>
 
-            <div class="grid grid-cols-2 gap-y-8 gap-x-6 mb-10" data-reveal-card>
+            <div
+              class="grid grid-cols-2 gap-y-8 gap-x-6 mb-10"
+              data-reveal-card
+            >
               {
                 displayFeatured.details.map((detail) => (
                   <div class="border-l-2 border-[var(--color-navy)]/12 pl-4">
@@ -516,7 +533,9 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
 
             <a
               data-reveal-btn
-              href={featuredProjectSlug ? `/projects/${featuredProjectSlug}` : "/projects/serene-meadows"}
+              href={featuredProjectSlug
+                ? `/projects/${featuredProjectSlug}`
+                : "/projects/serene-meadows"}
               class="inline-flex no-underline items-center gap-3 bg-[var(--color-navy)] text-white rounded-full px-7 py-3.5 font-bold text-sm hover:bg-[var(--color-yellow)] hover:text-[var(--color-navy)] transition-colors group"
             >
               Explore Project
@@ -593,8 +612,7 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
             Build<span class="hidden lg:inline">t</span> with Experience<span
               class="hidden lg:inline">.</span
             ><br />Guided by <br class="md:hidden" />Responsibility<span
-              class="hidden lg:inline"
-              >.</span
+              class="hidden lg:inline">.</span
             >
           </h2>
         </div>
@@ -670,19 +688,19 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
               </div>
               <div
                 data-reveal-card
-                class="tilt-card rounded-[16px] bg-[var(--color-card)] h-[172px] lg:h-[307px] flex-1 p-[24px] lg:p-[28px] flex flex-col"
+                class="tilt-card rounded-[16px] bg-[var(--color-navy-mid)] h-[172px] lg:h-[307px] flex-1 p-[24px] lg:p-[28px] flex flex-col"
               >
-                <span class="text-[#10183B]/55 text-[11px] font-normal"
+                <span class="text-white/70 text-[11px] font-normal"
                   >Proven Construction Knowledge</span
                 >
                 <div class="mt-auto">
                   <div
-                    class="text-[#10183B] font-heading font-bold text-[24px] lg:text-[28px] leading-none tracking-tight"
+                    class="text-white font-heading font-bold text-[24px] lg:text-[28px] leading-none tracking-tight"
                   >
                     <span data-counter>50</span> Years
                   </div>
                   <p
-                    class="text-[#10183B]/70 text-[12px] lg:text-[13px] leading-[20px] lg:leading-[22px] mt-[8px]"
+                    class="text-white/75 text-[12px] lg:text-[13px] leading-[20px] lg:leading-[22px] mt-[8px]"
                   >
                     Five decades of on-ground experience inform every stage of
                     planning and execution.
@@ -707,19 +725,19 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
             </div>
             <div
               data-reveal-card
-              class="tilt-card rounded-[16px] bg-[var(--color-card)] h-[232px] lg:h-auto lg:flex-1 p-[24px] lg:p-[28px] flex flex-col"
+              class="tilt-card rounded-[16px] bg-[var(--color-navy-mid)] h-[232px] lg:h-auto lg:flex-1 p-[24px] lg:p-[28px] flex flex-col"
             >
-              <span class="text-[#10183B]/55 text-[11px] font-normal"
+              <span class="text-white/70 text-[11px] font-normal"
                 >Client satisfaction</span
               >
               <div
                 data-counter
-                class="text-[#10183B] font-heading font-bold text-[24px] lg:text-[28px] leading-none tracking-tight mt-[6px]"
+                class="text-white font-heading font-bold text-[24px] lg:text-[28px] leading-none tracking-tight mt-[6px]"
               >
                 98%
               </div>
               <p
-                class="text-[#10183B]/70 text-[12px] lg:text-[13px] leading-[20px] lg:leading-[22px] mt-[8px] max-w-[340px]"
+                class="text-white/75 text-[12px] lg:text-[13px] leading-[20px] lg:leading-[22px] mt-[8px] max-w-[340px]"
               >
                 We believe buyers should receive clear information and
                 dependable support throughout their journey.
@@ -741,7 +759,9 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
     </section>
 
     <!-- PORTFOLIO -->
-    <section class="bg-[var(--color-cream)] min-h-screen flex flex-col justify-center py-[72px] lg:py-[48px]">
+    <section
+      class="bg-[var(--color-cream)] min-h-screen flex flex-col justify-center py-[72px] lg:py-[48px]"
+    >
       <div class="w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px]">
         <!-- Header -->
         <div
@@ -810,7 +830,10 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
       >
         {
           displayLegacy.map((p) => (
-            <div data-reveal-card class="min-w-full md:min-w-[calc(50%-9px)] lg:min-w-0 snap-start">
+            <div
+              data-reveal-card
+              class="min-w-full md:min-w-[calc(50%-9px)] lg:min-w-0 snap-start"
+            >
               <div class="tilt-card relative h-[443px] md:h-[423px] lg:h-[493px] rounded-[14px] overflow-hidden">
                 <img
                   data-reveal-img
@@ -846,8 +869,8 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   >
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
                   </svg>
                 </span>
               </a>
@@ -857,14 +880,28 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
       </div>
 
       <!-- Carousel arrows (mobile) -->
-      <div class="lg:hidden mt-[36px] flex items-center justify-center gap-[16px]">
+      <div
+        class="lg:hidden mt-[36px] flex items-center justify-center gap-[16px]"
+      >
         <button
           type="button"
           data-scroll="-1"
           aria-label="Previous project"
           class="w-[48px] h-[48px] rounded-full border border-[#10183B]/25 flex items-center justify-center text-[#10183B] hover:bg-[var(--color-navy)] hover:text-white hover:border-[var(--color-navy)] transition-colors"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"></path><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="M19 12H5"></path><polyline points="12 19 5 12 12 5"
+            ></polyline></svg
+          >
         </button>
         <button
           type="button"
@@ -872,7 +909,19 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
           aria-label="Next project"
           class="w-[48px] h-[48px] rounded-full border border-[#10183B]/25 flex items-center justify-center text-[#10183B] hover:bg-[var(--color-navy)] hover:text-white hover:border-[var(--color-navy)] transition-colors"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><polyline points="12 5 19 12 12 19"></polyline></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            ><path d="M5 12h14"></path><polyline points="12 5 19 12 12 19"
+            ></polyline></svg
+          >
         </button>
       </div>
       <script>
@@ -882,7 +931,10 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
             const card = row?.querySelector(":scope > div");
             if (row && card) {
               const w = card.getBoundingClientRect().width + 18;
-              row.scrollBy({ left: w * Number(btn.dataset.scroll), behavior: "smooth" });
+              row.scrollBy({
+                left: w * Number(btn.dataset.scroll),
+                behavior: "smooth",
+              });
             }
           });
         });
@@ -1048,7 +1100,9 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
 
   // START: Parallax Animations (desktop only — disabled on touch/mobile to prevent
   // scroll jumps and content clipping caused by mobile browser viewport resize events)
-  const isDesktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const isDesktop = window.matchMedia(
+    "(hover: hover) and (pointer: fine)",
+  ).matches;
 
   const heroBg = document.getElementById("hero-bg");
   const heroSection = document.getElementById("hero-section");
@@ -1116,7 +1170,10 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
         el.style.transition = "transform 0.4s ease-out";
         el.style.transform =
           "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)";
-        setTimeout(() => (el.style.transition = "transform 0.15s ease-out"), 400);
+        setTimeout(
+          () => (el.style.transition = "transform 0.15s ease-out"),
+          400,
+        );
       });
     });
   }
@@ -1130,7 +1187,10 @@ const displayLegacy = legacyProjects.length ? legacyProjects : fallbackLegacyPro
     const scrollY = window.scrollY;
     const vh = window.innerHeight;
     if (scrollY >= vh && scrollY < vh * 2) {
-      gsap.set(navInner, { backgroundColor: "var(--color-navy)", color: "var(--color-white)" });
+      gsap.set(navInner, {
+        backgroundColor: "var(--color-navy)",
+        color: "var(--color-white)",
+      });
     } else if (scrollY < vh) {
       gsap.set(navInner, { backgroundColor: "", color: "" });
     }
