@@ -79,32 +79,44 @@
   "mapImage": "/images/map-image.png",
   "floorPlans": [
     {
-      "label": "2BHK Type A",
-      "image": "/images/projects/casa-kewals.png"
+      "label": "Atrium",
+      "image": "/images/projects/serene-meadows/Atrium.webp"
     },
     {
-      "label": "2BHK Type B",
-      "image": "/images/projects/vil-maris.png"
+      "label": "Balcony",
+      "image": "/images/projects/serene-meadows/Balcony.webp"
     },
     {
-      "label": "3BHK Luxury",
-      "image": "/images/projects/casa-de-amora.png"
+      "label": "Bathroom",
+      "image": "/images/projects/serene-meadows/Bathroom.webp"
     },
     {
-      "label": "3BHK Royale",
-      "image": "/images/projects/casa-kewals.png"
+      "label": "Bedroom",
+      "image": "/images/projects/serene-meadows/Bedroom.webp"
     },
     {
-      "label": "Penthouse",
-      "image": "/images/projects/vil-maris.png"
+      "label": "Clubhouse",
+      "image": "/images/projects/serene-meadows/Clubhouse.webp"
     },
     {
-      "label": "Terrace Garden",
-      "image": "/images/projects/casa-de-amora.png"
+      "label": "Foyer",
+      "image": "/images/projects/serene-meadows/Foyer.webp"
     },
     {
-      "label": "Site Layout",
-      "image": "/images/map-image.png"
+      "label": "Gym",
+      "image": "/images/projects/serene-meadows/Gym.webp"
+    },
+    {
+      "label": "Kitchen",
+      "image": "/images/projects/serene-meadows/Kitchen.webp"
+    },
+    {
+      "label": "Living & Dining",
+      "image": "/images/projects/serene-meadows/Living Dining.webp"
+    },
+    {
+      "label": "Society Office",
+      "image": "/images/projects/serene-meadows/Society Office.webp"
     }
   ],
   "gallery": [
