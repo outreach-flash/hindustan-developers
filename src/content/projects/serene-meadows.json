@@ -40,54 +40,130 @@
   ],
   "connectivityIntro": "Serene Meadows places healthcare, education, shopping, transport links and Panaji within convenient driving distance.",
   "connectivityPlaces": [
-    { "name": "Goa International Airport", "travelTime": "30 Minutes", "icon": "airport" },
-    { "name": "MOPA Railway Station", "travelTime": "10 Minutes", "icon": "train" },
-    { "name": "Baga Beach", "travelTime": "20 Minutes", "icon": "beach" },
-    { "name": "Calangute Beach", "travelTime": "25 Minutes", "icon": "beach" },
-    { "name": "Mapusa (Shopping & Market)", "travelTime": "20 Minutes", "icon": "shopping" },
-    { "name": "Mall de Goa", "travelTime": "20 Minutes", "icon": "shopping" },
-    { "name": "Panaji City", "travelTime": "15 Minutes", "icon": "city" }
+    {
+      "name": "Goa International Airport",
+      "travelTime": "30 Minutes",
+      "icon": "airport"
+    },
+    {
+      "name": "MOPA Railway Station",
+      "travelTime": "10 Minutes",
+      "icon": "train"
+    },
+    {
+      "name": "Baga Beach",
+      "travelTime": "20 Minutes",
+      "icon": "beach"
+    },
+    {
+      "name": "Calangute Beach",
+      "travelTime": "25 Minutes",
+      "icon": "beach"
+    },
+    {
+      "name": "Mapusa (Shopping & Market)",
+      "travelTime": "20 Minutes",
+      "icon": "shopping"
+    },
+    {
+      "name": "Mall de Goa",
+      "travelTime": "20 Minutes",
+      "icon": "shopping"
+    },
+    {
+      "name": "Panaji City",
+      "travelTime": "15 Minutes",
+      "icon": "city"
+    }
   ],
   "mapImage": "/images/map-image.png",
   "floorPlans": [
-    { "label": "2BHK", "image": "/images/projects/casa-kewals.png" },
-    { "label": "3BHK", "image": "/images/projects/vil-maris.png" },
-    { "label": "Terrace", "image": "/images/projects/casa-de-amora.png" }
+    {
+      "label": "2BHK Type A",
+      "image": "/images/projects/casa-kewals.png"
+    },
+    {
+      "label": "2BHK Type B",
+      "image": "/images/projects/vil-maris.png"
+    },
+    {
+      "label": "3BHK Luxury",
+      "image": "/images/projects/casa-de-amora.png"
+    },
+    {
+      "label": "3BHK Royale",
+      "image": "/images/projects/casa-kewals.png"
+    },
+    {
+      "label": "Penthouse",
+      "image": "/images/projects/vil-maris.png"
+    },
+    {
+      "label": "Terrace Garden",
+      "image": "/images/projects/casa-de-amora.png"
+    },
+    {
+      "label": "Site Layout",
+      "image": "/images/map-image.png"
+    }
   ],
   "gallery": [
     {
       "label": "Landscape Areas",
       "description": "Disciplined planning and experienced execution guide every project milestone.",
-      "images": ["/images/projects/casa-kewals.png", "/images/hero-section-image.png"]
+      "images": [
+        "/images/projects/casa-kewals.png",
+        "/images/hero-section-image.png"
+      ]
     },
     {
       "label": "Exterior",
       "description": "A contemporary facade shaped by Goa's light and landscape.",
-      "images": ["/images/projects/vil-maris.png"]
+      "images": [
+        "/images/projects/vil-maris.png"
+      ]
     },
     {
       "label": "Amenities",
       "description": "Spaces designed for movement, rest and time together.",
-      "images": ["/images/projects/casa-de-amora.png"]
+      "images": [
+        "/images/projects/casa-de-amora.png"
+      ]
     },
     {
       "label": "Living & Dining",
       "description": "Generous living spaces with practical, comfortable layouts.",
-      "images": ["/images/projects/casa-kewals.png"]
+      "images": [
+        "/images/projects/casa-kewals.png"
+      ]
     },
     {
       "label": "Bedroom",
       "description": "Calm, well-lit bedrooms planned for everyday ease.",
-      "images": ["/images/projects/vil-maris.png"]
+      "images": [
+        "/images/projects/vil-maris.png"
+      ]
     }
   ],
   "reraId": "[INSERT GOA RERA REGISTRATION NUMBER]",
   "ctaImage": "/images/inquiry-section-bg-image.png",
   "sortOrder": 1,
   "details": [
-    { "key": "Residences", "value": "71 Premium" },
-    { "key": "Spacious", "value": "63 2 BHK" },
-    { "key": "Elegant", "value": "8 3 BHK" },
-    { "key": "Starting from", "value": "₹ 1.05 Crores" }
+    {
+      "key": "Residences",
+      "value": "71 Premium"
+    },
+    {
+      "key": "Spacious",
+      "value": "63 2 BHK"
+    },
+    {
+      "key": "Elegant",
+      "value": "8 3 BHK"
+    },
+    {
+      "key": "Starting from",
+      "value": "₹ 1.05 Crores"
+    }
   ]
 }
