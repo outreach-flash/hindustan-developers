@@ -269,7 +269,7 @@ const experienceCards = [
                 <div class="p-[28px] sm:p-[40px] lg:p-[56px] flex flex-col justify-between">
                   <div>
                     {dev.location && (
-                      <div class="flex items-center gap-[8px] text-[13px] font-medium text-white/60 mb-[16px]">
+                      <div class="flex items-center gap-[8px] text-[13px] font-medium text-[#10183B]/60 mb-[16px]">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="14"
@@ -287,18 +287,18 @@ const experienceCards = [
                         {dev.location}
                       </div>
                     )}
-                    <h3 class="font-heading font-bold text-[32px] lg:text-[40px] leading-tight tracking-[-0.02em] text-white">
+                    <h3 class="font-heading font-bold text-[32px] lg:text-[40px] leading-tight tracking-[-0.02em] text-[#10183B]">
                       <a href={`/projects/${dev.slug}`} class="no-underline text-inherit hover:text-[var(--color-navy-mid)] transition-colors">
                         {dev.title}
                       </a>
                     </h3>
                     {dev.priceLine && (
-                      <div class="mt-[10px] text-[15px] lg:text-[16px] font-semibold text-white">
+                      <div class="mt-[10px] text-[15px] lg:text-[16px] font-semibold text-[var(--color-navy)]">
                         {dev.priceLine}
                       </div>
                     )}
                     {dev.subtitle && (
-                      <p class="mt-[16px] text-[14px] lg:text-[15px] leading-[26px] text-white/70">
+                      <p class="mt-[16px] text-[14px] lg:text-[15px] leading-[26px] text-[#10183B]/70">
                         {dev.subtitle}
                       </p>
                     )}
@@ -315,7 +315,7 @@ const experienceCards = [
                     )}
                   </div>
 
-                  <div class="mt-[32px] pt-[24px] border-t border-white/20 flex items-center justify-between">
+                  <div class="mt-[32px] pt-[24px] border-t border-[#10183B]/8 flex items-center justify-between">
                     <a
                       href={`/projects/${dev.slug}`}
                       class="inline-flex no-underline items-center gap-[12px] h-[50px] pl-6 pr-[6px] rounded-full bg-[var(--color-navy)] text-white text-[14px] font-medium hover:bg-[#1b2452] transition-colors group"
@@ -413,7 +413,7 @@ const experienceCards = [
                       loading="lazy"
                     />
                     <div class="p-[20px] lg:p-[28px]">
-                      <div class="flex items-center gap-[8px] text-[13px] text-white/60">
+                      <div class="flex items-center gap-[8px] text-[13px] text-[#10183B]/60">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="14"
@@ -432,14 +432,14 @@ const experienceCards = [
                       </div>
                       <div class="mt-[12px] flex items-center justify-between gap-[16px]">
                         <div>
-                          <h3 class="font-heading font-bold text-[24px] lg:text-[28px] leading-tight tracking-[-0.01em] text-white">
+                          <h3 class="font-heading font-bold text-[24px] lg:text-[28px] leading-tight tracking-[-0.01em] text-[#10183B]">
                             {project.title}
                           </h3>
-                          <p class="mt-[6px] text-[13px] text-white/55">
+                          <p class="mt-[6px] text-[13px] text-[#10183B]/55">
                             Contracting work for {project.client}
                           </p>
                         </div>
-                        <span class="w-[44px] h-[44px] rounded-full border border-white/30 text-white flex items-center justify-center flex-shrink-0">
+                        <span class="w-[44px] h-[44px] rounded-full border border-[#10183B]/15 text-[#10183B] flex items-center justify-center flex-shrink-0">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -515,11 +515,11 @@ const experienceCards = [
                     </g>
                   </svg>
                 </div>
-                <span class="inline-flex w-fit items-center gap-[8px] h-[40px] px-[16px] rounded-full border border-white/25 text-white text-[13px] font-semibold">
+                <span class="inline-flex w-fit items-center gap-[8px] h-[40px] px-[16px] rounded-full border border-[var(--color-navy)]/25 text-[#10183B] text-[13px] font-semibold">
                   <span class="font-heading font-bold">{card.number}</span>
                   {card.title}
                 </span>
-                <p class="mt-auto pt-[48px] text-[13px] leading-[24px] text-white/70">
+                <p class="mt-auto pt-[48px] text-[13px] leading-[24px] text-[#10183B]/70">
                   {card.body}
                 </p>
               </div>

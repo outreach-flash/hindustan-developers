@@ -1,5 +1,6 @@
 ---
 import WhatsAppButton from "../components/WhatsAppButton.astro";
+import "../styles/global.css";
 
 interface Props {
 	title?: string;
@@ -40,8 +41,6 @@ const {
 </html>
 
 <style is:global>
-	@import '../styles/global.css';
-
 	html,
 	body {
 		margin: 0;
