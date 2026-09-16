@@ -245,7 +245,7 @@ const experienceCards = [
             displayDevelopments.map((dev) => (
               <article
                 data-reveal-card
-                class="tilt-card rounded-[28px] bg-white border border-[#10183B]/6 shadow-[0_12px_40px_rgba(16,24,59,0.06)] overflow-hidden lg:grid lg:grid-cols-2 lg:items-stretch"
+                class="tilt-card rounded-[28px] bg-[var(--color-card)] border border-[#10183B]/6 shadow-[0_12px_40px_rgba(16,24,59,0.06)] overflow-hidden lg:grid lg:grid-cols-2 lg:items-stretch"
               >
                 <!-- Image container -->
                 <div class="relative h-[320px] sm:h-[400px] lg:h-auto min-h-[380px] overflow-hidden">
@@ -404,7 +404,7 @@ const experienceCards = [
                   data-scope-of-work={project.scopeOfWork}
                   data-completion-year={project.completionYear}
                 >
-                  <article class="tilt-card rounded-[24px] bg-white border border-[#10183B]/5 shadow-[0_8px_30px_rgba(16,24,59,0.06)] overflow-hidden">
+                  <article class="tilt-card rounded-[24px] bg-[var(--color-card)] border border-[#10183B]/5 shadow-[0_8px_30px_rgba(16,24,59,0.06)] overflow-hidden">
                     <img
                       data-reveal-img
                       src={project.image}
@@ -503,7 +503,7 @@ const experienceCards = [
             experienceCards.map((card) => (
               <div
                 data-reveal-card
-                class="tilt-card relative rounded-[24px] bg-white border border-[#10183B]/5 shadow-[0_8px_30px_rgba(16,24,59,0.06)] p-[24px] lg:p-[28px] flex flex-col min-h-[220px] lg:min-h-[280px]"
+                class="tilt-card relative rounded-[24px] bg-[var(--color-card)] border border-[#10183B]/5 shadow-[0_8px_30px_rgba(16,24,59,0.06)] p-[24px] lg:p-[28px] flex flex-col min-h-[220px] lg:min-h-[280px]"
               >
                 <div class="absolute top-[24px] right-[24px]" aria-hidden="true">
                   <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
