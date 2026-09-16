@@ -9,13 +9,15 @@
   --color-navy-mid: #3C4474;
   --color-yellow: #F4FFB1;
   --color-cream: #FFFCF7;
-  --color-card: #3CFF74;
+  --color-card: #3C4474;
   --color-white: #FFFFFF;
   --color-dark: #1A1A1A;
   --color-gray: #6B7280;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -71,7 +73,13 @@ html.js [data-reveal-card]:not(.revealed) {
   display: inline-block;
 }
 
+/* Card text: white on dark --color-card background */
+.tilt-card {
+  color: white;
+}
+
 @media (prefers-reduced-motion: reduce) {
+
   html.js [data-reveal-img],
   html.js [data-reveal-title],
   html.js [data-reveal-text],
@@ -81,4 +89,3 @@ html.js [data-reveal-card]:not(.revealed) {
     transform: none !important;
   }
 }
-

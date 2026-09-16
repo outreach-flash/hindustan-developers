@@ -232,7 +232,7 @@ const infoCards = [
                     required
                     class="mt-[2px] w-[16px] h-[16px] accent-[var(--color-navy)] flex-shrink-0"
                   />
-                  <span class="text-[12px] leading-[20px] text-[#10183B]/65">
+                  <span class="text-[12px] leading-[20px] text-white/65">
                     I agree to be contacted by Hindustan Constructions regarding
                     this enquiry.
                   </span>
@@ -270,7 +270,7 @@ const infoCards = [
                       </g>
                     </svg>
                   </div>
-                  <span class="inline-flex w-fit items-center gap-[10px] h-[40px] px-[16px] rounded-full border border-[var(--color-navy)]/25 text-[#10183B] text-[13px] font-semibold">
+                  <span class="inline-flex w-fit items-center gap-[10px] h-[40px] px-[16px] rounded-full border border-white/25 text-white text-[13px] font-semibold">
                     {card.icon === "building" && (
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -332,12 +332,12 @@ const infoCards = [
                   {card.href ? (
                     <a
                       href={card.href}
-                      class="mt-auto pt-[32px] no-underline font-heading font-semibold text-[16px] lg:text-[18px] leading-[26px] text-[#10183B] hover:text-[var(--color-navy-mid)] transition-colors break-all"
+                      class="mt-auto pt-[32px] no-underline font-heading font-semibold text-[16px] lg:text-[18px] leading-[26px] text-white hover:text-white/70 transition-colors break-all"
                     >
                       {card.value}
                     </a>
                   ) : (
-                    <p class="mt-auto pt-[32px] font-heading font-semibold text-[16px] lg:text-[18px] leading-[26px] text-[#10183B]">
+                    <p class="mt-auto pt-[32px] font-heading font-semibold text-[16px] lg:text-[18px] leading-[26px] text-white">
                       {card.value}
                     </p>
                   )}
