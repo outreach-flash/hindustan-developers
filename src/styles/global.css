@@ -16,6 +16,7 @@
 }
 
 :root {
+  color-scheme: only light;
   --color-navy: #10183B;
   --color-navy-mid: #3C4474;
   --color-yellow: #F4FFB1;
@@ -26,7 +27,9 @@
   --color-gray: #6B7280;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -83,6 +86,7 @@ html.js [data-reveal-card]:not(.revealed) {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   html.js [data-reveal-img],
   html.js [data-reveal-title],
   html.js [data-reveal-text],
@@ -92,4 +96,3 @@ html.js [data-reveal-card]:not(.revealed) {
     transform: none !important;
   }
 }
-
