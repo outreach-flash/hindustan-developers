@@ -1020,9 +1020,12 @@ const displayLegacy = legacyProjects.length
                 >Date</label
               >
               <input
-                type="text"
-                placeholder="mm/dd/yyyy"
-                class="w-full h-[48px] bg-white border border-[#D9D6D2] rounded-[10px] px-[16px] text-[14px] text-[var(--color-navy)] placeholder:text-[#A6ACBC] outline-none focus:border-[var(--color-navy)] transition-colors"
+                type="date"
+                id="field-date"
+                name="date"
+                onkeydown="return false"
+                onclick="this.showPicker && this.showPicker()"
+                class="w-full h-[48px] bg-white border border-[#D9D6D2] rounded-[10px] px-[16px] text-[14px] text-[var(--color-navy)] placeholder:text-[#A6ACBC] outline-none focus:border-[var(--color-navy)] transition-colors cursor-pointer"
               />
             </div>
             <div>
