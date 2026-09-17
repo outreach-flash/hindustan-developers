@@ -313,7 +313,7 @@ const displayLegacy = legacyProjects.length
         >
           <div
             data-reveal-card
-            class="tilt-card bg-[var(--color-card)] rounded-[24px] p-7 lg:p-8"
+            class="tilt-card bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8"
           >
             <div class="mb-8 text-[var(--color-navy)]">
               <svg
@@ -344,7 +344,7 @@ const displayLegacy = legacyProjects.length
 
           <div
             data-reveal-card
-            class="tilt-card bg-[var(--color-card)] rounded-[24px] p-7 lg:p-8"
+            class="tilt-card bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8"
           >
             <div class="mb-8 text-[var(--color-navy)]">
               <svg
@@ -375,7 +375,7 @@ const displayLegacy = legacyProjects.length
 
           <div
             data-reveal-card
-            class="tilt-card bg-[var(--color-card)] rounded-[24px] p-7 lg:p-8"
+            class="tilt-card bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8"
           >
             <div class="mb-8 text-[var(--color-navy)]">
               <svg
@@ -407,7 +407,7 @@ const displayLegacy = legacyProjects.length
 
           <div
             data-reveal-card
-            class="tilt-card bg-[var(--color-card)] rounded-[24px] p-7 lg:p-8"
+            class="tilt-card bg-[var(--color-yellow)] rounded-[24px] p-7 lg:p-8"
           >
             <div class="mb-8 text-[var(--color-navy)]">
               <svg
@@ -688,19 +688,19 @@ const displayLegacy = legacyProjects.length
               </div>
               <div
                 data-reveal-card
-                class="tilt-card rounded-[16px] bg-[var(--color-navy)] h-[172px] lg:h-[307px] flex-1 p-[24px] lg:p-[28px] flex flex-col"
+                class="tilt-card rounded-[16px] bg-[var(--color-yellow)] h-[172px] lg:h-[307px] flex-1 p-[24px] lg:p-[28px] flex flex-col"
               >
-                <span class="text-white/70 text-[11px] font-normal"
+                <span class="text-[var(--color-navy)] text-[11px] font-normal"
                   >Proven Construction Knowledge</span
                 >
                 <div class="mt-auto">
                   <div
-                    class="text-white font-heading font-bold text-[24px] lg:text-[28px] leading-none tracking-tight"
+                    class="text-[var(--color-navy)] font-heading font-bold text-[24px] lg:text-[28px] leading-none tracking-tight"
                   >
                     <span data-counter>50</span> Years
                   </div>
                   <p
-                    class="text-white/75 text-[12px] lg:text-[13px] leading-[20px] lg:leading-[22px] mt-[8px]"
+                    class="text-[var(--color-navy)]/75 text-[12px] lg:text-[13px] leading-[20px] lg:leading-[22px] mt-[8px]"
                   >
                     Five decades of on-ground experience inform every stage of
                     planning and execution.
@@ -1109,7 +1109,7 @@ const displayLegacy = legacyProjects.length
 
   if (isDesktop && heroSection && heroBg) {
     gsap.to(heroBg, {
-      yPercent: 20,
+      yPercent: 40,
       ease: "none",
       scrollTrigger: {
         trigger: heroSection,
@@ -1125,7 +1125,7 @@ const displayLegacy = legacyProjects.length
   const mapImg = document.getElementById("goa-map-img");
   if (isDesktop && mapSection && mapImg) {
     gsap.to(mapImg, {
-      yPercent: 15,
+      yPercent: 30,
       ease: "none",
       scrollTrigger: {
         trigger: mapSection,
@@ -1141,11 +1141,11 @@ const displayLegacy = legacyProjects.length
   const contactBg = document.getElementById("contact-bg");
   if (isDesktop && contactSection && contactBg) {
     gsap.to(contactBg, {
-      yPercent: 20,
+      yPercent: 40,
       ease: "none",
       scrollTrigger: {
         trigger: contactSection,
-        start: "top bottom",
+        start: "top top",
         end: "bottom top",
         scrub: 0.5,
       },

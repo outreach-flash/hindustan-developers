@@ -1,0 +1,110 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="404 - Page Not Found | Hindustan Developers">
+  <Navbar variant="light" />
+
+  <main>
+    <section 
+      class="relative w-full min-h-[100dvh] py-[120px] lg:py-0 flex items-center justify-center bg-[#F6F5F2] overflow-hidden px-[24px] lg:px-[80px]" 
+      data-nav-theme="light"
+    >
+      <!-- Giant background "404" watermark -->
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-[0.03] select-none overflow-hidden">
+        <span class="font-serif text-[40vw] leading-none text-[#10183B] tracking-tighter mix-blend-multiply">
+          404
+        </span>
+      </div>
+
+      <!-- Architectural Grid Lines Overlay -->
+      <div class="absolute inset-0 pointer-events-none opacity-[0.04]" style="background-image: linear-gradient(#10183B 1px, transparent 1px), linear-gradient(90deg, #10183B 1px, transparent 1px); background-size: 100px 100px;"></div>
+      <div class="absolute top-0 left-0 w-full h-[30vh] bg-gradient-to-b from-[#F6F5F2] to-transparent pointer-events-none"></div>
+      <div class="absolute bottom-0 left-0 w-full h-[30vh] bg-gradient-to-t from-[#F6F5F2] to-transparent pointer-events-none"></div>
+
+      <!-- Content Container -->
+      <div class="relative z-10 max-w-[1200px] w-full flex flex-col lg:flex-row items-center justify-between gap-[60px] lg:gap-[120px] pt-[80px]">
+        
+        <!-- Text Content -->
+        <div class="w-full lg:w-1/2 flex flex-col items-center text-center lg:items-start lg:text-left reveal-content">
+          <div class="inline-flex items-center gap-[12px] mb-[24px] px-[16px] py-[8px] rounded-full border border-[#C9CEDD] bg-white/50 backdrop-blur-sm">
+            <span class="w-[8px] h-[8px] rounded-full bg-[var(--color-yellow)] animate-pulse"></span>
+            <span class="text-[13px] font-medium tracking-[0.1em] text-[var(--color-navy)] uppercase">Error 404</span>
+          </div>
+          
+          <h1 class="font-serif text-[42px] sm:text-[56px] lg:text-[72px] leading-[1.1] text-[var(--color-navy)] mb-[24px]">
+            Looks like you've <br class="hidden lg:block"/> reached a vacant plot.
+          </h1>
+          
+          <p class="text-[16px] sm:text-[18px] text-[#63687E] leading-[1.6] mb-[48px] max-w-[500px]">
+            The foundation for this page hasn't been laid yet, or the address has changed. Let's guide you back to our completed projects.
+          </p>
+          
+          <div class="flex flex-col sm:flex-row w-full sm:w-auto gap-[16px]">
+            <a href="/" class="inline-flex items-center justify-center gap-[12px] h-[56px] px-[40px] rounded-full bg-[var(--color-navy)] text-white text-[15px] font-medium tracking-[0.02em] hover:bg-[#1b2452] transition-all hover:shadow-[0_12px_24px_rgba(16,24,59,0.15)] hover:-translate-y-[2px] group">
+              Return Home
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            
+            <a href="/projects/serene-meadows" class="inline-flex items-center justify-center h-[56px] px-[40px] rounded-full border border-[#C9CEDD] bg-white/60 backdrop-blur-sm text-[var(--color-navy)] text-[15px] font-medium tracking-[0.02em] hover:bg-white hover:border-[#A4ABC3] transition-all hover:shadow-[0_8px_16px_rgba(0,0,0,0.04)] hover:-translate-y-[2px]">
+              Explore Projects
+            </a>
+          </div>
+        </div>
+
+        <!-- Abstract Architectural Visual -->
+        <div class="w-full lg:w-1/2 flex justify-center lg:justify-end reveal-content" style="animation-delay: 0.2s;">
+          <div class="relative w-full max-w-[400px] aspect-square flex items-center justify-center perspective-1000">
+            <!-- Glass Morphism Card 1 -->
+            <div class="absolute w-[55%] h-[75%] rounded-[24px] border border-white/40 bg-white/30 backdrop-blur-md shadow-[0_24px_48px_rgba(16,24,59,0.05)] rotate-[-12deg] hover:rotate-[0deg] transition-transform duration-700 ease-out z-10 flex items-center justify-center -translate-x-[90px] translate-y-[20px]">
+              <span class="font-serif text-[120px] text-[var(--color-navy)] opacity-60">4</span>
+            </div>
+            <!-- Glass Morphism Card 2 -->
+            <div class="absolute w-[55%] h-[75%] rounded-[24px] border border-white/60 bg-white/50 backdrop-blur-lg shadow-[0_24px_48px_rgba(16,24,59,0.08)] rotate-[0deg] hover:rotate-[0deg] transition-transform duration-700 ease-out z-20 flex items-center justify-center -translate-y-[10px]">
+              <span class="font-serif text-[120px] text-[var(--color-navy)] opacity-80">0</span>
+            </div>
+            <!-- Glass Morphism Card 3 -->
+            <div class="absolute w-[55%] h-[75%] rounded-[24px] border border-white/80 bg-white/80 backdrop-blur-xl shadow-[0_24px_48px_rgba(16,24,59,0.12)] rotate-[12deg] hover:rotate-[0deg] transition-transform duration-700 ease-out z-30 flex items-center justify-center translate-x-[90px] translate-y-[20px]">
+              <span class="font-serif text-[120px] text-[var(--color-navy)] opacity-100">4</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  :root {
+    --color-navy: #10183B;
+    --color-yellow: #F8C822;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .reveal-content {
+    opacity: 0;
+    animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+</style>

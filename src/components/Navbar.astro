@@ -34,8 +34,10 @@ const linkHover = isLight
     <!-- Nav links -->
     <div class="nav-extra hidden lg:flex items-center gap-[52px]">
       <a href="/about" class:list={[linkBase, linkHover]}>About Us</a>
-      <a href="/projects/serene-meadows" class:list={[linkBase, linkHover]}>Serene Meadows</a>
-      <a href="/#legacy" class:list={[linkBase, linkHover]}>Our Legacy</a>
+      <a href="/projects/serene-meadows" class:list={[linkBase, linkHover]}
+        >Serene Meadows</a
+      >
+      <a href="/projects" class:list={[linkBase, linkHover]}>Our Legacy</a>
       <a href="/contact" class:list={[linkBase, linkHover]}>Contact</a>
     </div>
     <!-- Enquire Now -->
@@ -44,7 +46,9 @@ const linkHover = isLight
       class="nav-extra hidden lg:inline-flex no-underline items-center gap-[14px] h-[48px] pl-6 pr-[6px] rounded-full bg-[#FFFCF7] border border-[#C9CEDD] text-[#10183B] text-[14px] font-medium hover:bg-[var(--color-yellow)] hover:border-[var(--color-yellow)] transition-colors group"
     >
       Enquire Now
-      <span class="w-[36px] h-[36px] rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0 group-hover:bg-[#1b2452] transition-colors">
+      <span
+        class="w-[36px] h-[36px] rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0 group-hover:bg-[#1b2452] transition-colors"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="14"
@@ -56,8 +60,8 @@ const linkHover = isLight
           stroke-linecap="round"
           stroke-linejoin="round"
         >
-          <line x1="7" y1="17" x2="17" y2="7" />
-          <polyline points="7 7 17 7 17 17" />
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
         </svg>
       </span>
     </a>
@@ -135,7 +139,9 @@ const linkHover = isLight
       class="mobile-menu-link mt-[16px] inline-flex w-fit no-underline items-center gap-[14px] h-[48px] pl-6 pr-[6px] rounded-full bg-[#FFFCF7] text-[#10183B] text-[14px] font-medium hover:bg-[var(--color-yellow)] transition-colors group"
     >
       Enquire Now
-      <span class="w-[36px] h-[36px] rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0 group-hover:bg-[#1b2452] transition-colors">
+      <span
+        class="w-[36px] h-[36px] rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0 group-hover:bg-[#1b2452] transition-colors"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="14"
@@ -147,8 +153,8 @@ const linkHover = isLight
           stroke-linecap="round"
           stroke-linejoin="round"
         >
-          <line x1="7" y1="17" x2="17" y2="7" />
-          <polyline points="7 7 17 7 17 17" />
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
         </svg>
       </span>
     </a>
@@ -192,7 +198,7 @@ const linkHover = isLight
   }
   /* Frost tint over light/cream sections */
   #nav-bar[data-variant="overlay"].nav-on-light #nav-inner {
-    color: #10183B;
+    color: #10183b;
     background: rgba(255, 255, 255, 0.62);
   }
   /* Link hover color over light sections */
