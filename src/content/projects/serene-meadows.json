@@ -4,7 +4,7 @@
   "propertyType": "Apartment",
   "location": "Kadamba Plateau, Goa",
   "priceLine": "2 & 3 BHK Apartments Starting from ₹1.05 Crore",
-  "coverImage": "/images/hero-section-image.png",
+  "coverImage": "/images/projects/serene-meadows/View 01 v03.png",
   "overviewBody": "Serene Meadows is an exclusive community of 71 premium residences comprising 63 spacious 2 BHK apartments and 8 elegant 3 BHK apartments. Each home is planned to balance generous living spaces, practical layouts and a sense of everyday ease.\n\nWithin the secure gated community, residents can enjoy a signature swimming pool, a well-equipped gymnasium, landscaped gardens and shared spaces designed to bring comfort, wellness and connection into daily life.",
   "highlights": [
     "Prime Location at Kadamba Plateau, Goa",
@@ -79,6 +79,10 @@
   "mapImage": "/images/map-image.png",
   "floorPlans": [
     {
+      "label": "Master Site Plan",
+      "image": "/images/projects/serene-meadows/Site Plan view 11 v05.jpg"
+    },
+    {
       "label": "Atrium",
       "image": "/images/projects/serene-meadows/Atrium.webp"
     },
@@ -121,44 +125,78 @@
   ],
   "gallery": [
     {
-      "label": "Landscape Areas",
-      "description": "Disciplined planning and experienced execution guide every project milestone.",
+      "label": "Grand Facade & Landscape",
+      "description": "Contemporary architectural elegance surrounded by manicured lawns and native tropical greenery.",
       "images": [
-        "/images/projects/casa-kewals.png",
-        "/images/hero-section-image.png"
+        "/images/projects/serene-meadows/View 01 v03.png"
       ]
     },
     {
-      "label": "Exterior",
-      "description": "A contemporary facade shaped by Goa's light and landscape.",
+      "label": "Grand Entrance Boulevard",
+      "description": "Secure gated entry with a dedicated security cabin and landscaped palm-lined arrival avenue.",
       "images": [
-        "/images/projects/vil-maris.png"
+        "/images/projects/serene-meadows/View 02 v02.jpg"
       ]
     },
     {
-      "label": "Amenities",
-      "description": "Spaces designed for movement, rest and time together.",
+      "label": "Lush Meadow Panorama",
+      "description": "Expansive green open lawns offering an unobstructed panoramic vista of the residential frontage.",
       "images": [
-        "/images/projects/casa-de-amora.png"
+        "/images/projects/serene-meadows/View 03 v02.jpg"
       ]
     },
     {
-      "label": "Living & Dining",
-      "description": "Generous living spaces with practical, comfortable layouts.",
+      "label": "Twilight Garden Ambience",
+      "description": "Subtle architectural illumination and warm lighting along the driveway and gardens at dusk.",
       "images": [
-        "/images/projects/casa-kewals.png"
+        "/images/projects/serene-meadows/View 04 v04.jpg"
       ]
     },
     {
-      "label": "Bedroom",
-      "description": "Calm, well-lit bedrooms planned for everyday ease.",
+      "label": "Morning Sunlit Promenade",
+      "description": "Crisp morning sunlight highlighting tree-lined internal pathways, stilt parking, and landscaped verges.",
       "images": [
-        "/images/projects/vil-maris.png"
+        "/images/projects/serene-meadows/View 05 v04.jpg"
+      ]
+    },
+    {
+      "label": "Verdant Hillside Perspective",
+      "description": "Peaceful morning views framed by rolling green hillside slopes and mature tree canopy.",
+      "images": [
+        "/images/projects/serene-meadows/View 06 v02.jpg"
+      ]
+    },
+    {
+      "label": "Poolside Oasis & Social Pavilion",
+      "description": "Sparkling swimming pool with sun loungers, shaded timber pergola, and lush botanical pathways.",
+      "images": [
+        "/images/projects/serene-meadows/View 07 v02.jpg"
+      ]
+    },
+    {
+      "label": "Aerial Master Layout",
+      "description": "A bird's-eye perspective of the enclave showcasing buildings, pool, garden courtyards, and forest buffer.",
+      "images": [
+        "/images/projects/serene-meadows/View 08 v02.jpg"
+      ]
+    },
+    {
+      "label": "Terrace Sky Garden & Deck",
+      "description": "Curated rooftop leisure park with private cabanas, blossoming trees, and panoramic Goan hill views.",
+      "images": [
+        "/images/projects/serene-meadows/View 09 v04.jpg"
+      ]
+    },
+    {
+      "label": "Playground & Community Plaza",
+      "description": "Vibrant children's play area with slides and swings alongside a shaded community gathering pavilion.",
+      "images": [
+        "/images/projects/serene-meadows/View 11.jpg"
       ]
     }
   ],
   "reraId": "[INSERT GOA RERA REGISTRATION NUMBER]",
-  "ctaImage": "/images/inquiry-section-bg-image.png",
+  "ctaImage": "/images/projects/serene-meadows/View 04 v04.jpg",
   "sortOrder": 1,
   "details": [
     {
