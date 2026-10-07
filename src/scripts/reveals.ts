@@ -1,7 +1,8 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 // Helper to animate counters from 0 to target value in increments over 0.5s
 export function animateCounter(el: HTMLElement) {
@@ -48,6 +49,15 @@ function triggerCounters(container: HTMLElement) {
 }
 
 export function initScrollReveals() {
+  if (window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+    ScrollSmoother.create({
+      wrapper: "#smooth-wrapper",
+      content: "#smooth-content",
+      smooth: 1.5,
+      effects: true,
+    });
+  }
+
   const allRevealElements = document.querySelectorAll<HTMLElement>(
     "[data-reveal-title], [data-reveal-text], [data-reveal-img], [data-reveal-card], [data-reveal-btn]"
   );
@@ -101,7 +111,7 @@ export function initScrollReveals() {
           {
             opacity: 1,
             scale: 1,
-            duration: 1.15,
+            duration: 0.5,
             ease: "power2.out",
             onStart: () => {
               item.classList.add("revealed");
@@ -112,7 +122,7 @@ export function initScrollReveals() {
               triggerCounters(item);
             },
           },
-          position
+          index === 0 ? 0 : "<+=0.06"
         );
       } else if (item.hasAttribute("data-reveal-title")) {
         tl.fromTo(
@@ -121,7 +131,7 @@ export function initScrollReveals() {
           {
             opacity: 1,
             y: 0,
-            duration: 0.9,
+            duration: 0.5,
             ease: "power3.out",
             onStart: () => {
               item.classList.add("revealed");
@@ -132,7 +142,7 @@ export function initScrollReveals() {
               triggerCounters(item);
             },
           },
-          position
+          index === 0 ? 0 : "<+=0.06"
         );
       } else if (item.hasAttribute("data-reveal-card")) {
         tl.fromTo(
@@ -141,7 +151,7 @@ export function initScrollReveals() {
           {
             opacity: 1,
             y: 0,
-            duration: 0.85,
+            duration: 0.5,
             ease: "power2.out",
             onStart: () => {
               item.classList.add("revealed");
@@ -152,7 +162,7 @@ export function initScrollReveals() {
               triggerCounters(item);
             },
           },
-          position
+          index === 0 ? 0 : "<+=0.06"
         );
       } else {
         // default text / badge / button
@@ -162,7 +172,7 @@ export function initScrollReveals() {
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
+            duration: 0.5,
             ease: "power2.out",
             onStart: () => {
               item.classList.add("revealed");
@@ -173,7 +183,7 @@ export function initScrollReveals() {
               triggerCounters(item);
             },
           },
-          position
+          index === 0 ? 0 : "<+=0.06"
         );
       }
     });
@@ -193,9 +203,9 @@ export function initScrollReveals() {
       {
         opacity: 1,
         y: 0,
-        duration: 0.85,
+        duration: 0.5,
         stagger: {
-          each: 0.12,
+          each: 0.06,
           onStart: function () {
             // @ts-ignore
             const target = this.targets()[0] as HTMLElement;

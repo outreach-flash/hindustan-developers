@@ -89,18 +89,18 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
   title={`${project.title} – Hindustan Developers`}
   description={project.subtitle || `${project.title} by Hindustan Developers, Goa.`}
 >
-  <Navbar variant="light" />
+  <Navbar slot="navbar" variant="light" />
 
   <main class="bg-[var(--color-cream)] text-[#10183B] overflow-x-clip">
     <!-- HERO -->
-    <section class="bg-white">
+    <section class="bg-white relative flex flex-col justify-between h-screen min-h-[640px] overflow-hidden">
       <div
         data-reveal-group
-        class="w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px] pt-[140px] lg:pt-[180px] pb-[48px] lg:pb-[72px] text-center"
+        class="w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px] pt-[95px] lg:pt-[110px] pb-[16px] lg:pb-[24px] text-center flex-shrink-0"
       >
         {
           project.location && (
-            <span data-reveal-text class="inline-flex items-center gap-[10px] h-[46px] px-[20px] rounded-full bg-[#A9A8AC] text-[#F4F1ED] text-[12px] font-medium">
+            <span data-reveal-text class="inline-flex items-center gap-[10px] h-[40px] lg:h-[44px] px-[18px] lg:px-[20px] rounded-full bg-[#A9A8AC] text-[#F4F1ED] text-[12px] font-medium">
               <span class="w-[6px] h-[6px] rounded-full bg-[var(--color-navy)]" />
               {project.location}
             </span>
@@ -108,35 +108,35 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
         }
         <h1
           data-reveal-title
-          class="mt-[24px] lg:mt-[32px] font-heading font-bold text-[38px] leading-[44px] md:text-[56px] md:leading-[62px] lg:text-[72px] lg:leading-[78px] tracking-[-0.02em]"
+          class="mt-[14px] lg:mt-[20px] font-heading font-bold text-[34px] leading-[40px] md:text-[46px] md:leading-[52px] lg:text-[60px] lg:leading-[66px] tracking-[-0.02em]"
         >
           {project.title}
         </h1>
         {
           project.subtitle && (
-            <p data-reveal-text class="mt-[16px] lg:mt-[20px] mx-auto max-w-[760px] text-[14px] lg:text-[16px] leading-[26px] lg:leading-[28px] text-[#10183B]/80">
+            <p data-reveal-text class="mt-[10px] lg:mt-[14px] mx-auto max-w-[760px] text-[13px] lg:text-[15px] leading-[22px] lg:leading-[26px] text-[#10183B]/80">
               {project.subtitle}
             </p>
           )
         }
         {
           project.priceLine && (
-            <p data-reveal-text class="mt-[14px] lg:mt-[16px] text-[14px] lg:text-[15px] font-medium text-[#10183B]/60">
+            <p data-reveal-text class="mt-[8px] lg:mt-[10px] text-[13px] lg:text-[14px] font-medium text-[#10183B]/60">
               {project.priceLine}
             </p>
           )
         }
         <div
           data-reveal-btn
-          class="mt-[24px] lg:mt-[28px] flex flex-wrap items-center justify-center gap-[20px]"
+          class="mt-[16px] lg:mt-[20px] flex flex-wrap items-center justify-center gap-[16px] lg:gap-[20px]"
         >
           <a
             href="/contact"
-            class="inline-flex no-underline items-center gap-[12px] h-[52px] pl-[24px] pr-[6px] rounded-full border border-[#10183B]/15 bg-white text-[14px] font-medium text-[#10183B] hover:border-[#10183B]/40 transition-colors"
+            class="inline-flex no-underline items-center gap-[12px] h-[46px] lg:h-[50px] pl-[22px] lg:pl-[24px] pr-[6px] rounded-full border border-[#10183B]/15 bg-white text-[14px] font-medium text-[#10183B] hover:border-[#10183B]/40 transition-colors"
           >
             Submit an Enquiry
             <span
-              class="w-[40px] h-[40px] rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center"
+              class="w-[36px] h-[36px] lg:w-[38px] lg:h-[38px] rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </span>
@@ -152,20 +152,20 @@ const icons: Record<ConnectivityPlace["icon"], string> = {
             )
           }
         </div>
-        {
-          project.coverImage && (
-            <div class="mt-[40px] lg:mt-[56px] rounded-[24px] lg:rounded-[32px] overflow-hidden">
-              <img
-                data-reveal-img
-                src={project.coverImage}
-                alt={project.title}
-                class="w-full aspect-[4/3] md:aspect-[16/8] object-cover"
-                loading="eager"
-              />
-            </div>
-          )
-        }
       </div>
+      {
+        project.coverImage && (
+          <div class="w-full flex-1 min-h-0 overflow-hidden">
+            <img
+              data-reveal-img
+              src={project.coverImage}
+              alt={project.title}
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+          </div>
+        )
+      }
     </section>
 
     <!-- PROJECT OVERVIEW -->
