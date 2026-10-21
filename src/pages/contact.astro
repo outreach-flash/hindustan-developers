@@ -438,6 +438,59 @@ const infoCards = [
   const submitLabel = document.getElementById("enquiry-submit-label");
   const statusEl = document.getElementById("enquiry-status");
 
+  // Auto-populate form fields from URL query parameters (e.g., from project CTAs or external links)
+  if (form) {
+    const params = new URLSearchParams(window.location.search);
+    const paramInterest = params.get("interest") || params.get("project");
+    const paramName = params.get("name");
+    const paramPhone = params.get("phone");
+    const paramEmail = params.get("email");
+    const paramCity = params.get("city");
+
+    if (paramInterest) {
+      const interestSelect = form.elements.namedItem(
+        "interest",
+      ) as HTMLSelectElement | null;
+      if (interestSelect) {
+        let matched = false;
+        const target = paramInterest.toLowerCase();
+        for (let i = 0; i < interestSelect.options.length; i++) {
+          const optVal = interestSelect.options[i].value.toLowerCase();
+          if (
+            optVal === target ||
+            optVal.includes(target) ||
+            target.includes(optVal)
+          ) {
+            interestSelect.selectedIndex = i;
+            matched = true;
+            break;
+          }
+        }
+        if (!matched) {
+          const newOpt = new Option(paramInterest, paramInterest, true, true);
+          interestSelect.add(newOpt);
+        }
+      }
+    }
+
+    if (paramName) {
+      const el = form.elements.namedItem("name") as HTMLInputElement | null;
+      if (el) el.value = paramName;
+    }
+    if (paramPhone) {
+      const el = form.elements.namedItem("phone") as HTMLInputElement | null;
+      if (el) el.value = paramPhone;
+    }
+    if (paramEmail) {
+      const el = form.elements.namedItem("email") as HTMLInputElement | null;
+      if (el) el.value = paramEmail;
+    }
+    if (paramCity) {
+      const el = form.elements.namedItem("city") as HTMLInputElement | null;
+      if (el) el.value = paramCity;
+    }
+  }
+
   function showStatus(htmlContent: string, ok: boolean) {
     if (!statusEl) return;
     statusEl.innerHTML = htmlContent;
@@ -465,20 +518,24 @@ const infoCards = [
 
     // Build professional, formatted WhatsApp message with markdown styling
     const messageLines = [
-      "*New Enquiry | Hindustan Developers*",
-      "",
+      "🏛️ *NEW PROPERTY ENQUIRY*",
+      "*Hindustan Developers*",
+      "─────────────────────────",
       "Hello Hindustan Developers Team,",
       "",
-      "I am interested in your properties and would like to receive more details. Here are my enquiry details:",
+      "I am interested in your property developments and would like to receive more details. Here are my enquiry details:",
       "",
-      `• *Name:* ${name}`,
-      `• *Phone:* ${phone}`,
-      `• *Email:* ${email}`,
-      `• *Current City:* ${city || "Not specified"}`,
-      `• *Interested In:* ${interest}`,
-      `• *Preferred Contact Method:* ${contactMethod}`,
+      `👤 *Name:* ${name}`,
+      `📞 *Phone:* ${phone}`,
+      `✉️ *Email:* ${email || "Not specified"}`,
+      `📍 *Current City:* ${city || "Not specified"}`,
+      `🏢 *Interested In:* ${interest}`,
+      `💬 *Preferred Contact Method:* ${contactMethod}`,
       "",
-      "Please get in touch with me at your earliest convenience. Thank you!",
+      "─────────────────────────",
+      "Please share availability, floor plans, and pricing at your earliest convenience.",
+      "",
+      "Thank you!",
     ];
 
     const message = messageLines.join("\n");
