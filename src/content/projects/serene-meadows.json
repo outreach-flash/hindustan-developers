@@ -3,16 +3,15 @@
   "subtitle": "A premium gated community of 71 thoughtfully planned 2 and 3 BHK residences, created for families, second-home buyers and investors seeking a well-connected address in Goa.",
   "propertyType": "Apartment",
   "location": "Kadamba Plateau, Goa",
-  "priceLine": "2 & 3 BHK Apartments Starting from ₹1.05 Crore",
+  "priceLine": "2 & 3 BHK Apartments Starting from ₹1.10 Crores",
   "coverImage": "/images/projects/serene-meadows/View 01 v03.webp",
   "overviewBody": "Serene Meadows is an exclusive community of 71 premium residences comprising 63 spacious 2 BHK apartments and 8 elegant 3 BHK apartments. Each home is planned to balance generous living spaces, practical layouts and a sense of everyday ease.\n\nWithin the secure gated community, residents can enjoy a signature swimming pool, a well-equipped gymnasium, landscaped gardens and shared spaces designed to bring comfort, wellness and connection into daily life.",
   "highlights": [
     "Prime Location at Kadamba Plateau, Goa",
     "71 premium apartments",
     "63 two-bedroom and 8 three-bedroom residences",
-    "₹1.05 crore onwards",
-    "Secure, gated residential development",
-    "RERA registered [INSERT GOA RERA REGISTRATION NUMBER]"
+    "₹1.10 Crores onwards",
+    "Secure, gated residential development"
   ],
   "settingBody": "From Serene Meadows, the character of nearby Old Goa unfolds through views of historic churches, rolling green hills and foliage-filled landscapes. Mornings arrive with soft light across the horizon, while evenings bring a slower rhythm home. It is a setting where Goa's heritage and natural landscape remain part of everyday life.",
   "lifestyleBody": "The double-height atrium creates a welcoming centre for the community, while the swimming pool, gymnasium and landscaped areas make space for movement, rest and time together. A community hall with a pantry and common washroom adds a practical setting for celebrations, meetings and shared occasions.",
@@ -41,39 +40,34 @@
   "connectivityIntro": "Serene Meadows places healthcare, education, shopping, transport links and Panaji within convenient driving distance.",
   "connectivityPlaces": [
     {
-      "name": "Goa International Airport",
-      "travelTime": "30 Minutes",
-      "icon": "airport"
-    },
-    {
-      "name": "MOPA Railway Station",
-      "travelTime": "10 Minutes",
-      "icon": "train"
-    },
-    {
-      "name": "Baga Beach",
-      "travelTime": "20 Minutes",
-      "icon": "beach"
-    },
-    {
-      "name": "Calangute Beach",
-      "travelTime": "25 Minutes",
-      "icon": "beach"
-    },
-    {
-      "name": "Mapusa (Shopping & Market)",
-      "travelTime": "20 Minutes",
-      "icon": "shopping"
-    },
-    {
-      "name": "Mall de Goa",
-      "travelTime": "20 Minutes",
-      "icon": "shopping"
-    },
-    {
-      "name": "Panaji City",
-      "travelTime": "15 Minutes",
+      "name": "Panjim City",
+      "travelTime": "5 Minutes",
       "icon": "city"
+    },
+    {
+      "name": "Hospitals",
+      "travelTime": "6 Minutes",
+      "icon": "hospital"
+    },
+    {
+      "name": "Schools",
+      "travelTime": "7 Minutes",
+      "icon": "school"
+    },
+    {
+      "name": "Shopping",
+      "travelTime": "5 Minutes",
+      "icon": "shopping"
+    },
+    {
+      "name": "Railway Station",
+      "travelTime": "6 Minutes",
+      "icon": "railway"
+    },
+    {
+      "name": "Airport",
+      "travelTime": "6 Minutes",
+      "icon": "airport"
     }
   ],
   "mapImage": "/images/map-image.png",
@@ -205,15 +199,15 @@
     },
     {
       "key": "Spacious",
-      "value": "63 2 BHK"
+      "value": "63, 2 BHKs"
     },
     {
       "key": "Elegant",
-      "value": "8 3 BHK"
+      "value": "8, 3 BHKs"
     },
     {
       "key": "Starting from",
-      "value": "₹ 1.05 Crores"
+      "value": "₹ 1.10 Crores"
     }
   ]
 }

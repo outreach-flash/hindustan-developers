@@ -20,7 +20,7 @@ export default config({
         propertyType: fields.text({ label: 'Property Type (e.g. Villa, Apartment)' }),
         location: fields.text({ label: 'Location (e.g. Assagao, North Goa)' }),
         priceLine: fields.text({
-          label: 'Price Line (e.g. 2 & 3 BHK Apartments Starting from ₹1.05 Crore)',
+          label: 'Price Line (e.g. 2 & 3 BHK Apartments Starting from ₹1.10 Crores)',
         }),
         coverImage: fields.image({
           label: 'Cover Image',
@@ -67,6 +67,10 @@ export default config({
                 { label: 'Beach', value: 'beach' },
                 { label: 'Shopping', value: 'shopping' },
                 { label: 'City', value: 'city' },
+                { label: 'Hospital', value: 'hospital' },
+                { label: 'School', value: 'school' },
+                { label: 'Railway', value: 'railway' }
+
               ],
               defaultValue: 'city',
             }),

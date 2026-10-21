@@ -14,25 +14,38 @@ const linkHover = isLight
 ---
 
 <nav
-  class="fixed top-0 left-0 right-0 z-50"
+  class="fixed top-0 left-0 right-0 z-50 pointer-events-none"
   id="nav-bar"
   data-variant={variant}
 >
   <div
     id="nav-inner"
     class:list={[
-      "flex items-center justify-between h-[70px] lg:h-[90px] px-[20px] lg:px-[30px] transition-colors duration-300 backdrop-blur-md",
+      "pointer-events-auto flex items-center justify-between h-[70px] lg:h-[90px] px-[20px] lg:px-[30px] transition-colors duration-300 backdrop-blur-md",
       isLight ? "text-[#10183B] bg-white/60" : "text-white bg-black/10",
     ]}
   >
-    <!-- Logo: serif "Hindustan" + italic serif "developers" -->
+    <!-- Brand Logo -->
     <a
       href="/"
-      class="no-underline font-serif text-[22px] lg:text-[26px] leading-none text-current"
-      >Hindustan <em class="italic">developers</em></a
+      class="flex items-center no-underline shrink-0"
+      aria-label="Hindustan Developers Home"
     >
+      <img
+        src="/images/hindustan_logo_white.png"
+        alt="Hindustan Developers"
+        class="nav-logo-white h-[44px] lg:h-[54px] w-auto object-contain"
+      />
+      <img
+        src="/images/hindustan_logo_blue.png"
+        alt="Hindustan Developers"
+        class="nav-logo-blue h-[44px] lg:h-[54px] w-auto object-contain"
+      />
+    </a>
+
+
     <!-- Nav links -->
-    <div class="nav-extra hidden lg:flex items-center gap-[52px]">
+    <div class="nav-extra hidden md:flex items-center gap-[24px] lg:gap-[40px] xl:gap-[52px]">
       <a href="/about" class:list={[linkBase, linkHover]}>About Us</a>
       <a href="/projects/serene-meadows" class:list={[linkBase, linkHover]}
         >Serene Meadows</a
@@ -43,11 +56,11 @@ const linkHover = isLight
     <!-- Enquire Now -->
     <a
       href="/contact"
-      class="nav-extra hidden lg:inline-flex no-underline items-center gap-[14px] h-[48px] pl-6 pr-[6px] rounded-full bg-[#FFFCF7] border border-[#C9CEDD] text-[#10183B] text-[14px] font-medium hover:bg-[var(--color-yellow)] hover:border-[var(--color-yellow)] transition-colors group"
+      class="nav-extra hidden md:inline-flex no-underline items-center gap-[12px] lg:gap-[14px] h-[44px] lg:h-[48px] pl-5 lg:pl-6 pr-[5px] lg:pr-[6px] rounded-full bg-[#FFFCF7] border border-[#C9CEDD] text-[#10183B] text-[13px] lg:text-[14px] font-medium hover:bg-[var(--color-yellow)] hover:border-[var(--color-yellow)] transition-colors group"
     >
       Enquire Now
       <span
-        class="w-[36px] h-[36px] rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0 group-hover:bg-[#1b2452] transition-colors"
+        class="w-[34px] h-[34px] lg:w-[36px] lg:h-[36px] rounded-full bg-[var(--color-navy)] text-white flex items-center justify-center flex-shrink-0 group-hover:bg-[#1b2452] transition-colors"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -65,10 +78,10 @@ const linkHover = isLight
         </svg>
       </span>
     </a>
-    <!-- Hamburger: 2 lines -->
+    <!-- Hamburger: 2 lines (Mobile only < 768px) -->
     <button
       id="nav-menu-btn"
-      class="lg:hidden w-8 h-8 flex flex-col justify-center items-center gap-[7px] cursor-pointer text-current"
+      class="md:hidden w-8 h-8 flex flex-col justify-center items-center gap-[7px] cursor-pointer text-current pointer-events-auto"
       aria-label="Menu"
       aria-expanded="false"
     >
@@ -76,6 +89,21 @@ const linkHover = isLight
       <span class="w-6 h-[2px] bg-current"></span>
     </button>
   </div>
+
+  <!-- Collapsed Menu Button (Desktop & Tablet only >= 768px) -->
+  <button
+    id="nav-collapsed-btn"
+    type="button"
+    class="collapsed-menu-btn hidden md:inline-flex items-center gap-[10px] h-[44px] lg:h-[48px] px-5 rounded-full font-medium text-[12px] lg:text-[13px] tracking-[0.16em] uppercase cursor-pointer pointer-events-auto"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+  >
+    <span class="w-[18px] h-[11px] flex flex-col justify-between items-center flex-shrink-0" aria-hidden="true">
+      <span class="w-full h-[1.75px] bg-current rounded-full transition-transform duration-200"></span>
+      <span class="w-full h-[1.75px] bg-current rounded-full transition-transform duration-200"></span>
+    </span>
+    <span class="font-heading leading-none select-none">Menu</span>
+  </button>
 </nav>
 
 <!-- Mobile menu overlay -->
@@ -87,9 +115,15 @@ const linkHover = isLight
   <div class="flex items-center justify-between h-[70px] px-[20px]">
     <a
       href="/"
-      class="no-underline font-serif text-[22px] leading-none text-white"
-      >Hindustan <em class="italic">developers</em></a
+      class="flex items-center no-underline shrink-0"
+      aria-label="Hindustan Developers Home"
     >
+      <img
+        src="/images/hindustan_logo_white.png"
+        alt="Hindustan Developers"
+        class="h-[40px] w-auto object-contain"
+      />
+    </a>
     <button
       id="mobile-menu-close"
       class="w-8 h-8 flex items-center justify-center cursor-pointer text-white"
@@ -205,31 +239,236 @@ const linkHover = isLight
   #nav-bar[data-variant="overlay"].nav-on-light .nav-link:hover {
     color: var(--color-navy-mid);
   }
+
+  /* Logo theme switching */
+  #nav-bar[data-variant="overlay"] .nav-logo-blue {
+    display: none;
+  }
+  #nav-bar[data-variant="overlay"] .nav-logo-white {
+    display: block;
+  }
+
+  #nav-bar[data-variant="overlay"].nav-on-light .nav-logo-white,
+  #nav-bar[data-variant="light"] .nav-logo-white {
+    display: none;
+  }
+  #nav-bar[data-variant="overlay"].nav-on-light .nav-logo-blue,
+  #nav-bar[data-variant="light"] .nav-logo-blue {
+    display: block;
+  }
+
+  /* Collapsed Menu Button (Desktop & Tablet) */
+  .collapsed-menu-btn {
+    position: fixed;
+    top: 13px;
+    left: 20px;
+    z-index: 55;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-16px) scale(0.95);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.25s ease,
+                background-color 0.3s ease,
+                color 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+  }
+
+  @media (min-width: 1024px) {
+    .collapsed-menu-btn {
+      top: 21px;
+      left: 30px;
+    }
+  }
+
+  /* Dark theme for collapsed button */
+  #nav-bar[data-variant="overlay"] .collapsed-menu-btn {
+    background: rgba(16, 24, 59, 0.72);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+  #nav-bar[data-variant="overlay"] .collapsed-menu-btn:hover {
+    background: rgba(16, 24, 59, 0.92);
+    border-color: rgba(255, 255, 255, 0.45);
+    color: var(--color-yellow);
+  }
+
+  /* Light theme for collapsed button */
+  #nav-bar[data-variant="overlay"].nav-on-light .collapsed-menu-btn,
+  #nav-bar[data-variant="light"] .collapsed-menu-btn {
+    background: rgba(255, 255, 255, 0.9);
+    color: #10183b;
+    border: 1px solid rgba(16, 24, 59, 0.15);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 8px 24px rgba(16, 24, 59, 0.1);
+  }
+  #nav-bar[data-variant="overlay"].nav-on-light .collapsed-menu-btn:hover,
+  #nav-bar[data-variant="light"] .collapsed-menu-btn:hover {
+    background: #ffffff;
+    border-color: rgba(16, 24, 59, 0.35);
+    color: var(--color-navy-mid);
+  }
+
+  /* Nav-inner smooth transition */
+  #nav-inner {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.3s ease,
+                background-color 0.3s ease,
+                color 0.3s ease;
+  }
+
+  /* Collapse behaviour on tablet and desktop (>= 768px) */
+  @media (min-width: 768px) {
+    #nav-bar.is-collapsed #nav-inner {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #nav-bar.is-collapsed .collapsed-menu-btn {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+  }
 </style>
 
 <script>
   const navBar = document.getElementById("nav-bar");
+  const navInner = document.getElementById("nav-inner");
+  const collapsedBtn = document.getElementById("nav-collapsed-btn");
 
-  if (navBar?.dataset.variant === "overlay") {
+  let lastScrollY = window.scrollY;
+  let userManuallyExpanded = false;
+  let ticking = false;
+  const COLLAPSE_THRESHOLD = 80;
+
+  // Theme update logic for overlay variant
+  const updateTheme = () => {
+    if (!navBar || navBar.dataset.variant !== "overlay") return;
     const sections = document.querySelectorAll<HTMLElement>(
       "main > section, [data-nav-theme]",
     );
+    const navHeight = 80;
+    let activeTheme = "light";
 
-    const updateTheme = () => {
-      const navHeight = 80;
-      let activeTheme = "light";
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= navHeight && rect.bottom > navHeight) {
+        activeTheme = section.getAttribute("data-nav-theme") ?? "light";
+      }
+    });
 
-      sections.forEach((section) => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= navHeight && rect.bottom > navHeight) {
-          activeTheme = section.getAttribute("data-nav-theme") ?? "light";
-        }
-      });
+    navBar.classList.toggle("nav-on-light", activeTheme === "light");
+  };
 
-      navBar.classList.toggle("nav-on-light", activeTheme === "light");
-    };
+  // Scroll collapse / expand logic for desktop & tablet
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+    const isDesktopOrTablet = window.innerWidth >= 768;
 
-    window.addEventListener("scroll", updateTheme, { passive: true });
     updateTheme();
-  }
+
+    if (!isDesktopOrTablet || !navBar) {
+      navBar?.classList.remove("is-collapsed");
+      userManuallyExpanded = false;
+      lastScrollY = currentScrollY;
+      return;
+    }
+
+    const diff = currentScrollY - lastScrollY;
+
+    if (currentScrollY <= COLLAPSE_THRESHOLD) {
+      // Near top of page: always expanded
+      navBar.classList.remove("is-collapsed");
+      collapsedBtn?.setAttribute("aria-expanded", "false");
+      userManuallyExpanded = false;
+    } else if (diff > 8) {
+      // Scrolling DOWN: collapse into menu button at top left
+      navBar.classList.add("is-collapsed");
+      collapsedBtn?.setAttribute("aria-expanded", "false");
+      userManuallyExpanded = false;
+    } else if (diff < -8) {
+      // Scrolling UP: expand again
+      navBar.classList.remove("is-collapsed");
+      collapsedBtn?.setAttribute("aria-expanded", "false");
+      userManuallyExpanded = false;
+    }
+
+    lastScrollY = currentScrollY;
+  };
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    },
+    { passive: true },
+  );
+
+  // In collapsed mode: clicking menu button at top left expands the navbar
+  collapsedBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (!navBar) return;
+    navBar.classList.remove("is-collapsed");
+    collapsedBtn.setAttribute("aria-expanded", "true");
+    userManuallyExpanded = true;
+    lastScrollY = window.scrollY;
+  });
+
+  // Clicking outside when manually expanded re-collapses
+  document.addEventListener("click", (e) => {
+    if (
+      userManuallyExpanded &&
+      window.scrollY > COLLAPSE_THRESHOLD &&
+      window.innerWidth >= 768 &&
+      navInner &&
+      !navInner.contains(e.target as Node)
+    ) {
+      navBar?.classList.add("is-collapsed");
+      collapsedBtn?.setAttribute("aria-expanded", "false");
+      userManuallyExpanded = false;
+    }
+  });
+
+  // Pressing Escape when manually expanded re-collapses
+  document.addEventListener("keydown", (e) => {
+    if (
+      e.key === "Escape" &&
+      userManuallyExpanded &&
+      window.scrollY > COLLAPSE_THRESHOLD
+    ) {
+      navBar?.classList.add("is-collapsed");
+      collapsedBtn?.setAttribute("aria-expanded", "false");
+      userManuallyExpanded = false;
+    }
+  });
+
+  // Clicking any link in expanded navbar resets state
+  navInner?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      userManuallyExpanded = false;
+    });
+  });
+
+  // Reset collapse when resizing to mobile
+  window.addEventListener("resize", () => {
+    if (window.innerWidth < 768) {
+      navBar?.classList.remove("is-collapsed");
+      userManuallyExpanded = false;
+    }
+  });
+
+  // Initial setup
+  updateTheme();
 </script>
