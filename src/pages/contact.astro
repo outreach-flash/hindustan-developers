@@ -107,14 +107,11 @@ const infoCards = [
                   />
                 </div>
                 <div>
-                  <label for="field-email" class={labelClass}
-                    >Email<span class="text-[#C0392B]">*</span></label
-                  >
+                  <label for="field-email" class={labelClass}>Email</label>
                   <input
                     id="field-email"
                     name="email"
                     type="email"
-                    required
                     placeholder="jane@example.com"
                     class={inputClass}
                   />
@@ -123,8 +120,9 @@ const infoCards = [
 
               <div>
                 <label for="field-city" class={labelClass}>
-                  Current City <sup
-                    class="text-[11px] font-normal text-[#9BA0AE]">Optional</sup
+                  Current City <span
+                    class="text-[11px] font-normal text-[#9BA0AE]"
+                    >(Optional)</span
                   >
                 </label>
                 <input
@@ -256,7 +254,10 @@ const infoCards = [
           >
             {
               infoCards.map((card) => (
-                <div data-reveal-card class="tilt-card relative rounded-[24px] bg-[var(--color-card)] border border-[#10183B]/5 shadow-[0_8px_30px_rgba(16,24,59,0.06)] p-[24px] lg:p-[28px] flex flex-col min-h-[160px] lg:min-h-[180px]">
+                <div
+                  data-reveal-card
+                  class="tilt-card relative rounded-[24px] bg-[var(--color-card)] border border-[#10183B]/5 shadow-[0_8px_30px_rgba(16,24,59,0.06)] p-[24px] lg:p-[28px] flex flex-col min-h-[160px] lg:min-h-[180px]"
+                >
                   <div
                     class="absolute top-[24px] right-[24px]"
                     aria-hidden="true"
@@ -426,8 +427,7 @@ const infoCards = [
 </Layout>
 
 <script>
-  // TODO: replace with your Formspree / Web3Forms endpoint
-  const FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+  const WHATSAPP_PHONE = "918483951977";
 
   const form = document.getElementById(
     "enquiry-form",
@@ -438,14 +438,14 @@ const infoCards = [
   const submitLabel = document.getElementById("enquiry-submit-label");
   const statusEl = document.getElementById("enquiry-status");
 
-  function showStatus(message: string, ok: boolean) {
+  function showStatus(htmlContent: string, ok: boolean) {
     if (!statusEl) return;
-    statusEl.textContent = message;
+    statusEl.innerHTML = htmlContent;
     statusEl.classList.remove("hidden", "text-[#1E7E34]", "text-[#C0392B]");
     statusEl.classList.add(ok ? "text-[#1E7E34]" : "text-[#C0392B]");
   }
 
-  form?.addEventListener("submit", async (event) => {
+  form?.addEventListener("submit", (event) => {
     event.preventDefault();
     if (!form || !submitBtn) return;
 
@@ -454,37 +454,57 @@ const infoCards = [
       return;
     }
 
+    const formData = new FormData(form);
+    const name = (formData.get("name") as string)?.trim() || "";
+    const phone = (formData.get("phone") as string)?.trim() || "";
+    const email = (formData.get("email") as string)?.trim() || "";
+    const city = (formData.get("city") as string)?.trim() || "";
+    const interest = (formData.get("interest") as string)?.trim() || "";
+    const contactMethod =
+      (formData.get("contactMethod") as string)?.trim() || "";
+
+    // Build professional, formatted WhatsApp message with markdown styling
+    const messageLines = [
+      "*New Enquiry | Hindustan Developers*",
+      "",
+      "Hello Hindustan Developers Team,",
+      "",
+      "I am interested in your properties and would like to receive more details. Here are my enquiry details:",
+      "",
+      `• *Name:* ${name}`,
+      `• *Phone:* ${phone}`,
+      `• *Email:* ${email}`,
+      `• *Current City:* ${city || "Not specified"}`,
+      `• *Interested In:* ${interest}`,
+      `• *Preferred Contact Method:* ${contactMethod}`,
+      "",
+      "Please get in touch with me at your earliest convenience. Thank you!",
+    ];
+
+    const message = messageLines.join("\n");
+    const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+
+    if (submitLabel) submitLabel.textContent = "Redirecting…";
     submitBtn.disabled = true;
-    if (submitLabel) submitLabel.textContent = "Sending…";
 
-    try {
-      const response = await fetch(FORM_ENDPOINT, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" },
-      });
+    showStatus(
+      `Thank you, <strong>${name}</strong>! Redirecting you to WhatsApp… If it doesn't open automatically, <a href="${whatsappUrl}" target="_blank" rel="noopener noreferrer" class="underline font-semibold hover:text-[var(--color-navy)]">click here to open WhatsApp</a>.`,
+      true,
+    );
 
-      if (response.ok) {
-        showStatus(
-          "Thank you - your enquiry has been sent. Our team will reach out shortly.",
-          true,
-        );
-        form.reset();
-      } else {
-        showStatus(
-          "Something went wrong while sending your enquiry. Please try again or call us directly.",
-          false,
-        );
-      }
-    } catch (error) {
-      showStatus(
-        "Something went wrong while sending your enquiry. Please try again or call us directly.",
-        false,
-      );
-    } finally {
+    // Open WhatsApp
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile) {
+      window.location.href = whatsappUrl;
+    } else {
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    }
+
+    setTimeout(() => {
       submitBtn.disabled = false;
       if (submitLabel) submitLabel.textContent = "Send Enquiry";
-    }
+      form.reset();
+    }, 1500);
   });
 </script>
 

@@ -204,7 +204,7 @@ const featureIcons: Record<string, string> = {
           class="mt-[16px] lg:mt-[20px] flex flex-wrap items-center justify-center gap-[16px] lg:gap-[20px]"
         >
           <a
-            href="/contact"
+            href={`/contact?interest=${encodeURIComponent(project.title)}`}
             class="inline-flex no-underline items-center gap-[12px] h-[46px] lg:h-[50px] pl-[22px] lg:pl-[24px] pr-[6px] rounded-full border border-[#10183B]/15 bg-white text-[14px] font-medium text-[#10183B] hover:border-[#10183B]/40 transition-colors"
           >
             Submit an Enquiry
@@ -858,7 +858,7 @@ const featureIcons: Record<string, string> = {
         </p>
         <a
           data-reveal-btn
-          href="/contact"
+          href={`/contact?interest=${encodeURIComponent(project.title)}`}
           class="mt-[28px] inline-flex no-underline items-center gap-[12px] h-[52px] pl-[24px] pr-[6px] rounded-full bg-white text-[14px] font-medium text-[#10183B] hover:bg-[var(--color-cream)] transition-colors"
         >
           Submit an Enquiry
