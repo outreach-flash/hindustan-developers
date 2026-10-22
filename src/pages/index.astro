@@ -933,4 +933,44 @@ const projectAmenities = displayFeatured.details.slice(0, 4);
       },
     );
   });
+
+  function getTarget(hash: string) {
+    if (!hash || hash === "#") return null;
+    return document.getElementById(hash.slice(1));
+  }
+
+  // Intercept same-page anchor clicks.
+  document.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) return;
+
+    const link = event.target.closest<HTMLAnchorElement>('a[href^="#"]');
+
+    if (!link) return;
+
+    const target = getTarget(link.hash);
+    const smoother = ScrollSmoother.get();
+
+    // Preserve native navigation if the target or smoother is missing.
+    if (!target || !smoother) return;
+
+    event.preventDefault();
+
+    // Keep the URL hash in sync without triggering a native jump.
+    if (window.location.hash !== link.hash) {
+      history.pushState(null, "", link.hash);
+    }
+
+    // Scroll smoothly, leaving room for a fixed header.
+    smoother.scrollTo(target, true, "top 80px");
+  });
+
+  // Support browser back/forward navigation between hash links.
+  window.addEventListener("popstate", () => {
+    const target = getTarget(window.location.hash);
+    const smoother = ScrollSmoother.get();
+
+    if (target && smoother) {
+      smoother.scrollTo(target, true, "top 80px");
+    }
+  });
 </script>

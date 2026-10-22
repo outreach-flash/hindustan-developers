@@ -364,10 +364,145 @@ export function initScrollReveals() {
     }
   });
 
-  // 8. Refresh ScrollTrigger once DOM and images are completely loaded
+  // 8. Smooth Scrolling for same-page anchor links
+  initSmoothAnchorLinks();
+
+  // 9. Refresh ScrollTrigger once DOM and images are completely loaded
   window.addEventListener("load", () => {
     ScrollTrigger.refresh();
   });
+}
+
+let activeScrollTween: ReturnType<typeof gsap.to> | null = null;
+let anchorLinksInitialized = false;
+
+export function scrollToTarget(
+  target: HTMLElement | string,
+  updateHash = true,
+  hashString?: string,
+) {
+  const targetEl =
+    typeof target === "string"
+      ? (document.querySelector(target) as HTMLElement | null)
+      : target;
+  if (!targetEl) return;
+
+  // Cancel any ongoing smooth scroll tween
+  if (activeScrollTween) {
+    activeScrollTween.kill();
+    activeScrollTween = null;
+  }
+
+  // Account for navbar height based on screen width
+  const navOffset = window.innerWidth >= 1024 ? 90 : 70;
+  const smoother = (window as any).__smoother || ScrollSmoother.get();
+
+  if (smoother) {
+    const selector = targetEl.id ? `#${targetEl.id}` : targetEl;
+    let targetOffset: number;
+    try {
+      targetOffset = smoother.offset(selector, `top ${navOffset}px`);
+    } catch {
+      targetOffset =
+        targetEl.getBoundingClientRect().top + smoother.scrollTop() - navOffset;
+    }
+
+    const currentScroll = smoother.scrollTop();
+    const distance = Math.abs(targetOffset - currentScroll);
+    // Smooth duration scaled by distance (min 0.9s, max 1.8s)
+    const duration = Math.min(1.8, Math.max(0.9, distance / 2200));
+
+    activeScrollTween = gsap.to(smoother, {
+      scrollTop: targetOffset,
+      duration: duration,
+      ease: "power2.inOut",
+      overwrite: "auto",
+      onComplete: () => {
+        activeScrollTween = null;
+      },
+    });
+  } else {
+    const rect = targetEl.getBoundingClientRect();
+    const targetTop = rect.top + window.pageYOffset - navOffset;
+    window.scrollTo({
+      top: targetTop,
+      behavior: "smooth",
+    });
+  }
+
+  if (updateHash && hashString && window.history.pushState) {
+    window.history.pushState(null, "", hashString);
+  }
+}
+
+export function initSmoothAnchorLinks() {
+  if (anchorLinksInitialized) return;
+  anchorLinksInitialized = true;
+
+  // Cancel active programmatic scroll if user manually interacts (wheel / touch)
+  const cancelOnUserInteraction = () => {
+    if (activeScrollTween) {
+      activeScrollTween.kill();
+      activeScrollTween = null;
+    }
+  };
+  window.addEventListener("wheel", cancelOnUserInteraction, { passive: true });
+  window.addEventListener("touchmove", cancelOnUserInteraction, { passive: true });
+
+  document.addEventListener("click", (e) => {
+    // Only handle primary clicks without modifier keys
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    const link = (e.target as HTMLElement).closest<HTMLAnchorElement>("a[href]");
+    if (!link) return;
+
+    const rawHref = link.getAttribute("href");
+    if (!rawHref) return;
+
+    // Ignore placeholder links
+    if (rawHref === "#" || rawHref === "") return;
+
+    // Check if the link points to the same page with a hash
+    let url: URL;
+    try {
+      url = new URL(link.href, window.location.href);
+    } catch {
+      return;
+    }
+
+    const isSameOrigin = url.origin === window.location.origin;
+    const isSamePath =
+      url.pathname.replace(/\/$/, "") === window.location.pathname.replace(/\/$/, "");
+
+    if (isSameOrigin && isSamePath && url.hash) {
+      const targetId = decodeURIComponent(url.hash.slice(1));
+      const target = document.getElementById(targetId) || document.querySelector(url.hash);
+
+      if (target) {
+        e.preventDefault();
+
+        // Close mobile menu if open
+        const mobileMenu = document.getElementById("mobile-menu");
+        if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+          document.getElementById("mobile-menu-close")?.click();
+        }
+
+        scrollToTarget(target as HTMLElement, true, url.hash);
+      }
+    }
+  });
+
+  // If page loads with a hash, smoothly scroll to it once ready
+  if (window.location.hash) {
+    const hash = window.location.hash;
+    const targetId = decodeURIComponent(hash.slice(1));
+    const target = document.getElementById(targetId) || document.querySelector(hash);
+    if (target) {
+      setTimeout(() => {
+        scrollToTarget(target as HTMLElement, false);
+      }, 300);
+    }
+  }
 }
 
 // Auto-run when loaded in the browser
