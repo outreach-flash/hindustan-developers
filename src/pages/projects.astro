@@ -21,50 +21,6 @@ type RealEstateProject = {
   details?: { key: string; value: string }[];
 };
 
-type LegacyProject = {
-  title: string;
-  location: string;
-  client: string;
-  image: string;
-  developer: string;
-  scopeOfWork: string;
-  completionYear: string;
-  sortOrder: number;
-};
-
-const fallbackProjects: LegacyProject[] = [
-  {
-    title: "Casa Kewals",
-    location: "Anjuna, Goa",
-    client: "Beera Home",
-    image: "/images/projects/casa-kewals.png",
-    developer: "Chowhan",
-    scopeOfWork: "9 months",
-    completionYear: "2025",
-    sortOrder: 1,
-  },
-  {
-    title: "Vil Maris",
-    location: "Assagao, Goa",
-    client: "Ritesh Mehta",
-    image: "/images/projects/vil-maris.png",
-    developer: "Chowhan",
-    scopeOfWork: "9 months",
-    completionYear: "2025",
-    sortOrder: 2,
-  },
-  {
-    title: "Casa De Amora",
-    location: "Pilerne, Goa",
-    client: "Anand Incorporation",
-    image: "/images/projects/casa-de-amora.png",
-    developer: "Chowhan",
-    scopeOfWork: "9 months",
-    completionYear: "2025",
-    sortOrder: 3,
-  },
-];
-
 const fallbackRealEstate: RealEstateProject[] = [
   {
     slug: "serene-meadows",
@@ -74,7 +30,7 @@ const fallbackRealEstate: RealEstateProject[] = [
     propertyType: "Apartment",
     location: "Kadamba Plateau, Goa",
     priceLine: "2 & 3 BHK Apartments Starting from ₹1.10 Crores",
-    coverImage: "/images/projects/serene-meadows/View 01 v03.png",
+    coverImage: "/images/projects/serene-meadows/View 01 v03.webp",
     details: [
       { key: "Residences", value: "71 Premium" },
       { key: "Spacious", value: "63, 2 BHKs" },
@@ -84,7 +40,6 @@ const fallbackRealEstate: RealEstateProject[] = [
   },
 ];
 
-let legacyProjects: LegacyProject[] = fallbackProjects;
 let realEstateProjects: RealEstateProject[] = [];
 
 try {
@@ -98,29 +53,37 @@ try {
       }))
       .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
   }
-  const entries = await reader.collections.legacyProjects.all();
-  if (entries && entries.length) {
-    legacyProjects = entries
-      .map(({ entry }) => entry as unknown as LegacyProject)
-      .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0));
-  }
 } catch (error) {}
 
 const displayDevelopments = realEstateProjects.length
   ? realEstateProjects
   : fallbackRealEstate;
 
-const metaProject = legacyProjects[0];
-
 const marqueeImages = [
   {
-    src: "/images/hero-section-image.png",
-    alt: "Residential development built by Hindustan Developers",
+    src: "/images/projects/serene-meadows/View 01 v03.webp",
+    alt: "Serene Meadows Exterior View",
   },
-  { src: "/images/projects/casa-kewals.png", alt: "Casa Kewals, Anjuna, Goa" },
-  { src: "/images/projects/serene-meadows/View 09 v04.webp", alt: "Construction site at dusk" },
-  { src: "/images/projects/vil-maris.png", alt: "Vil Maris, Assagao, Goa" },
-  { src: "/images/projects/casa-de-amora.png", alt: "Casa De Amora, Pilerne, Goa" },
+  {
+    src: "/images/projects/serene-meadows/View 07 v02.webp",
+    alt: "Serene Meadows Poolside Oasis",
+  },
+  {
+    src: "/images/projects/serene-meadows/View 09 v04.webp",
+    alt: "Serene Meadows Twilight Architecture",
+  },
+  {
+    src: "/images/projects/serene-meadows/Clubhouse.webp",
+    alt: "Serene Meadows Premium Clubhouse",
+  },
+  {
+    src: "/images/projects/serene-meadows/Living Dining.webp",
+    alt: "Serene Meadows Living & Dining Space",
+  },
+  {
+    src: "/images/projects/serene-meadows/View 04 v04.webp",
+    alt: "Serene Meadows Balcony & Landscaping",
+  },
 ];
 
 const experienceCards = [
@@ -252,7 +215,7 @@ const experienceCards = [
                   <a href={`/projects/${dev.slug}`} class="block w-full h-full group cursor-pointer">
                     <img
                       data-reveal-img
-                      src={dev.coverImage || "/images/projects/serene-meadows/View 01 v03.png"}
+                      src={dev.coverImage || "/images/projects/serene-meadows/View 01 v03.webp"}
                       alt={dev.title}
                       class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       loading="lazy"
@@ -347,139 +310,7 @@ const experienceCards = [
       </div>
     </section>
 
-    <!-- EXPERIENCE EARNED ON THE GROUND -->
-    <section id="experience">
-      <div
-        class="w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px] py-[72px] lg:py-[120px]"
-      >
-        <div data-reveal-group>
-          <h2
-            data-reveal-title
-            class="font-heading font-bold text-[30px] leading-[38px] md:text-[38px] md:leading-[46px] lg:text-[48px] lg:leading-[56px] tracking-[-0.02em] text-[#10183B]"
-          >
-            Experience Earned on the Ground
-          </h2>
-          <div data-reveal-text class="mt-[20px] lg:mt-[28px] space-y-[16px] lg:space-y-[20px] max-w-[860px]">
-            <p class="text-[14px] lg:text-[15px] leading-[26px] lg:leading-[28px] text-[#10183B]/70">
-              Working as a contractor for established developers gave us a
-              detailed understanding of what it takes to deliver a well-built home
-              from structural execution and material selection to coordination,
-              finishing and quality control.
-            </p>
-            <p class="text-[14px] lg:text-[15px] leading-[26px] lg:leading-[28px] text-[#10183B]/70">
-              That experience is now the foundation of our own development
-              practice. Serene Meadows carries forward the lessons, standards and
-              responsibility shaped through decades of hands-on work.
-            </p>
-          </div>
-        </div>
 
-        <div class="mt-[40px] lg:mt-[64px] lg:grid lg:grid-cols-[1fr_1.2fr] lg:gap-[64px] lg:items-start">
-          <!-- Shared meta column (desktop only) -->
-          <div class="hidden lg:block lg:sticky lg:top-[120px]">
-            <div id="project-meta" class="grid grid-cols-3 gap-[16px]">
-              <div>
-                <div data-meta-value="developer" class="font-heading font-bold text-[20px] text-[#10183B] transition-opacity duration-300">{metaProject.developer}</div>
-                <div class="mt-[6px] text-[11px] uppercase tracking-[0.14em] text-[#10183B]/50">Developer</div>
-              </div>
-              <div>
-                <div data-meta-value="scopeOfWork" class="font-heading font-bold text-[20px] text-[#10183B] transition-opacity duration-300">{metaProject.scopeOfWork}</div>
-                <div class="mt-[6px] text-[11px] uppercase tracking-[0.14em] text-[#10183B]/50">Scope Of Work</div>
-              </div>
-              <div>
-                <div data-meta-value="completionYear" class="font-heading font-bold text-[20px] text-[#10183B] transition-opacity duration-300">{metaProject.completionYear}</div>
-                <div class="mt-[6px] text-[11px] uppercase tracking-[0.14em] text-[#10183B]/50">Completion Year</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project cards -->
-          <div class="flex flex-col gap-[40px]" data-reveal-cards>
-            {
-              legacyProjects.map((project) => (
-                <div
-                  data-reveal-card
-                  data-project-card
-                  data-developer={project.developer}
-                  data-scope-of-work={project.scopeOfWork}
-                  data-completion-year={project.completionYear}
-                >
-                  <article class="tilt-card rounded-[24px] bg-[var(--color-card)] border border-[#10183B]/5 shadow-[0_8px_30px_rgba(16,24,59,0.06)] overflow-hidden">
-                    <img
-                      data-reveal-img
-                      src={project.image}
-                      alt={project.title}
-                      class="w-full aspect-[16/11] object-cover"
-                      loading="lazy"
-                    />
-                    <div class="p-[20px] lg:p-[28px]">
-                      <div class="flex items-center gap-[8px] text-[13px] text-[#10183B]/60">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="14"
-                          height="14"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                          <circle cx="12" cy="10" r="3" />
-                        </svg>
-                        {project.location}
-                      </div>
-                      <div class="mt-[12px] flex items-center justify-between gap-[16px]">
-                        <div>
-                          <h3 class="font-heading font-bold text-[24px] lg:text-[28px] leading-tight tracking-[-0.01em] text-[#10183B]">
-                            {project.title}
-                          </h3>
-                          <p class="mt-[6px] text-[13px] text-[#10183B]/55">
-                            Contracting work for {project.client}
-                          </p>
-                        </div>
-                        <span class="w-[44px] h-[44px] rounded-full border border-[#10183B]/15 text-[#10183B] flex items-center justify-center flex-shrink-0">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          >
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                            <polyline points="12 5 19 12 12 19" />
-                          </svg>
-                        </span>
-                      </div>
-                    </div>
-                  </article>
-                  <!-- Per-card meta row (mobile/tablet) -->
-                  <div class="lg:hidden mt-[20px] grid grid-cols-3 gap-[16px]">
-                    <div>
-                      <div class="font-heading font-bold text-[18px] text-[#10183B]">{project.developer}</div>
-                      <div class="mt-[4px] text-[10px] uppercase tracking-[0.14em] text-[#10183B]/50">Developer</div>
-                    </div>
-                    <div>
-                      <div class="font-heading font-bold text-[18px] text-[#10183B]">{project.scopeOfWork}</div>
-                      <div class="mt-[4px] text-[10px] uppercase tracking-[0.14em] text-[#10183B]/50">Scope Of Work</div>
-                    </div>
-                    <div>
-                      <div class="font-heading font-bold text-[18px] text-[#10183B]">{project.completionYear}</div>
-                      <div class="mt-[4px] text-[10px] uppercase tracking-[0.14em] text-[#10183B]/50">Completion Year</div>
-                    </div>
-                  </div>
-                </div>
-              ))
-            }
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- WHAT THE EXPERIENCE BRINGS -->
     <section id="what-it-brings">
@@ -585,45 +416,7 @@ const experienceCards = [
 
   <TiltCards />
 
-  <script>
-    const metaRoot = document.getElementById("project-meta");
-    const cards = document.querySelectorAll("[data-project-card]");
 
-    if (metaRoot && cards.length) {
-      const fields = {
-        developer: metaRoot.querySelector('[data-meta-value="developer"]'),
-        scopeOfWork: metaRoot.querySelector('[data-meta-value="scopeOfWork"]'),
-        completionYear: metaRoot.querySelector('[data-meta-value="completionYear"]'),
-      };
-
-      const applyMeta = (card) => {
-        const next = {
-          developer: card.getAttribute("data-developer") ?? "",
-          scopeOfWork: card.getAttribute("data-scope-of-work") ?? "",
-          completionYear: card.getAttribute("data-completion-year") ?? "",
-        };
-        const values = Object.values(fields);
-        values.forEach((el) => el && (el.style.opacity = "0"));
-        window.setTimeout(() => {
-          Object.entries(fields).forEach(([key, el]) => {
-            if (el && el.textContent !== next[key]) el.textContent = next[key];
-          });
-          values.forEach((el) => el && (el.style.opacity = "1"));
-        }, 150);
-      };
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) applyMeta(entry.target);
-          });
-        },
-        { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
-      );
-
-      cards.forEach((card) => observer.observe(card));
-    }
-  </script>
 </Layout>
 
 <style>

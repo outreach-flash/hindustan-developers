@@ -142,27 +142,6 @@ export default config({
         ),
       },
     }),
-
-    legacyProjects: collection({
-      label: 'Legacy Projects',
-      slugField: 'title',
-      path: 'src/content/legacy-projects/*',
-      format: { data: 'json' },
-      schema: {
-        title: fields.slug({ name: { label: 'Title' } }),
-        location: fields.text({ label: 'Location (e.g. Anjuna, Goa)' }),
-        client: fields.text({ label: 'Client (rendered as "Contracting work for X")' }),
-        image: fields.image({
-          label: 'Project Image',
-          directory: 'public/images/projects',
-          publicPath: '/images/projects/',
-        }),
-        developer: fields.text({ label: 'Developer (e.g. Chowhan)' }),
-        scopeOfWork: fields.text({ label: 'Scope Of Work (e.g. 9 months)' }),
-        completionYear: fields.text({ label: 'Completion Year (e.g. 2025)' }),
-        sortOrder: fields.integer({ label: 'Sort Order', defaultValue: 1 }),
-      },
-    }),
   },
 
   singletons: {
