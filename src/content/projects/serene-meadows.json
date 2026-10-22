@@ -18,7 +18,7 @@
   "amenities": [
     "Swimming pool",
     "Well-equipped gymnasium",
-    "Landscaped garden and green areas",
+    "Landscaped terrace garden and green areas",
     "Double-height atrium",
     "Community hall with pantry and common washroom",
     "Car parking",
@@ -41,12 +41,12 @@
   "connectivityPlaces": [
     {
       "name": "Panjim City",
-      "travelTime": "5 Minutes",
+      "travelTime": "10 Minutes",
       "icon": "city"
     },
     {
       "name": "Hospitals",
-      "travelTime": "6 Minutes",
+      "travelTime": "10 Minutes",
       "icon": "hospital"
     },
     {
@@ -61,12 +61,12 @@
     },
     {
       "name": "Railway Station",
-      "travelTime": "6 Minutes",
+      "travelTime": "10 Minutes",
       "icon": "railway"
     },
     {
       "name": "Airport",
-      "travelTime": "6 Minutes",
+      "travelTime": "30 Minutes",
       "icon": "airport"
     }
   ],
@@ -199,11 +199,11 @@
     },
     {
       "key": "Spacious",
-      "value": "63, 2 BHKs"
+      "value": "63 - 2 BHKs"
     },
     {
       "key": "Elegant",
-      "value": "8, 3 BHKs"
+      "value": "8 - 3 BHKs"
     },
     {
       "key": "Starting from",

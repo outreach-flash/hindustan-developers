@@ -42,10 +42,10 @@ const projectAmenities = displayFeatured.details.slice(0, 4);
 <Layout>
   <Navbar slot="navbar" variant="overlay" />
 
-  <main class="text-[#1a1c1a] bg-[#1a1c1a]">
+  <main class="text-[#1a1c1a] bg-[var(--color-dark-section)]">
     <!-- HERO SECTION -->
     <section
-      class="relative h-screen min-h-[800px] flex flex-col justify-end pb-10 lg:pb-16 pt-32 overflow-hidden"
+      class="relative min-h-screen min-h-[100dvh] flex flex-col justify-center pt-28 pb-16 lg:py-24 overflow-hidden bg-[var(--color-dark-section)]"
       data-reveal-group
       data-nav-theme="dark"
     >
@@ -56,11 +56,11 @@ const projectAmenities = displayFeatured.details.slice(0, 4);
         data-speed="0.6"
       />
       <div
-        class="absolute inset-0 bg-gradient-to-t from-[#1a1c1a] via-[#1a1c1a]/50 to-black/35"
+        class="absolute inset-0 bg-gradient-to-t from-[var(--color-dark-section)] via-[var(--color-dark-section)]/55 to-black/25"
       >
       </div>
       <div
-        class="absolute inset-0 bg-gradient-to-r from-[#1a1c1a]/80 via-[#1a1c1a]/30 to-transparent"
+        class="absolute inset-0 bg-gradient-to-r from-[var(--color-dark-section)]/85 via-[var(--color-dark-section)]/40 to-transparent"
       >
       </div>
 
@@ -69,7 +69,7 @@ const projectAmenities = displayFeatured.details.slice(0, 4);
       >
         <div class="max-w-3xl">
           <h1
-            class="font-serif text-5xl md:text-7xl lg:text-[84px] text-white leading-[1.05] tracking-tight mb-8"
+            class="font-serif text-5xl md:text-7xl lg:text-[80px] text-[#f5f3ee] leading-[1.05] tracking-tight mb-6 lg:mb-7"
             data-reveal-item
           >
             Building<br />Exceptional<br />Lives in <span class="text-[#c7a469]"
@@ -77,13 +77,13 @@ const projectAmenities = displayFeatured.details.slice(0, 4);
             >
           </h1>
           <p
-            class="text-white text-xl md:text-2xl font-light tracking-wide mb-6"
+            class="text-[#f5f3ee] text-xl md:text-2xl font-light tracking-wide mb-4 lg:mb-5"
             data-reveal-item
           >
             Building Trust. Creating Spaces. <br /> Shaping Tomorrow.
           </p>
           <p
-            class="text-white/80 text-base md:text-lg max-w-xl mb-12 leading-relaxed font-light"
+            class="text-[#f5f3ee]/80 text-base md:text-lg max-w-xl mb-8 lg:mb-10 leading-relaxed font-light"
             data-reveal-item
           >
             Hindustan Developers creates thoughtfully designed residences in
@@ -94,13 +94,13 @@ const projectAmenities = displayFeatured.details.slice(0, 4);
           <div class="flex flex-col sm:flex-row gap-5" data-reveal-item>
             <a
               href="/projects"
-              class="inline-flex items-center justify-center gap-3 bg-[#c7a469] text-[#1a1c1a] font-bold text-[12px] tracking-[0.15em] uppercase px-8 py-4 hover:bg-[#b49157] transition-colors"
+              class="inline-flex items-center justify-center gap-3 bg-[#c7a469] text-[var(--color-dark-section)] font-bold text-[12px] tracking-[0.15em] uppercase px-8 py-4 hover:bg-[#b49157] hover:shadow-[0_8px_24px_rgba(199,164,105,0.25)] transition-all"
             >
               EXPLORE PROJECTS &rarr;
             </a>
             <a
               href="#purpose"
-              class="inline-flex items-center justify-center gap-3 border border-white/50 text-white font-bold text-[12px] tracking-[0.15em] uppercase px-8 py-4 hover:bg-white/10 transition-colors"
+              class="inline-flex items-center justify-center gap-3 border border-[#f5f3ee]/40 text-[#f5f3ee] font-bold text-[12px] tracking-[0.15em] uppercase px-8 py-4 hover:bg-[#f5f3ee]/10 hover:border-[#f5f3ee] transition-colors"
             >
               KNOW MORE
             </a>
@@ -323,7 +323,7 @@ const projectAmenities = displayFeatured.details.slice(0, 4);
     >
       <!-- Background Image -->
       <img
-        src="/images/inquiry-section-bg-image.png"
+        src="/images/projects/serene-meadows/View 09 v04.webp"
         alt="Goa Landscape"
         class="absolute inset-0 w-full h-[65%] object-cover object-center opacity-40 mix-blend-overlay"
       />
@@ -340,7 +340,7 @@ const projectAmenities = displayFeatured.details.slice(0, 4);
             <div
               class="text-[#c7a469] text-sm font-bold tracking-[0.2em] uppercase mb-4 pl-2"
             >
-              Why Invest
+              Why Invest In
             </div>
             <div class="flex items-center gap-6">
               <h2
@@ -562,7 +562,7 @@ const projectAmenities = displayFeatured.details.slice(0, 4);
             {displayFeatured.subtitle}
           </p>
 
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 mb-16">
+          <!-- <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 mb-16">
             {
               projectAmenities.map((detail) => (
                 <div
@@ -590,7 +590,7 @@ const projectAmenities = displayFeatured.details.slice(0, 4);
                 </div>
               ))
             }
-          </div>
+          </div> -->
 
           <div class="flex flex-col sm:flex-row gap-5" data-reveal-item>
             <a
@@ -651,7 +651,7 @@ const projectAmenities = displayFeatured.details.slice(0, 4);
             Starting from
           </div>
           <div class="font-serif text-4xl md:text-5xl mb-3 tracking-tight">
-            ₹ 1.1 Cr*
+            ₹ 1.10 Cr*
           </div>
           <div
             class="text-[11px] font-bold tracking-[0.15em] opacity-90 uppercase"
@@ -755,7 +755,9 @@ const projectAmenities = displayFeatured.details.slice(0, 4);
                   ></path></svg
                 >
                 <div>
-                  <div class="font-bold text-base tracking-wide">Panjim</div>
+                  <div class="font-bold text-base tracking-wide">
+                    Panjim City
+                  </div>
                   <div class="text-[#c7a469] text-sm mt-1 font-medium">
                     15 mins
                   </div>
@@ -871,7 +873,7 @@ const projectAmenities = displayFeatured.details.slice(0, 4);
         data-speed="0.8"
       />
       <div
-        class="absolute inset-0 bg-gradient-to-t from-[#1a1c1a] via-[#1a1c1a]/50 to-[#1a1c1a]/30"
+        class="absolute inset-0 bg-gradient-to-t from-[var(--color-dark-section)] via-[var(--color-dark-section)]/50 to-[var(--color-dark-section)]/30"
       >
       </div>
 
@@ -889,7 +891,7 @@ const projectAmenities = displayFeatured.details.slice(0, 4);
       </h2>
       <a
         href="/contact"
-        class="inline-flex items-center justify-center gap-3 bg-[#c7a469] text-[#1a1c1a] font-bold text-[13px] tracking-[0.15em] uppercase px-12 py-5 hover:bg-[#b49157] transition-colors"
+        class="inline-flex items-center justify-center gap-3 bg-[#c7a469] text-[var(--color-dark-section)] font-bold text-[13px] tracking-[0.15em] uppercase px-12 py-5 hover:bg-[#b49157] transition-colors"
         data-reveal-item
       >
         ENQUIRE NOW &rarr;

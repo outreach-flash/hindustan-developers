@@ -50,12 +50,13 @@ function triggerCounters(container: HTMLElement) {
 
 export function initScrollReveals() {
   if (window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
-    ScrollSmoother.create({
+    const smoother = ScrollSmoother.create({
       wrapper: "#smooth-wrapper",
       content: "#smooth-content",
       smooth: 1.5,
       effects: true,
     });
+    (window as any).__smoother = smoother;
   }
 
   const allRevealElements = document.querySelectorAll<HTMLElement>(
