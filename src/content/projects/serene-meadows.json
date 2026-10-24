@@ -70,7 +70,7 @@
       "icon": "airport"
     }
   ],
-  "mapImage": "/images/map-image.png",
+  "mapImage": "/images/map-image.webp",
   "floorPlans": [
     {
       "label": "Master Site Plan",
