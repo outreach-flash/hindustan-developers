@@ -32,20 +32,21 @@ const linkHover = isLight
       aria-label="Hindustan Developers Home"
     >
       <img
-        src="/images/hindustan_logo_white.png"
+        src="/images/hindustan_logo_white.webp"
         alt="Hindustan Developers"
         class="nav-logo-white h-[44px] lg:h-[54px] w-auto object-contain"
       />
       <img
-        src="/images/hindustan_logo_blue.png"
+        src="/images/hindustan_logo_blue.webp"
         alt="Hindustan Developers"
         class="nav-logo-blue h-[44px] lg:h-[54px] w-auto object-contain"
       />
     </a>
 
-
     <!-- Nav links -->
-    <div class="nav-extra hidden md:flex items-center gap-[24px] lg:gap-[40px] xl:gap-[52px]">
+    <div
+      class="nav-extra hidden md:flex items-center gap-[24px] lg:gap-[40px] xl:gap-[52px]"
+    >
       <a href="/about" class:list={[linkBase, linkHover]}>About Us</a>
       <a href="/projects/serene-meadows" class:list={[linkBase, linkHover]}
         >Serene Meadows</a
@@ -98,9 +99,16 @@ const linkHover = isLight
     aria-label="Open navigation menu"
     aria-expanded="false"
   >
-    <span class="w-[18px] h-[11px] flex flex-col justify-between items-center flex-shrink-0" aria-hidden="true">
-      <span class="w-full h-[1.75px] bg-current rounded-full transition-transform duration-200"></span>
-      <span class="w-full h-[1.75px] bg-current rounded-full transition-transform duration-200"></span>
+    <span
+      class="w-[18px] h-[11px] flex flex-col justify-between items-center flex-shrink-0"
+      aria-hidden="true"
+    >
+      <span
+        class="w-full h-[1.75px] bg-current rounded-full transition-transform duration-200"
+      ></span>
+      <span
+        class="w-full h-[1.75px] bg-current rounded-full transition-transform duration-200"
+      ></span>
     </span>
     <span class="font-heading leading-none select-none">Menu</span>
   </button>
@@ -119,7 +127,7 @@ const linkHover = isLight
       aria-label="Hindustan Developers Home"
     >
       <img
-        src="/images/hindustan_logo_white.png"
+        src="/images/hindustan_logo_white.webp"
         alt="Hindustan Developers"
         class="h-[40px] w-auto object-contain"
       />
@@ -266,12 +274,13 @@ const linkHover = isLight
     opacity: 0;
     pointer-events: none;
     transform: translateY(-16px) scale(0.95);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.25s ease,
-                background-color 0.3s ease,
-                color 0.3s ease,
-                border-color 0.3s ease,
-                box-shadow 0.3s ease;
+    transition:
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.25s ease,
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   @media (min-width: 1024px) {
@@ -315,10 +324,11 @@ const linkHover = isLight
 
   /* Nav-inner smooth transition */
   #nav-inner {
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                opacity 0.3s ease,
-                background-color 0.3s ease,
-                color 0.3s ease;
+    transition:
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.3s ease,
+      background-color 0.3s ease,
+      color 0.3s ease;
   }
 
   /* Collapse behaviour on tablet and desktop (>= 768px) */
