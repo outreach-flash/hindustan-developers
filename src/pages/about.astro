@@ -12,9 +12,9 @@ const arrowSvg =
 <Layout>
   <Navbar slot="navbar" variant="light" />
 
-  <main class="bg-[var(--color-cream)] text-[#10183B] overflow-x-clip">
+  <main class="bg-[var(--color-cream)] text-[#10183B]">
     <!-- HERO - Our Story -->
-    <section id="our-story" class="relative">
+    <section id="our-story" class="relative overflow-x-clip">
       <!-- Faint isometric blueprint line art -->
       <svg
         aria-hidden="true"
@@ -689,38 +689,41 @@ const arrowSvg =
       <div
         class="w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px] py-[72px] lg:py-[120px]"
       >
-        <div class="lg:grid lg:grid-cols-2 lg:gap-[64px] lg:items-start">
-          <!-- Heading -->
-          <div
-            class="flex flex-col items-start max-lg:mb-[32px] lg:sticky lg:top-[120px] lg:self-start"
-            data-reveal-group
-          >
-            <span
-              data-reveal-text
-              class="inline-flex w-fit items-center gap-[10px] h-[46px] px-[20px] rounded-full bg-[#A9A8AC] text-[#F4F1ED] text-[12px] font-medium"
+        <div id="values-grid" class="lg:grid lg:grid-cols-2 lg:gap-[64px] lg:items-start">
+          <!-- Left column wrapper -->
+          <div class="w-full">
+            <div
+              id="values-heading"
+              class="flex flex-col items-start max-lg:mb-[32px] w-full"
+              data-reveal-group
             >
               <span
-                class="w-[6px] h-[6px] rounded-full bg-[var(--color-yellow)]"
-              ></span>
-              Our Direction
-            </span>
-            <h2
-              data-reveal-title
-              class="mt-[24px] lg:mt-[32px] font-heading font-bold text-[30px] leading-[38px] md:text-[38px] md:leading-[46px] lg:text-[48px] lg:leading-[56px] tracking-[-0.02em] text-[#10183B]"
-            >
-              Our Values We build by.
-            </h2>
-            <p
-              data-reveal-text
-              class="mt-[16px] lg:mt-[20px] text-[14px] lg:text-[15px] leading-[26px] lg:leading-[28px] text-[#10183B]/70 max-w-[440px]"
-            >
-              These principles have guided us for over 5 decades, and continue
-              to shape every project we undertake.
-            </p>
+                data-reveal-text
+                class="inline-flex w-fit items-center gap-[10px] h-[46px] px-[20px] rounded-full bg-[#A9A8AC] text-[#F4F1ED] text-[12px] font-medium"
+              >
+                <span
+                  class="w-[6px] h-[6px] rounded-full bg-[var(--color-yellow)]"
+                ></span>
+                Our Direction
+              </span>
+              <h2
+                data-reveal-title
+                class="mt-[24px] lg:mt-[32px] font-heading font-bold text-[30px] leading-[38px] md:text-[38px] md:leading-[46px] lg:text-[48px] lg:leading-[56px] tracking-[-0.02em] text-[#10183B]"
+              >
+                Our Values We build by.
+              </h2>
+              <p
+                data-reveal-text
+                class="mt-[16px] lg:mt-[20px] text-[14px] lg:text-[15px] leading-[26px] lg:leading-[28px] text-[#10183B]/70 max-w-[440px]"
+              >
+                These principles have guided us for over 5 decades, and continue
+                to shape every project we undertake.
+              </p>
+            </div>
           </div>
 
           <!-- Value cards -->
-          <div class="flex flex-col gap-[14px] lg:gap-[16px]" data-reveal-cards>
+          <div id="values-cards" class="flex flex-col gap-[14px] lg:gap-[16px] lg:col-start-2" data-reveal-cards>
             <!-- Quality -->
             <div
               data-reveal-card

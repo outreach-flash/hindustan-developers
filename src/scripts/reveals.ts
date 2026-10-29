@@ -364,13 +364,35 @@ export function initScrollReveals() {
     }
   });
 
-  // 8. Smooth Scrolling for same-page anchor links
+  // 8. Sticky column pinning for Values / Direction section
+  const valuesHeading = document.getElementById("values-heading");
+  const valuesCards = document.getElementById("values-cards");
+  const valuesGrid = document.getElementById("values-grid");
+
+  if (valuesHeading && valuesCards && valuesGrid) {
+    const mm = gsap.matchMedia();
+    mm.add("(min-width: 1024px)", () => {
+      ScrollTrigger.create({
+        trigger: valuesGrid,
+        start: "top top+=120",
+        end: () => {
+          return `+=${Math.max(0, valuesCards.offsetHeight - valuesHeading.offsetHeight)}`;
+        },
+        pin: valuesHeading,
+        pinSpacing: false,
+        invalidateOnRefresh: true,
+      });
+    });
+  }
+
+  // 9. Smooth Scrolling for same-page anchor links
   initSmoothAnchorLinks();
 
-  // 9. Refresh ScrollTrigger once DOM and images are completely loaded
+  // 10. Refresh ScrollTrigger once DOM and images are completely loaded
   window.addEventListener("load", () => {
     ScrollTrigger.refresh();
   });
+  ScrollTrigger.refresh();
 }
 
 let activeScrollTween: ReturnType<typeof gsap.to> | null = null;
