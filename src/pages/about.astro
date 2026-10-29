@@ -297,49 +297,16 @@ const arrowSvg =
               </div>
             </div>
 
-            <!-- Images -->
+            <!-- Image -->
             <div class="lg:w-[45%] order-1 lg:order-2">
-              <!-- Desktop: single image -->
-              <div class="hidden lg:block rounded-[24px] overflow-hidden">
+              <div class="rounded-[24px] overflow-hidden">
                 <img
                   data-reveal-img
-                  src="/images/about-journey-1.png"
+                  src="/images/blueprint-planning.webp"
                   alt="Planning a project over blueprints"
                   class="w-full aspect-[4/3] object-cover"
                   loading="lazy"
                 />
-              </div>
-              <!-- Mobile/tablet: scroll-snap carousel -->
-              <div class="lg:hidden">
-                <div
-                  id="journey-carousel"
-                  class="flex gap-[16px] overflow-x-auto snap-x snap-mandatory rounded-[24px] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-                >
-                  <img
-                    data-reveal-img
-                    src="/images/about-journey-1.png"
-                    alt="Planning a project over blueprints"
-                    class="snap-center shrink-0 w-full aspect-[4/3] object-cover rounded-[24px]"
-                    loading="lazy"
-                  />
-                  <img
-                    data-reveal-img
-                    src="/images/about-journey-2.png"
-                    alt="Team reviewing construction drawings"
-                    class="snap-center shrink-0 w-full aspect-[4/3] object-cover rounded-[24px]"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="mt-[16px] flex justify-center gap-[8px]">
-                  <span
-                    data-journey-dot
-                    class="w-[8px] h-[8px] rounded-full bg-[var(--color-navy)] transition-colors"
-                  ></span>
-                  <span
-                    data-journey-dot
-                    class="w-[8px] h-[8px] rounded-full bg-[#C9CEDD] transition-colors"
-                  ></span>
-                </div>
               </div>
             </div>
           </div>
@@ -352,8 +319,9 @@ const arrowSvg =
       <div
         class="w-full max-w-[1440px] mx-auto px-[18px] lg:px-[60px] py-[72px] lg:py-[120px]"
       >
-        <div class="flex justify-center">
+        <div class="flex justify-center" data-reveal-group>
           <span
+            data-reveal-text
             class="inline-flex w-fit items-center gap-[10px] h-[46px] px-[20px] rounded-full bg-[#A9A8AC] text-[#F4F1ED] text-[12px] font-medium"
           >
             <span class="w-[6px] h-[6px] rounded-full bg-[var(--color-yellow)]"
@@ -362,59 +330,149 @@ const arrowSvg =
           </span>
         </div>
 
-        <!-- Mobile/tablet header -->
         <div
-          class="lg:hidden flex flex-col items-center text-center mt-[24px] mb-[32px]"
-          data-reveal-group
+          class="mt-[32px] lg:mt-[56px] lg:grid lg:grid-cols-12 lg:gap-[48px] xl:gap-[64px] lg:items-center"
         >
-          <h2
-            data-reveal-title
-            class="font-heading font-bold text-[30px] leading-[38px] md:text-[38px] md:leading-[46px] tracking-[-0.02em] text-[#10183B]"
-          >
-            Leading the Next Chapter
-          </h2>
-          <p
-            data-reveal-text
-            class="mt-[16px] text-[14px] leading-[26px] text-[#10183B]/70"
-          >
-            Rafik Chowhan represents the second generation of the family's
-            construction legacy. Having carried the contracting business
-            forward, he now leads its transition into property
-            development-bringing decades of technical understanding and on-site
-            experience to a new generation of homes in Goa.
-          </p>
-        </div>
+          <!-- Left column: Story & Pillars -->
+          <div class="lg:col-span-7 flex flex-col items-start" data-reveal-group>
+            <h2
+              data-reveal-title
+              class="font-heading font-bold text-[30px] leading-[38px] md:text-[40px] md:leading-[48px] lg:text-[50px] lg:leading-[58px] tracking-[-0.02em] text-[#10183B]"
+            >
+              Leading the Next Chapter
+            </h2>
+            <p
+              data-reveal-text
+              class="mt-[20px] lg:mt-[24px] text-[15px] lg:text-[16px] leading-[28px] lg:leading-[30px] text-[#10183B]/75 max-w-[640px]"
+            >
+              Rafik Chowhan represents the second generation of the family's
+              construction legacy. Having carried the contracting business
+              forward, he now leads its transition into property
+              development—bringing decades of technical understanding and on-site
+              experience to a new generation of homes in Goa.
+            </p>
+            <p
+              data-reveal-text
+              class="mt-[16px] text-[14px] lg:text-[15px] leading-[26px] lg:leading-[28px] text-[#10183B]/65 max-w-[640px]"
+            >
+              This evolution is grounded in hands-on building discipline rather
+              than distant oversight. Every project reflects a deep respect for
+              materials, precision in craftsmanship, and a genuine commitment to
+              delivering enduring quality.
+            </p>
 
-        <div class="lg:flex lg:gap-[64px] lg:items-start lg:mt-[48px]">
-          <!-- Director card -->
-          <div class="lg:w-[42%] lg:flex-shrink-0" data-reveal-card>
-            <div class="relative rounded-[24px] overflow-hidden">
-              <img
-                data-reveal-img
-                src="/images/about-director.png"
-                alt="Rafik Chowhan, Director of Hindustan Developers"
-                class="w-full aspect-[4/3] lg:aspect-[4/5] object-cover"
-                loading="lazy"
-              />
+            <!-- Leadership Highlights -->
+            <div
+              data-reveal-cards
+              class="mt-[28px] lg:mt-[36px] grid grid-cols-1 sm:grid-cols-3 gap-[14px] w-full max-w-[640px]"
+            >
               <div
-                class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#10183B]/85 to-transparent pt-[80px] pb-[20px] px-[24px]"
+                data-reveal-card
+                class="tilt-card rounded-[18px] bg-[var(--color-card)] border border-[#EBE7DF] p-[18px]"
               >
                 <div
-                  class="text-white/70 text-[12px] uppercase tracking-[0.18em]"
+                  class="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--color-navy)]/60"
                 >
+                  Legacy
+                </div>
+                <div class="mt-[6px] text-[15px] font-bold text-[#10183B]">
+                  50+ Years Heritage
+                </div>
+              </div>
+              <div
+                data-reveal-card
+                class="tilt-card rounded-[18px] bg-[var(--color-card)] border border-[#EBE7DF] p-[18px]"
+              >
+                <div
+                  class="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--color-navy)]/60"
+                >
+                  Stewardship
+                </div>
+                <div class="mt-[6px] text-[15px] font-bold text-[#10183B]">
+                  2nd Generation
+                </div>
+              </div>
+              <div
+                data-reveal-card
+                class="tilt-card rounded-[18px] bg-[var(--color-card)] border border-[#EBE7DF] p-[18px]"
+              >
+                <div
+                  class="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--color-navy)]/60"
+                >
+                  Execution
+                </div>
+                <div class="mt-[6px] text-[15px] font-bold text-[#10183B]">
+                  On-Site Mastery
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right column: Executive Director Card -->
+          <div class="mt-[36px] lg:mt-0 lg:col-span-5 w-full" data-reveal-card>
+            <div
+              class="tilt-card relative rounded-[24px] bg-[var(--color-navy)] text-white p-[32px] lg:p-[40px] overflow-hidden flex flex-col justify-between min-h-[380px] shadow-[0_20px_50px_rgba(16,24,59,0.12)] border border-[#232B54]"
+            >
+              <!-- Faint architectural geometry art in card background -->
+              <svg
+                aria-hidden="true"
+                class="absolute -top-10 -right-10 w-[240px] h-[240px] text-white/5 pointer-events-none select-none"
+                viewBox="0 0 200 200"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <path
+                  d="M100 15 L185 65 L185 165 L100 215 L15 165 L15 65 Z"
+                ></path>
+                <path
+                  d="M100 15 L100 115 M15 65 L100 115 L185 65 M100 115 L185 165"
+                ></path>
+                <circle cx="100" cy="115" r="45" stroke-dasharray="3 3"></circle>
+              </svg>
+
+              <div>
+                <div
+                  class="inline-flex items-center gap-[8px] px-[14px] h-[32px] rounded-full bg-white/10 border border-white/15 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--color-yellow)]"
+                >
+                  <span
+                    class="w-[6px] h-[6px] rounded-full bg-[var(--color-yellow)]"
+                  ></span>
                   Director
                 </div>
-                <div
-                  class="text-white font-heading font-semibold text-[24px] lg:text-[28px] leading-tight mt-[4px]"
+
+                <h3
+                  class="font-heading font-bold text-[28px] lg:text-[34px] leading-tight text-white mt-[18px] tracking-[-0.01em]"
                 >
                   Rafik Chowhan
+                </h3>
+                <p class="text-white/60 text-[14px] mt-[4px]">
+                  Hindustan Developers
+                </p>
+
+                <div class="mt-[24px] pt-[24px] border-t border-white/10">
+                  <p
+                    class="text-white/75 text-[14px] leading-[24px] italic font-serif"
+                  >
+                    "Carrying forward five decades of practical construction
+                    mastery into modern, enduring residential spaces for Goa."
+                  </p>
                 </div>
-                <!-- Social pills inside image (mobile/tablet) -->
-                <div class="lg:hidden mt-[14px] flex gap-[10px]">
+              </div>
+
+              <div
+                class="mt-[32px] pt-[24px] border-t border-white/10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-[16px]"
+              >
+                <span
+                  class="text-white/50 text-[12px] uppercase tracking-[0.14em] font-medium"
+                >
+                  Connect
+                </span>
+                <div class="flex items-center gap-[10px]">
                   <a
                     href="#"
                     aria-label="Instagram"
-                    class="inline-flex items-center gap-[8px] h-[36px] px-[14px] rounded-full bg-white/15 backdrop-blur border border-white/30 text-white no-underline"
+                    class="inline-flex items-center gap-[8px] h-[40px] px-[16px] rounded-full bg-white/10 hover:bg-[var(--color-yellow)] hover:text-[#10183B] border border-white/15 text-white text-[13px] font-medium no-underline transition-all group"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -429,29 +487,31 @@ const arrowSvg =
                         height="20"
                         rx="5"
                         ry="5"
-                        stroke="#E1306C"
+                        stroke="currentColor"
                         stroke-width="2"></rect><path
                         d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
-                        stroke="#E1306C"
+                        stroke="currentColor"
                         stroke-width="2"></path><line
                         x1="17.5"
                         y1="6.5"
                         x2="17.51"
                         y2="6.5"
-                        stroke="#E1306C"
+                        stroke="currentColor"
                         stroke-width="2"
                         stroke-linecap="round"></line></svg
                     >
+                    <span>Instagram</span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="10"
-                      height="10"
+                      width="11"
+                      height="11"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
                       stroke-width="2.5"
                       stroke-linecap="round"
                       stroke-linejoin="round"
+                      class="opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
                       ><line x1="7" y1="17" x2="17" y2="7"></line><polyline
                         points="7 7 17 7 17 17"></polyline></svg
                     >
@@ -459,28 +519,30 @@ const arrowSvg =
                   <a
                     href="#"
                     aria-label="LinkedIn"
-                    class="inline-flex items-center gap-[8px] h-[36px] px-[14px] rounded-full bg-white/15 backdrop-blur border border-white/30 text-white no-underline"
+                    class="inline-flex items-center gap-[8px] h-[40px] px-[16px] rounded-full bg-white/10 hover:bg-[var(--color-yellow)] hover:text-[#10183B] border border-white/15 text-white text-[13px] font-medium no-underline transition-all group"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="14"
                       height="14"
                       viewBox="0 0 24 24"
-                      fill="#4DA3FF"
+                      fill="currentColor"
                       ><path
                         d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"
                       ></path></svg
                     >
+                    <span>LinkedIn</span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="10"
-                      height="10"
+                      width="11"
+                      height="11"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
                       stroke-width="2.5"
                       stroke-linecap="round"
                       stroke-linejoin="round"
+                      class="opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
                       ><line x1="7" y1="17" x2="17" y2="7"></line><polyline
                         points="7 7 17 7 17 17"></polyline></svg
                     >
@@ -488,103 +550,6 @@ const arrowSvg =
                 </div>
               </div>
             </div>
-            <!-- Social pills below card (desktop) -->
-            <div class="hidden lg:flex mt-[16px] gap-[12px]">
-              <a
-                href="#"
-                aria-label="Instagram"
-                class="inline-flex items-center gap-[8px] h-[44px] px-[18px] rounded-full bg-[#A9A8AC] text-[#10183B] text-[13px] font-medium no-underline hover:bg-[var(--color-yellow)] transition-colors"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  ><rect
-                    x="2"
-                    y="2"
-                    width="20"
-                    height="20"
-                    rx="5"
-                    ry="5"
-                    stroke="#C13584"
-                    stroke-width="2"></rect><path
-                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
-                    stroke="#C13584"
-                    stroke-width="2"></path><line
-                    x1="17.5"
-                    y1="6.5"
-                    x2="17.51"
-                    y2="6.5"
-                    stroke="#C13584"
-                    stroke-width="2"
-                    stroke-linecap="round"></line></svg
-                >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="12"
-                  height="12"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  ><line x1="7" y1="17" x2="17" y2="7"></line><polyline
-                    points="7 7 17 7 17 17"></polyline></svg
-                >
-              </a>
-              <a
-                href="#"
-                aria-label="LinkedIn"
-                class="inline-flex items-center gap-[8px] h-[44px] px-[18px] rounded-full bg-[#A9A8AC] text-[#10183B] text-[13px] font-medium no-underline hover:bg-[var(--color-yellow)] transition-colors"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="#0A66C2"
-                  ><path
-                    d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"
-                  ></path></svg
-                >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="12"
-                  height="12"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  ><line x1="7" y1="17" x2="17" y2="7"></line><polyline
-                    points="7 7 17 7 17 17"></polyline></svg
-                >
-              </a>
-            </div>
-          </div>
-
-          <!-- Desktop right column -->
-          <div class="hidden lg:block lg:flex-1" data-reveal-group>
-            <h2
-              data-reveal-title
-              class="font-heading font-bold text-[56px] leading-[64px] tracking-[-0.02em] text-[#10183B]"
-            >
-              Leading the Next Chapter
-            </h2>
-            <p
-              data-reveal-text
-              class="mt-[24px] text-[15px] leading-[28px] text-[#10183B]/70 max-w-[560px]"
-            >
-              Rafik Chowhan represents the second generation of the family's
-              construction legacy. Having carried the contracting business
-              forward, he now leads its transition into property
-              development-bringing decades of technical understanding and
-              on-site experience to a new generation of homes in Goa.
-            </p>
           </div>
         </div>
       </div>
@@ -979,22 +944,4 @@ const arrowSvg =
   <TiltCards />
 </Layout>
 
-<script>
-  const journeyCarousel = document.getElementById("journey-carousel");
-  const journeyDots = document.querySelectorAll("[data-journey-dot]");
-  if (journeyCarousel && journeyDots.length) {
-    journeyCarousel.addEventListener(
-      "scroll",
-      () => {
-        const active = Math.round(
-          journeyCarousel.scrollLeft / journeyCarousel.clientWidth,
-        );
-        journeyDots.forEach((dot, i) => {
-          dot.classList.toggle("bg-[var(--color-navy)]", i === active);
-          dot.classList.toggle("bg-[#C9CEDD]", i !== active);
-        });
-      },
-      { passive: true },
-    );
-  }
-</script>
+
