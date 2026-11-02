@@ -831,13 +831,14 @@ const projectAmenities = displayFeatured.details.slice(0, 4);
             </div>
           </div>
 
-          <a
-            href="#"
+          <button
+            type="button"
+            id="map-lightbox-trigger"
             class="absolute bottom-10 right-10 lg:bottom-16 lg:right-16 inline-flex items-center justify-center gap-3 border border-white/30 text-white font-bold text-[11px] tracking-[0.15em] uppercase px-6 py-4 hover:bg-white/10 transition-colors z-10 backdrop-blur-sm"
             data-reveal-item
           >
             VIEW LOCATION ON MAP &rarr;
-          </a>
+          </button>
         </div>
       </div>
 
@@ -903,6 +904,32 @@ const projectAmenities = displayFeatured.details.slice(0, 4);
   </main>
 
   <Footer />
+
+  <div slot="modals">
+    <div
+      id="map-lightbox"
+      class="fixed inset-0 z-[200] hidden items-center justify-center bg-[#10183B]/92 backdrop-blur-md p-4 md:p-8"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Serene Meadows location map"
+      aria-hidden="true"
+    >
+      <button
+        type="button"
+        id="map-lightbox-close"
+        aria-label="Close location map"
+        class="absolute top-4 right-4 md:top-6 md:right-7 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/15 text-white backdrop-blur-md transition-all duration-200 hover:scale-105 hover:bg-white/30 active:scale-95"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+
+      <img
+        src="/images/map-image.webp"
+        alt="Illustrated location map for Serene Meadows near Kadamba Plateau, Goa"
+        class="max-h-[82vh] max-w-full rounded-2xl object-contain shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
+      />
+    </div>
+  </div>
 </Layout>
 
 <script>
@@ -971,6 +998,47 @@ const projectAmenities = displayFeatured.details.slice(0, 4);
 
     if (target && smoother) {
       smoother.scrollTo(target, true, "top 80px");
+    }
+  });
+
+  const mapLightbox = document.getElementById("map-lightbox");
+  const mapLightboxTrigger = document.getElementById("map-lightbox-trigger");
+  const mapLightboxClose = document.getElementById("map-lightbox-close");
+  let previousBodyOverflow = "";
+
+  function openMapLightbox() {
+    if (!mapLightbox || !mapLightboxClose) return;
+
+    previousBodyOverflow = document.body.style.overflow;
+    mapLightbox.classList.remove("hidden");
+    mapLightbox.classList.add("flex");
+    mapLightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    (window as any).__smoother?.paused(true);
+    mapLightboxClose.focus();
+  }
+
+  function closeMapLightbox() {
+    if (!mapLightbox) return;
+
+    mapLightbox.classList.add("hidden");
+    mapLightbox.classList.remove("flex");
+    mapLightbox.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = previousBodyOverflow;
+    (window as any).__smoother?.paused(false);
+    mapLightboxTrigger?.focus();
+  }
+
+  mapLightboxTrigger?.addEventListener("click", openMapLightbox);
+  mapLightboxClose?.addEventListener("click", closeMapLightbox);
+
+  mapLightbox?.addEventListener("click", (event) => {
+    if (event.target === mapLightbox) closeMapLightbox();
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !mapLightbox?.classList.contains("hidden")) {
+      closeMapLightbox();
     }
   });
 </script>
