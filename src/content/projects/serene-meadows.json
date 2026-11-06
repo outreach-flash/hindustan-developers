@@ -4,7 +4,7 @@
   "propertyType": "Apartment",
   "location": "Kadamba Plateau, Goa",
   "priceLine": "2 & 3 BHK Apartments Starting from ₹1.10 Crores",
-  "coverImage": "/images/projects/serene-meadows/View 01 v03.webp",
+  "coverImage": "/images/projects/serene-meadows/Street Frontage.jpeg",
   "overviewBody": "Serene Meadows is an exclusive community of 71 premium residences comprising 63 spacious 2 BHK apartments and 8 elegant 3 BHK apartments. Each home is planned to balance generous living spaces, practical layouts and a sense of everyday ease.\n\nWithin the secure gated community, residents can enjoy a signature swimming pool, a well-equipped gymnasium, landscaped gardens and shared spaces designed to bring comfort, wellness and connection into daily life.",
   "highlights": [
     "Prime Location at Kadamba Plateau, Goa",
@@ -186,6 +186,34 @@
       "description": "Vibrant children's play area with slides and swings alongside a shaded community gathering pavilion.",
       "images": [
         "/images/projects/serene-meadows/View 11.webp"
+      ]
+    },
+    {
+      "label": "Sunset Facade Detail",
+      "description": "Warm cove-lit window frames and planted balconies glowing against a golden Goan sunset sky.",
+      "images": [
+        "/images/projects/serene-meadows/Sunset Facade.jpeg"
+      ]
+    },
+    {
+      "label": "Poolside Deck & Gymnasium",
+      "description": "Sun loungers line the swimming pool, with the glass-fronted gymnasium and flowering trees alongside the residences.",
+      "images": [
+        "/images/projects/serene-meadows/Poolside Gym.jpeg"
+      ]
+    },
+    {
+      "label": "Double-Height Entrance Lobby",
+      "description": "A sunlit double-height lobby with statement artwork, timber slat screens, a lounge seating area and inlaid marble flooring.",
+      "images": [
+        "/images/projects/serene-meadows/Entrance Lobby.jpeg"
+      ]
+    },
+    {
+      "label": "Signature Entrance Gate at Dusk",
+      "description": "The illuminated Serene Meadows gateway and security cabin, framed by palms and bougainvillea at sunset.",
+      "images": [
+        "/images/projects/serene-meadows/Entrance Gate Sunset.jpeg"
       ]
     }
   ],

@@ -966,6 +966,32 @@ const featureIcons: Record<string, string> = {
     let currentFloorIndex = 0;
     const totalPlans = tabs.length;
 
+    // Symmetric padding lets the scroll position place any tab at the
+    // horizontal center of the chips container, including first and last.
+    const CHIPS_BASE_PADDING = 12;
+
+    const applyCenterPadding = () => {
+      if (!chipsScroll || totalPlans <= 5) return;
+      const containerWidth = chipsScroll.clientWidth;
+      const widestTab = Math.max(...tabs.map((t) => t.getBoundingClientRect().width));
+      const pad = Math.max(CHIPS_BASE_PADDING, (containerWidth - widestTab) / 2 + CHIPS_BASE_PADDING);
+      chipsScroll.style.paddingLeft = `${pad}px`;
+      chipsScroll.style.paddingRight = `${pad}px`;
+    };
+
+    const centerActiveTab = (smooth = true) => {
+      const activeTab = tabs[currentFloorIndex];
+      if (!chipsScroll || !activeTab) return;
+      const containerWidth = chipsScroll.clientWidth;
+      const pad = parseFloat(window.getComputedStyle(chipsScroll).paddingLeft) || 0;
+      const containerRect = chipsScroll.getBoundingClientRect();
+      const tabRect = activeTab.getBoundingClientRect();
+      // Distance of the tab's start from the beginning of the chip row
+      const tabOffset = tabRect.left - containerRect.left + chipsScroll.scrollLeft - pad;
+      const target = pad + tabOffset + tabRect.width / 2 - containerWidth / 2;
+      chipsScroll.scrollTo({ left: target, behavior: smooth ? "smooth" : "auto" });
+    };
+
     const setActivePlan = (index: number) => {
       if (totalPlans === 0) return;
       currentFloorIndex = (index + totalPlans) % totalPlans;
@@ -980,23 +1006,8 @@ const featureIcons: Record<string, string> = {
         panel.classList.toggle("hidden", i !== currentFloorIndex);
       });
 
-      // Keep active tab smoothly scrolled into container view
-      const activeTab = tabs[currentFloorIndex];
-      if (chipsScroll && activeTab) {
-        const containerRect = chipsScroll.getBoundingClientRect();
-        const tabRect = activeTab.getBoundingClientRect();
-        if (tabRect.left < containerRect.left) {
-          chipsScroll.scrollBy({
-            left: tabRect.left - containerRect.left - 16,
-            behavior: "smooth",
-          });
-        } else if (tabRect.right > containerRect.right) {
-          chipsScroll.scrollBy({
-            left: tabRect.right - containerRect.right + 16,
-            behavior: "smooth",
-          });
-        }
-      }
+      // Keep the active tab centered in the chips container
+      centerActiveTab();
     };
 
     tabs.forEach((tab, index) => {
@@ -1021,10 +1032,10 @@ const featureIcons: Record<string, string> = {
         });
         const computedStyle = window.getComputedStyle(chipsScroll);
         const gap = parseFloat(computedStyle.gap) || 12;
-        const paddingLeft = parseFloat(computedStyle.paddingLeft) || 0;
-        const paddingRight = parseFloat(computedStyle.paddingRight) || 0;
-        const targetMaxWidth = contentWidth + 4 * gap + paddingLeft + paddingRight + 2;
+        const targetMaxWidth = contentWidth + 4 * gap + 2 * CHIPS_BASE_PADDING + 2;
         chipsScroll.style.maxWidth = `min(${targetMaxWidth}px, 100%)`;
+        applyCenterPadding();
+        centerActiveTab(false);
       };
 
       updateChipsMaxWidth();

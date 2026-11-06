@@ -32,14 +32,9 @@ const linkHover = isLight
       aria-label="Hindustan Developers Home"
     >
       <img
-        src="/images/hindustan_logo_white.webp"
+        src="/images/hindustan-developers-logo.png"
         alt="Hindustan Developers"
-        class="nav-logo-white h-[44px] lg:h-[54px] w-auto object-contain"
-      />
-      <img
-        src="/images/hindustan_logo_blue.webp"
-        alt="Hindustan Developers"
-        class="nav-logo-blue h-[44px] lg:h-[54px] w-auto object-contain"
+        class="h-[44px] lg:h-[54px] aspect-square object-contain"
       />
     </a>
 
@@ -127,9 +122,9 @@ const linkHover = isLight
       aria-label="Hindustan Developers Home"
     >
       <img
-        src="/images/hindustan_logo_white.webp"
+        src="/images/hindustan-developers-logo.png"
         alt="Hindustan Developers"
-        class="h-[40px] w-auto object-contain"
+        class="h-[40px] aspect-square object-contain"
       />
     </a>
     <button
@@ -246,23 +241,6 @@ const linkHover = isLight
   /* Link hover color over light sections */
   #nav-bar[data-variant="overlay"].nav-on-light .nav-link:hover {
     color: var(--color-navy-mid);
-  }
-
-  /* Logo theme switching */
-  #nav-bar[data-variant="overlay"] .nav-logo-blue {
-    display: none;
-  }
-  #nav-bar[data-variant="overlay"] .nav-logo-white {
-    display: block;
-  }
-
-  #nav-bar[data-variant="overlay"].nav-on-light .nav-logo-white,
-  #nav-bar[data-variant="light"] .nav-logo-white {
-    display: none;
-  }
-  #nav-bar[data-variant="overlay"].nav-on-light .nav-logo-blue,
-  #nav-bar[data-variant="light"] .nav-logo-blue {
-    display: block;
   }
 
   /* Collapsed Menu Button (Desktop & Tablet) */
